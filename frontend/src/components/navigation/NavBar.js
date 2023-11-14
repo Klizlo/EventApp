@@ -203,7 +203,7 @@ const NavBar = ({sites}) => {
 
     return (
         <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="static" sx={{
+            <AppBar position="fixed" sx={{
                 background: "black"
             }}>
                 <Toolbar>

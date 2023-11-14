@@ -2,6 +2,7 @@ import './App.css';
 import NavBar from "./components/navigation/NavBar";
 import { BrowserRouter, Route, Routes} from 'react-router-dom';
 import React, {} from "react"
+import LoginPage from "./webpages/Account/LoginPage";
 
 function App() {
 
@@ -30,7 +31,7 @@ function App() {
         <BrowserRouter>
           <NavBar sites={sites}/>
           <Routes>
-            <Route />
+            <Route path="/login" element={<LoginPage />}/>
           </Routes>
         </BrowserRouter>
       </React.StrictMode>
