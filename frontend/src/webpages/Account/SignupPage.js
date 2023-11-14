@@ -2,29 +2,36 @@ import {useState} from "react";
 import {
     Alert,
     Avatar,
-    Box, Button,
-    Container,
-    Grid, IconButton, InputAdornment,
+    Box, Checkbox,
+    Container, FormControlLabel,
+    Grid,
+    IconButton,
+    InputAdornment,
     Paper,
     TextField,
     Typography
 } from "@mui/material";
 import {Person, VisibilityOff} from "@mui/icons-material";
-import {Link} from "react-router-dom";
-import {LoadingButton} from "@mui/lab";
-import SaveIcon from '@mui/icons-material/Send';
+import ErrorIcon from "@mui/icons-material/Error";
 import VisibilityIcon from "@mui/icons-material/Visibility";
-import ErrorIcon from '@mui/icons-material/Error';
+import {LoadingButton} from "@mui/lab";
+import SaveIcon from "@mui/icons-material/Send";
+import {Link} from "react-router-dom";
 import validator from "validator/es";
 
-export default function LoginPage() {
+export default function SignupPage() {
 
     const [data, setData] = useState({
+        name: "",
+        surname: "",
         email: "",
+        phone: "",
         password: ""
     });
+    const [checked, setChecked] = useState(false);
     const [error, setError] = useState("");
     const [emailError, setEmailError] = useState("");
+    const [phoneError, setPhoneError] = useState("");
     const [passwordError, setPasswordError] = useState("");
     const [showPassword, setShowPassword] = useState(false);
     const [loading, setLoading] = useState(false);
@@ -35,16 +42,42 @@ export default function LoginPage() {
         setData({...data, [e.target.name]: e.target.value});
     };
 
+    const handleChecked = (e) => {
+        setChecked(e.target.checked);
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
 
-        if (!validator.isEmail(data.email)) {
+        if (!validateData()) {
             setLoading(false);
-            setEmailError("Invalid email");
         }
     };
+
+    const validateData = () => {
+        // validate email
+        if(!validator.isEmail(data.email)) {
+            setEmailError("Invalid email!");
+            return false;
+        }
+
+        // validate password
+        if (!validator.isStrongPassword(data.password, {
+            minLength: 8, minLowercase: 1, minUppercase: 1, minNumbers: 1, minSymbols: 1
+        })) {
+            setPasswordError("It's not a strong password!")
+            return false;
+        }
+
+        //validate phone number
+        if(!validator.isMobilePhone(data.phone, ['pl-PL'])){
+            setPhoneError("Invalid phone number")
+            return false;
+        }
+
+        return true;
+    }
 
     return (
         <Container>
@@ -62,13 +95,19 @@ export default function LoginPage() {
                         backgroundSize: 'cover',
                         backgroundPosition: 'center',
                     }}/>
-                <Grid item xs={12} sm={8} md={5} elevation={6} square>
+                <Grid item xs={12} sm={8} md={5} elevation={6} square
+                    sx={{
+                        textAlign: "start"
+                    }}>
                     <Typography
                         variant="h5"
                         mt="10%"
                         color="#FF8834"
+                        sx={{
+                            textAlign: "center"
+                        }}
                     >
-                        <strong>Sign in</strong>
+                        <strong>Sign up</strong>
                     </Typography>
                     <Box
                         component={Paper}
@@ -81,12 +120,31 @@ export default function LoginPage() {
                             flexDirection: 'column',
                             alignItems: 'center',
                         }}>
-                        <Avatar sx={{ m: 1, bgcolor: '#FF8834' , width: "100px", height: "100px"}} >
-                            <Person style={{
-                                fontSize: 60
-                            }}/>
-                        </Avatar>
                         <Box component="form" method="POST" onSubmit={handleSubmit} sx={{ mt: 1 }}>
+                            <TextField
+                                margin="normal"
+                                required
+                                fullWidth
+                                id="name"
+                                onChange={handleChange}
+                                label="Name"
+                                name="name"
+                                value={data.name}
+                                autoComplete="given-name"
+                                autoFocus
+                            />
+                            <TextField
+                                margin="normal"
+                                required
+                                fullWidth
+                                id="surname"
+                                onChange={handleChange}
+                                label="Surname"
+                                name="surname"
+                                value={data.surname}
+                                autoComplete="family-name"
+                                autoFocus
+                            />
                             <TextField
                                 error={emailError !== ""}
                                 margin="normal"
@@ -107,6 +165,27 @@ export default function LoginPage() {
                                     )
                                 }}
                                 helperText={emailError}
+                            />
+                            <TextField
+                                error={phoneError !== ""}
+                                margin="normal"
+                                required
+                                fullWidth
+                                id="phone"
+                                onChange={handleChange}
+                                label="Phone"
+                                name="phone"
+                                value={data.phone}
+                                autoComplete="phone"
+                                autoFocus
+                                InputProps={{
+                                    startAdornment: (
+                                        <InputAdornment position="start">
+                                            {phoneError !== "" && <ErrorIcon color="error" />}
+                                        </InputAdornment>
+                                    )
+                                }}
+                                helperText={phoneError}
                             />
                             <TextField
                                 margin="normal"
@@ -132,9 +211,19 @@ export default function LoginPage() {
                                         </InputAdornment>
                                     )
                                 }}
-                                helperText={passwordError}
+                                helperText={passwordError !== "" ? passwordError :
+                                    "The password should contains at least 8 characters, 1 uppercase letter, 1 number and 1 special character."}
                             />
                             {error && <Alert severity="error">{error}</Alert>}
+                            <FormControlLabel control={
+                            <Checkbox value="remember" required sx={{
+                                    color: '#FF8834',
+                                    '&.Mui-checked': {
+                                        color: '#FF8834',
+                                    }
+                                }} onChange={handleChecked}/> }
+                                              label=""/>
+                                By creating an account, you agree to the Terms of Service...
                             <LoadingButton
                                 type="submit"
                                 fullWidth
@@ -155,13 +244,8 @@ export default function LoginPage() {
                             </LoadingButton>
                             <Grid container>
                                 <Grid item>
-                                    <Link to="/" variant="body2">
-                                        {"Forgot password?"}
-                                    </Link>
-                                </Grid>
-                                <Grid item>
-                                    <Link to="/signup" variant="body2">
-                                        {"You don't have an account yet? Create an account"}
+                                    <Link to="/login" variant="body2">
+                                        {"Already have an account? Login"}
                                     </Link>
                                 </Grid>
                             </Grid>
