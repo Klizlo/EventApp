@@ -1,7 +1,6 @@
 import {useState} from "react";
 import {
     Alert,
-    Avatar,
     Box, Checkbox,
     Container, FormControlLabel,
     Grid,
@@ -11,7 +10,7 @@ import {
     TextField,
     Typography
 } from "@mui/material";
-import {Person, VisibilityOff} from "@mui/icons-material";
+import {VisibilityOff} from "@mui/icons-material";
 import ErrorIcon from "@mui/icons-material/Error";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import {LoadingButton} from "@mui/lab";

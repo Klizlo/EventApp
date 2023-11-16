@@ -2,7 +2,7 @@ import {useState} from "react";
 import {
     Alert,
     Avatar,
-    Box, Button,
+    Box,
     Container,
     Grid, IconButton, InputAdornment,
     Paper,
@@ -67,6 +67,9 @@ export default function LoginPage() {
                         variant="h5"
                         mt="10%"
                         color="#FF8834"
+                        sx={{
+                            textAlign: "center"
+                        }}
                     >
                         <strong>Sign in</strong>
                     </Typography>

@@ -1,9 +1,10 @@
-import './App.css';
+// import './App.css';
 import NavBar from "./components/navigation/NavBar";
 import { BrowserRouter, Route, Routes} from 'react-router-dom';
 import React, {} from "react"
 import LoginPage from "./webpages/Account/LoginPage";
 import SignupPage from "./webpages/Account/SignupPage";
+import ProfilePage from "./webpages/Account/ProfilePage";
 
 function App() {
 
@@ -28,15 +29,16 @@ function App() {
 
   return (
     <div className="App">
-      <React.StrictMode>
-        <BrowserRouter>
-          <NavBar sites={sites}/>
-          <Routes>
-            <Route path="/login" element={<LoginPage />}/>
-            <Route path="/signup" element={<SignupPage />}/>
-          </Routes>
-        </BrowserRouter>
-      </React.StrictMode>
+        <React.StrictMode>
+          <BrowserRouter>
+            <NavBar sites={sites}/>
+            <Routes>
+              <Route path="/login" element={<LoginPage />}/>
+              <Route path="/signup" element={<SignupPage />}/>
+              <Route path="/profile" element={<ProfilePage />}/>
+            </Routes>
+          </BrowserRouter>
+        </React.StrictMode>
     </div>
   );
 }
