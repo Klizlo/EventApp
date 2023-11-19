@@ -5,6 +5,7 @@ import React, {} from "react"
 import LoginPage from "./webpages/Account/LoginPage";
 import SignupPage from "./webpages/Account/SignupPage";
 import ProfilePage from "./webpages/Account/ProfilePage";
+import MainPage from "./webpages/Home/MainPage";
 
 function App() {
 
@@ -33,9 +34,10 @@ function App() {
           <BrowserRouter>
             <NavBar sites={sites}/>
             <Routes>
-              <Route path="/login" element={<LoginPage />}/>
-              <Route path="/signup" element={<SignupPage />}/>
-              <Route path="/profile" element={<ProfilePage />}/>
+              <Route path="/" element={<MainPage />} />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/signup" element={<SignupPage />} />
+              <Route path="/profile" element={<ProfilePage />} />
             </Routes>
           </BrowserRouter>
         </React.StrictMode>
