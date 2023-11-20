@@ -6,6 +6,7 @@ import LoginPage from "./webpages/Account/LoginPage";
 import SignupPage from "./webpages/Account/SignupPage";
 import ProfilePage from "./webpages/Account/ProfilePage";
 import MainPage from "./webpages/Home/MainPage";
+import EventPage from "./webpages/Event/EventPage";
 
 function App() {
 
@@ -38,6 +39,7 @@ function App() {
               <Route path="/login" element={<LoginPage />} />
               <Route path="/signup" element={<SignupPage />} />
               <Route path="/profile" element={<ProfilePage />} />
+              <Route path="/events/:id" element={<EventPage />} />
             </Routes>
           </BrowserRouter>
         </React.StrictMode>

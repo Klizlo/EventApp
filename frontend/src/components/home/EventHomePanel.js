@@ -6,7 +6,7 @@ const EventHomePanel = ({event}) => {
     const endDate = new Date(event.end_date);
 
     function showEvent() {
-        window.location = '/events?id=' + event.id;
+        window.location = '/events/' + event.id;
     }
 
     return (
