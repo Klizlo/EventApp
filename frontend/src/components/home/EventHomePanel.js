@@ -1,9 +1,7 @@
 import {Box, Paper, Typography} from "@mui/material";
+import {getDays, getMonthWithYear} from "../../helpers/EventData";
 
 const EventHomePanel = ({event}) => {
-
-    const startDate = new Date(event.start_date);
-    const endDate = new Date(event.end_date);
 
     function showEvent() {
         window.location = '/events/' + event.id;
@@ -39,11 +37,10 @@ const EventHomePanel = ({event}) => {
                 color: '#FF8834',
                 fontWeight: 'bold'
             }}>
-                {startDate.getTime() !== endDate.getTime() ? startDate.getDate() + '-' + endDate.getDate() : startDate.getDate()}
+                {getDays(event.start_date, event.end_date)}
             </Typography>
             <Typography>
-                {startDate.toLocaleString('default', {month: 'long'})}
-                {' ' + startDate.getFullYear()}
+                {getMonthWithYear(event.start_date, event.end_date)}
             </Typography>
             <Typography></Typography>
         </Box>

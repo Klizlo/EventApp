@@ -1,4 +1,5 @@
 import {Box, Typography} from "@mui/material";
+import {getFullDate} from "../../helpers/EventData";
 
 const EventImage = ({event}) => {
     return (
@@ -32,8 +33,7 @@ const EventImage = ({event}) => {
                 borderRadius: '0 25px 0 0'
             }}>
                 <Typography color='white' >
-                    Date: {new Date(event.start_date)
-                        .toLocaleDateString('default', {day: 'numeric', month: 'long', year: 'numeric'})}
+                    Date: {getFullDate(event.start_date, event.end_date)}
                 </Typography>
                 <Typography color='white' >
                     Place: {event.place}

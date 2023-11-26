@@ -7,6 +7,7 @@ import SignupPage from "./webpages/Account/SignupPage";
 import ProfilePage from "./webpages/Account/ProfilePage";
 import MainPage from "./webpages/Home/MainPage";
 import EventPage from "./webpages/Event/EventPage";
+import EventListPage from "./webpages/Event/EventListPage";
 
 function App() {
 
@@ -39,6 +40,7 @@ function App() {
               <Route path="/login" element={<LoginPage />} />
               <Route path="/signup" element={<SignupPage />} />
               <Route path="/profile" element={<ProfilePage />} />
+              <Route path='/events' element={<EventListPage />} />
               <Route path="/events/:id" element={<EventPage />} />
             </Routes>
           </BrowserRouter>
