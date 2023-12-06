@@ -8,6 +8,8 @@ import ProfilePage from "./webpages/Account/ProfilePage";
 import MainPage from "./webpages/Home/MainPage";
 import EventPage from "./webpages/Event/EventPage";
 import EventListPage from "./webpages/Event/EventListPage";
+import CheckoutPage from "./webpages/Checkout/CheckoutPage";
+import FinalPage from "./webpages/Checkout/FinalPage";
 
 function App() {
 
@@ -42,6 +44,8 @@ function App() {
               <Route path="/profile" element={<ProfilePage />} />
               <Route path='/events' element={<EventListPage />} />
               <Route path="/events/:id" element={<EventPage />} />
+              <Route path='/checkout' element={<CheckoutPage />} />
+              <Route path='/confirmation' element={<FinalPage />} />
             </Routes>
           </BrowserRouter>
         </React.StrictMode>

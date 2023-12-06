@@ -142,7 +142,6 @@ export default function SignupPage() {
                                 name="surname"
                                 value={data.surname}
                                 autoComplete="family-name"
-                                autoFocus
                             />
                             <TextField
                                 error={emailError !== ""}
@@ -155,11 +154,10 @@ export default function SignupPage() {
                                 name="email"
                                 value={data.email}
                                 autoComplete="email"
-                                autoFocus
                                 InputProps={{
-                                    startAdornment: (
+                                    startAdornment: emailError !== "" && (
                                         <InputAdornment position="start">
-                                            {emailError !== "" && <ErrorIcon color="error" />}
+                                            <ErrorIcon color="error" />
                                         </InputAdornment>
                                     )
                                 }}
@@ -176,11 +174,10 @@ export default function SignupPage() {
                                 name="phone"
                                 value={data.phone}
                                 autoComplete="phone"
-                                autoFocus
                                 InputProps={{
-                                    startAdornment: (
+                                    startAdornment: phoneError !== "" && (
                                         <InputAdornment position="start">
-                                            {phoneError !== "" && <ErrorIcon color="error" />}
+                                            <ErrorIcon color="error" />
                                         </InputAdornment>
                                     )
                                 }}
@@ -204,9 +201,9 @@ export default function SignupPage() {
                                             {showPassword ? <VisibilityOff /> : <VisibilityIcon />}
                                         </IconButton>
                                     ),
-                                    startAdornment: (
+                                    startAdornment: passwordError !== "" && (
                                         <InputAdornment position="start">
-                                            {passwordError !== "" && <ErrorIcon color="error"/>}
+                                            <ErrorIcon color="error"/>
                                         </InputAdornment>
                                     )
                                 }}

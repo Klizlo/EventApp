@@ -46,7 +46,7 @@ const MainPage = () => {
 
     return (
         <Box sx={{padding: "2% 0", mt: "50px"}}>
-            <Button component={Link} to="/home"
+            <Button component={Link} to="/"
                     disableRipple
                     sx={{
                         color: "black", // color of my soul

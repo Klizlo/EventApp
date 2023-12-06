@@ -103,9 +103,9 @@ export default function LoginPage() {
                                 autoComplete="email"
                                 autoFocus
                                 InputProps={{
-                                    startAdornment: (
+                                    startAdornment: emailError !== "" && (
                                         <InputAdornment position="start">
-                                            {emailError !== "" && <ErrorIcon color="error" />}
+                                            <ErrorIcon color="error" />
                                         </InputAdornment>
                                     )
                                 }}
@@ -129,9 +129,9 @@ export default function LoginPage() {
                                             {showPassword ? <VisibilityOff /> : <VisibilityIcon />}
                                         </IconButton>
                                     ),
-                                    startAdornment: (
+                                    startAdornment: passwordError !== "" && (
                                         <InputAdornment position="start">
-                                            {passwordError !== "" && <ErrorIcon color="error"/>}
+                                            <ErrorIcon color="error"/>
                                         </InputAdornment>
                                     )
                                 }}
