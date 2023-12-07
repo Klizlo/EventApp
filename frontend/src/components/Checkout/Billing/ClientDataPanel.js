@@ -1,7 +1,10 @@
 import {Box, InputAdornment, TextField} from "@mui/material";
 import ErrorIcon from "@mui/icons-material/Error";
+import {useTranslation} from "react-i18next";
 
 const ClientDataPanel = ({client, handleChange, emailError, phoneError}) => {
+
+    const { t } = useTranslation();
 
     return (
         <Box>
@@ -11,7 +14,7 @@ const ClientDataPanel = ({client, handleChange, emailError, phoneError}) => {
                 fullWidth
                 id="name"
                 onChange={handleChange}
-                label="Name"
+                label={t("form.labels.name")}
                 name="name"
                 value={client?.name}
                 autoComplete="given-name"
@@ -23,7 +26,7 @@ const ClientDataPanel = ({client, handleChange, emailError, phoneError}) => {
                 fullWidth
                 id="surname"
                 onChange={handleChange}
-                label="Surname"
+                label={t("form.labels.surname")}
                 name="surname"
                 value={client?.surname}
                 autoComplete="family-name"
@@ -35,7 +38,7 @@ const ClientDataPanel = ({client, handleChange, emailError, phoneError}) => {
                 fullWidth
                 id="email"
                 onChange={handleChange}
-                label="Email"
+                label={t("form.labels.email")}
                 name="email"
                 value={client?.email}
                 autoComplete="email"
@@ -55,7 +58,7 @@ const ClientDataPanel = ({client, handleChange, emailError, phoneError}) => {
                 fullWidth
                 id="phone"
                 onChange={handleChange}
-                label="Phone"
+                label={t("form.labels.phone")}
                 name="phone"
                 value={client?.phone}
                 autoComplete="phone"

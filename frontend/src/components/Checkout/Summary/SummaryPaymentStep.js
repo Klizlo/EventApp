@@ -1,7 +1,11 @@
 import {Box, Button, Grid} from "@mui/material";
 import ClientPaymentPanel from "./ClientPaymentPanel";
+import {useTranslation} from "react-i18next";
 
 const SummaryPaymentStep = ({client, payment, order, handleBack, handleNext}) => {
+
+    const { t } = useTranslation();
+
     return(
         <Box my={5}>
             <Grid container>
@@ -25,7 +29,7 @@ const SummaryPaymentStep = ({client, payment, order, handleBack, handleNext}) =>
                         }
                     }}
                 >
-                    Back
+                    {t("checkout.steps.payment.back")}
                 </Button>
                 <Box sx={{ flex: '1 1 auto' }} />
                 <Button
@@ -39,7 +43,7 @@ const SummaryPaymentStep = ({client, payment, order, handleBack, handleNext}) =>
                         }
                     }}
                     onClick={handleNext}>
-                    checkout
+                    {t("checkout.steps.summary.payment.checkout")}
                 </Button>
             </Box>
         </Box>

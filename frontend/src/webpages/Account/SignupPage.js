@@ -17,6 +17,7 @@ import {LoadingButton} from "@mui/lab";
 import SaveIcon from "@mui/icons-material/Send";
 import {Link} from "react-router-dom";
 import validator from "validator/es";
+import {useTranslation} from "react-i18next";
 
 export default function SignupPage() {
 
@@ -34,6 +35,8 @@ export default function SignupPage() {
     const [passwordError, setPasswordError] = useState("");
     const [showPassword, setShowPassword] = useState(false);
     const [loading, setLoading] = useState(false);
+
+    const { t } = useTranslation();
 
     const handleShowPassword = () => setShowPassword(!showPassword);
 
@@ -57,7 +60,7 @@ export default function SignupPage() {
     const validateData = () => {
         // validate email
         if(!validator.isEmail(data.email)) {
-            setEmailError("Invalid email!");
+            setEmailError(t("form.signup.email"));
             return false;
         }
 
@@ -65,13 +68,13 @@ export default function SignupPage() {
         if (!validator.isStrongPassword(data.password, {
             minLength: 8, minLowercase: 1, minUppercase: 1, minNumbers: 1, minSymbols: 1
         })) {
-            setPasswordError("It's not a strong password!")
+            setPasswordError(t("form.signup.password.invalid"))
             return false;
         }
 
         //validate phone number
         if(!validator.isMobilePhone(data.phone, ['pl-PL'])){
-            setPhoneError("Invalid phone number")
+            setPhoneError(t("form.signup.phone"))
             return false;
         }
 
@@ -106,7 +109,7 @@ export default function SignupPage() {
                             textAlign: "center"
                         }}
                     >
-                        <strong>Sign up</strong>
+                        <strong>{t("form.signup.name")}</strong>
                     </Typography>
                     <Box
                         component={Paper}
@@ -126,7 +129,7 @@ export default function SignupPage() {
                                 fullWidth
                                 id="name"
                                 onChange={handleChange}
-                                label="Name"
+                                label={t("form.labels.name")}
                                 name="name"
                                 value={data.name}
                                 autoComplete="given-name"
@@ -138,7 +141,7 @@ export default function SignupPage() {
                                 fullWidth
                                 id="surname"
                                 onChange={handleChange}
-                                label="Surname"
+                                label={t("form.labels.surname")}
                                 name="surname"
                                 value={data.surname}
                                 autoComplete="family-name"
@@ -150,7 +153,7 @@ export default function SignupPage() {
                                 fullWidth
                                 id="email"
                                 onChange={handleChange}
-                                label="Email"
+                                label={t("form.labels.email")}
                                 name="email"
                                 value={data.email}
                                 autoComplete="email"
@@ -170,7 +173,7 @@ export default function SignupPage() {
                                 fullWidth
                                 id="phone"
                                 onChange={handleChange}
-                                label="Phone"
+                                label={t("form.labels.phone")}
                                 name="phone"
                                 value={data.phone}
                                 autoComplete="phone"
@@ -191,7 +194,7 @@ export default function SignupPage() {
                                 name="password"
                                 onChange={handleChange}
                                 value={data.password}
-                                label="Password"
+                                label={t("form.labels.password")}
                                 type={showPassword ? "text" : "password"}
                                 id="password"
                                 autoComplete="current-password"
@@ -207,8 +210,7 @@ export default function SignupPage() {
                                         </InputAdornment>
                                     )
                                 }}
-                                helperText={passwordError !== "" ? passwordError :
-                                    "The password should contains at least 8 characters, 1 uppercase letter, 1 number and 1 special character."}
+                                helperText={passwordError !== "" ? passwordError : t("form.signup.password.placeholder")}
                             />
                             {error && <Alert severity="error">{error}</Alert>}
                             <FormControlLabel control={
@@ -219,7 +221,7 @@ export default function SignupPage() {
                                     }
                                 }} onChange={handleChecked}/> }
                                               label=""/>
-                                By creating an account, you agree to the Terms of Service...
+                            {t("form.signup.terms")}
                             <LoadingButton
                                 type="submit"
                                 fullWidth
@@ -236,12 +238,12 @@ export default function SignupPage() {
                                     }
                                 }}
                             >
-                                Sign in
+                                {t("form.signup.name")}
                             </LoadingButton>
                             <Grid container>
                                 <Grid item>
                                     <Link to="/login" variant="body2">
-                                        {"Already have an account? Login"}
+                                        {t("form.signup.link")}
                                     </Link>
                                 </Grid>
                             </Grid>

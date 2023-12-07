@@ -1,6 +1,10 @@
 import {Button, Divider, Grid, Typography} from "@mui/material";
+import {useTranslation} from "react-i18next";
 
 const LoginStep = ({handleNext}) => {
+
+    const { t } = useTranslation();
+
     return (
         <Grid container my={5}>
             <Grid item xs sx={{
@@ -17,7 +21,7 @@ const LoginStep = ({handleNext}) => {
                         backgroundColor: 'black'
                     }
                 }}>
-                    checkout as a guest
+                    {t("checkout.steps.login.guest")}
                 </Button>
             </Grid>
             <Divider orientation='vertical' flexItem/>
@@ -25,7 +29,7 @@ const LoginStep = ({handleNext}) => {
                 p: 2
             }}>
                 <Typography>
-                    Want to have your tickets in one place?
+                    {t("checkout.steps.login.register.description")}
                 </Typography>
                 <Button
                     onClick={() => window.location='/signup'}
@@ -38,7 +42,7 @@ const LoginStep = ({handleNext}) => {
                         backgroundColor: 'black'
                     }
                 }}>
-                    Register
+                    {t("checkout.steps.login.register.button")}
                 </Button>
             </Grid>
             <Divider orientation='vertical' flexItem/>
@@ -46,7 +50,7 @@ const LoginStep = ({handleNext}) => {
                 p: 2
             }}>
                 <Typography>
-                    Already have an account?
+                    {t("checkout.steps.login.login.description")}
                 </Typography>
                 <Button
                     onClick={() => window.location='/login'}
@@ -59,7 +63,7 @@ const LoginStep = ({handleNext}) => {
                         backgroundColor: 'black'
                     }
                 }}>
-                    sign in
+                    {t("checkout.steps.login.login.button")}
                 </Button>
             </Grid>
         </Grid>

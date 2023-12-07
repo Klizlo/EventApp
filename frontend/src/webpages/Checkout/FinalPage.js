@@ -1,8 +1,12 @@
 import {Box, Button, Typography} from "@mui/material";
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import {Link} from "react-router-dom";
+import {useTranslation} from "react-i18next";
 
 const FinalPage = () => {
+
+    const { t } = useTranslation();
+
     return (
         <Box sx={{
             p: '2%',
@@ -27,7 +31,7 @@ const FinalPage = () => {
                 <CheckCircleOutlineIcon color='success' sx={{
                     fontSize: '70px'
                 }}/>
-                <Typography variant='h4' color='green'>Thank you for using the service</Typography>
+                <Typography variant='h4' color='green'>{t("finalPage.thanks")}</Typography>
             </Box>
             <Box
                 sx={{
@@ -50,7 +54,7 @@ const FinalPage = () => {
                             backgroundColor: 'black'
                         }
                     }}>
-                    Return to home page
+                    {t("finalPage.button")}
                 </Button>
             </Box>
         </Box>

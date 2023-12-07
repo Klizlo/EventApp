@@ -1,0 +1,209 @@
+{
+  "navBar": {
+    "search": "Szukaj",
+    "visibility": {
+      "name": "Widoczność",
+      "language": "Język",
+      "text": {
+        "name": "Rozmiar tekstu",
+        "normal": "Normalny rozmiar",
+        "large": "Duży rozmiar",
+        "larger": "Większy rozmiar"
+      },
+      "mode": {
+        "name": "Tryb",
+        "light": "jasny",
+        "dark": "ciemny"
+      }
+    },
+    "shoppingCart": "Koszyk",
+    "account": {
+      "profile": "Profil",
+      "login": "Zaloguj się",
+      "signup": "Zarejestruj się",
+      "logout": "Wyloguj się"
+    }
+  },
+  "home": {
+    "title": "Strona główna",
+    "recommended": "Polecane",
+    "showMore": "Zobacz więcej",
+    "carousel": {
+      "checkout": "Sprawdź!"
+    }
+  },
+  "contact": {
+    "title": "Kontakt"
+  },
+  "about": {
+    "title": "O nas"
+  },
+  "event": {
+    "name": "Nazwa",
+    "type": "Typ",
+    "place": "Miejsce",
+    "date": {
+      "name": "Data",
+      "start": "Rozpoczęcie",
+      "end": "Zakończenie",
+      "from": "Od",
+      "to": "Do"
+    },
+    "page": {
+      "details": "Szczegóły",
+      "availability": {
+        "name": "Dostępność",
+        "little": "niska",
+        "limited": "ograniczona",
+        "high": "wysoka",
+        "notAvailable": "niedostępne"
+      },
+      "buy": {
+        "select": "Wybierz strefę i kup bilet",
+        "notAvailable": "Niedostępne"
+      }
+    }
+  },
+  "events": {
+    "title": "Wydarzenia",
+    "noFound": "Nie znaleziono wydarzeń",
+    "buy": "Kup bilet",
+    "details": "Szczegóły",
+    "filter": {
+      "name": "Filtruj",
+      "title": "Filtry",
+      "close": "Zamknij",
+      "accept": "Zaakceptuj",
+      "errors": {
+        "fromMinDate": "Proszę zaznacz przynajmniej dzisiejszą datę",
+        "toMinDate": "Zaznaczona data nie może być wcześniejsza niż {{date}}"
+      }
+    },
+    "sort": {
+      "title": "Sortuj po: ",
+      "name": "Nazwie",
+      "date": "Dacie",
+      "place": "Miejscu"
+    }
+  },
+  "profile": {
+    "name": "Moje konto",
+    "tickets": {
+      "title": "Moje bilety",
+      "current": "Bilety na aktualne wydarzenia",
+      "all": "Historia transakcji"
+    },
+    "panel": {
+      "title": "Twoje informacje",
+      "contact": "Dane kontaktowe",
+      "phone": "Numer telefonu: ",
+      "email": "Adres email: ",
+      "street": "Ulica: "
+    },
+    "edit": "Edytuj swoje dane"
+  },
+  "checkout": {
+    "stepper": {
+      "login": "Logowanie",
+      "billing": "Dane do płatności",
+      "reservation": "Dane do rezerwacji",
+      "payment": "Metoda płatności",
+      "confirm": "Podsumowanie"
+    },
+    "steps": {
+      "login": {
+        "guest": "Kup jako gość",
+        "register": {
+          "description": "Chcesz mieć wszytskie bilety w jednym miejscu?",
+          "button": "Zarejestruj się"
+        },
+        "login": {
+          "description": "Posiadasz już konto w serwisie?",
+          "button": "Zaloguj się"
+        }
+      },
+      "billing": {
+        "title": "Dane do płatności",
+        "next": "Przejdź do metody płatności"
+      },
+      "reservation": {
+        "title": "Dane do rezerwacji",
+        "next": "Przejdź do podsumowania"
+      },
+      "payment": {
+        "title": "Metody płatności",
+        "paymentMethods": {
+          "bank": "Przelew",
+          "card": "Karta kredytowa"
+        },
+        "next": "Przejdź do podsumowania",
+        "back": "Cofnij",
+        "errors": {
+          "payment": "Proszę wybierz jedną z dostępnych metod płatności"
+        }
+      },
+      "summary": {
+        "payment": {
+          "checkout": "Przejdź do kasy"
+        },
+        "reservation": {
+          "reserve": "Zarezerwuj"
+        },
+        "back": "Cofnij",
+        "address": "Adres:",
+        "paymentMethod": "Metoda płatności"
+      },
+      "redirect": {
+        "redirect": "Przekierowanie do strony płatności",
+        "countdown": {
+          "remaining": "Pozostało",
+          "seconds": "sekund"
+        },
+        "button": "Przejdź teraz"
+      }
+    }
+  },
+  "finalPage": {
+    "thanks": "Dziękujemy za skorzystanie z naszej usługi",
+    "button": "Powrót na stronę główną"
+  },
+  "form": {
+    "labels": {
+      "name": "Imię",
+      "surname": "Nazwisko",
+      "email": "Adres email",
+      "phone": "Numer telefonu",
+      "password": "Hasło",
+      "street": "Ulica",
+      "city": "Miasto",
+      "postalCode": "Kod pocztowy",
+      "country": "Kraj"
+    },
+    "signup": {
+      "name": "Zarejestruj się",
+      "terms": "Tworząc konto w serwisie zgadzasz się na przetwarzanie danych...",
+      "link": "Masz już konto? Zaloguj się",
+      "password": {
+        "placeholder": "Hasło powinno zawierać co najmniej 8 znaków, w tym przynajmniej 1 dużą literę, cyfrę oraz znak specjalny.",
+        "invalid": "To hasło nie jest wystarczająco silne!"
+      },
+      "phone": "Niepoprawny numer telefonu",
+      "email": "Nie poprawny adres email"
+    },
+    "login": {
+      "name": "Zaloguj się",
+      "link": {
+        "password": "Zapomniałeś hasła?",
+        "register": "Nie masz jeszcze konta? Stwórz je"
+      },
+      "errors": {
+        "password": "Nieprawidłowy adres email"
+      }
+    },
+    "address": {
+      "errors": {
+        "postalCode": "Niepoprawny kod pocztowy"
+      }
+    }
+  }
+}

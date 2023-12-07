@@ -1,8 +1,12 @@
 import {Box, Button, Grid, Typography} from "@mui/material";
 import EventHomePanel from "./EventHomePanel";
 import {Link} from "react-router-dom";
+import {useTranslation} from "react-i18next";
 
 const HomeSection = ({title, link, events}) => {
+
+    const { t } = useTranslation();
+
     return (
         <Box m='2%'>
             <Box sx={{
@@ -17,7 +21,7 @@ const HomeSection = ({title, link, events}) => {
                 <Button component={Link} to={link} sx={{
                     color: '#FF8834'
                 }}>
-                    Show more
+                    {t("home.showMore")}
                 </Button>
             </Box>
             <Grid container spacing={5}>

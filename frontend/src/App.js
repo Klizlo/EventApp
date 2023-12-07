@@ -10,27 +10,32 @@ import EventPage from "./webpages/Event/EventPage";
 import EventListPage from "./webpages/Event/EventListPage";
 import CheckoutPage from "./webpages/Checkout/CheckoutPage";
 import FinalPage from "./webpages/Checkout/FinalPage";
+import {useTranslation} from "react-i18next";
 
 function App() {
 
+  const { t } = useTranslation();
+
   const sites = [
     {
-      name: "Home",
+      name: t("home.title"),
       link: "/",
     },
     {
-      name: "Events",
+      name: t("events.title"),
       link: "/events"
     },
     {
-      name: "Contact",
+      name: t("contact.title"),
       link: "/contact"
     },
     {
-      name: "About",
+      name: t("about.title"),
       link: "/about"
     }
   ]
+
+
 
   return (
     <div className="App">

@@ -4,6 +4,9 @@ import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
 import {useMemo, useState} from "react";
 import dayjs from "dayjs";
 import {getFullDate} from "../../helpers/EventData";
+import {useTranslation} from "react-i18next";
+import {enUS} from "@mui/x-date-pickers";
+import {plPL} from "@mui/x-date-pickers";
 
 export default function DateFilter ({setPage, fromDate, toDate}) {
 
@@ -13,10 +16,12 @@ export default function DateFilter ({setPage, fromDate, toDate}) {
     const [fromError, setFromError] = useState(null);
     const [toError, setToError] = useState(null);
 
+    const { t, i18n } = useTranslation();
+
     const fromErrorMessage = useMemo(() => {
         switch (fromError) {
             case 'minDate': {
-                return "Please select at least today's date";
+                return t("events.filter.errors.fromMinDate");
             }
             default: return '';
         }
@@ -26,7 +31,7 @@ export default function DateFilter ({setPage, fromDate, toDate}) {
         switch (toError) {
             case 'minDate': {
                 const date = new Date(from);
-                return `Selected date cannot be earlier than ${getFullDate(date, date)}`;
+                return t("events.filter.errors.toMinDate", {date: getFullDate(date, date, i18n.language)});
             }
             default: return '';
         }
@@ -73,10 +78,19 @@ export default function DateFilter ({setPage, fromDate, toDate}) {
         }
     }
 
+    const locale = () => {
+        switch (i18n.language) {
+            case "en":
+                return enUS.components.MuiLocalizationProvider.defaultProps.localeText;
+            default:
+                return plPL.components.MuiLocalizationProvider.defaultProps.localeText;
+        }
+    }
+
     return (
-        <LocalizationProvider dateAdapter={AdapterDayjs} >
+        <LocalizationProvider dateAdapter={AdapterDayjs} localeText={locale()}>
             <Box>
-                <DatePicker label='From'
+                <DatePicker label={t("event.date.from")}
                             value={from}
                             minDate={dayjs(new Date())}
                             onError={(newError) => setFromError(newError)}
@@ -89,7 +103,7 @@ export default function DateFilter ({setPage, fromDate, toDate}) {
                             sx={{
                                 mt: '5%'
                             }}/>
-                <DatePicker label='To'
+                <DatePicker label={t("event.date.to")}
                             value={to}
                             minDate={from === null ? dayjs(new Date()) : from}
                             onError={(newError) => setToError(newError)}
@@ -108,7 +122,7 @@ export default function DateFilter ({setPage, fromDate, toDate}) {
                     backgroundColor: 'white',
                     border: 'black solid 2px'
                 }}>
-                    Accept
+                    {t("events.filter.accept")}
                 </Button>
             </Box>
         </LocalizationProvider>

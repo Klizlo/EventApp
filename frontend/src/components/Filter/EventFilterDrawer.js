@@ -2,6 +2,7 @@ import {Box, Button, FormControl, FormGroup, FormLabel, List, ListItem, Typograp
 import {unique} from "../../helpers/ArrayOperations";
 import FilterCheckbox from "./FilterCheckbox";
 import DateFilter from "./DateFilter";
+import {useTranslation} from "react-i18next";
 
 export default function EventFilterDrawer ({events, setPage, close}) {
 
@@ -13,6 +14,8 @@ export default function EventFilterDrawer ({events, setPage, close}) {
     const fromDate = params.get('from');
     const toDate = params.get('to');
 
+    const { t } = useTranslation();
+
     return (
         <Box sx={{
             textAlign: 'center',
@@ -22,7 +25,7 @@ export default function EventFilterDrawer ({events, setPage, close}) {
             alignItems: 'center',
             justifyContent: 'space-between'
         }}>
-            <Typography variant='h5' sx={{ m: '2%' }}>Filters</Typography>
+            <Typography variant='h5' sx={{ m: '2%' }}>{t("events.filter.title")}</Typography>
             <List>
                 <ListItem>
                     <FormControl component="fieldset" variant="standard">
@@ -30,7 +33,7 @@ export default function EventFilterDrawer ({events, setPage, close}) {
                             '&.Mui-focused': {
                                 color: '#FF8834'
                             }
-                        }}>Date</FormLabel>
+                        }}>{t("event.date.name")}</FormLabel>
                         <DateFilter setPage={setPage} fromDate={fromDate} toDate={toDate}/>
                     </FormControl>
                 </ListItem>
@@ -40,7 +43,7 @@ export default function EventFilterDrawer ({events, setPage, close}) {
                             '&.Mui-focused': {
                                 color: '#FF8834'
                             }
-                        }}>Type</FormLabel>
+                        }}>{t("event.type")}</FormLabel>
                         <FormGroup>
                             {types}
                         </FormGroup>
@@ -52,7 +55,7 @@ export default function EventFilterDrawer ({events, setPage, close}) {
                             '&.Mui-focused': {
                                 color: '#FF8834'
                             }
-                        }}>Place</FormLabel>
+                        }}>{t("event.place")}</FormLabel>
                         <FormGroup>
                             {places}
                         </FormGroup>
@@ -68,7 +71,7 @@ export default function EventFilterDrawer ({events, setPage, close}) {
                     backgroundColor: 'black'
                 }
             }}>
-                Close
+                {t("events.filter.close")}
             </Button>
         </Box>
     );

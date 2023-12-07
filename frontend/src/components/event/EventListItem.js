@@ -2,8 +2,12 @@ import {Box, Button, Grid, Paper, Typography} from "@mui/material";
 import Link from '@mui/material/Link';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import {getFullDate} from "../../helpers/EventData";
+import {useTranslation} from "react-i18next";
 
 const EventListItem = ({event}) => {
+
+    const { t } = useTranslation();
+
     return (
         <Box component={Paper} sx={{
             mt: '2%',
@@ -44,12 +48,12 @@ const EventListItem = ({event}) => {
                                 backgroundColor: 'black'
                             }
                         }}>
-                            Buy ticket
+                            {t("events.buy")}
                         </Button>
                         <Link href='#' sx={{
                             color: 'black'
                         }}>
-                            Details>>
+                            {t("events.details")}>>
                         </Link>
                     </Box>
                 </Grid>

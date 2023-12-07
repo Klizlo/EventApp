@@ -1,8 +1,11 @@
 import {Box, Button, Grid} from "@mui/material";
 import {Link} from "react-router-dom";
 import EventListBox from "../../components/event/EventListBox";
+import {useTranslation} from "react-i18next";
 
 const EventListPage = () => {
+
+    const { t } = useTranslation();
 
     const events = [
         {
@@ -177,7 +180,7 @@ const EventListPage = () => {
                             "&.MuiButtonBase-root:hover": {
                                 backgroundColor: 'transparent'
                             }
-                        }}>Events</Button>
+                        }}>{t("events.title")}</Button>
             </Box>
             <Grid container sx={{ padding: '2% 0' }}>
                 <Grid item xs={12} md={8}>

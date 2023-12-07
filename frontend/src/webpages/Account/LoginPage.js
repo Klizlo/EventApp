@@ -16,6 +16,7 @@ import SaveIcon from '@mui/icons-material/Send';
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import ErrorIcon from '@mui/icons-material/Error';
 import validator from "validator/es";
+import {useTranslation} from "react-i18next";
 
 export default function LoginPage() {
 
@@ -35,6 +36,8 @@ export default function LoginPage() {
         setData({...data, [e.target.name]: e.target.value});
     };
 
+    const { t } = useTranslation();
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -42,7 +45,7 @@ export default function LoginPage() {
 
         if (!validator.isEmail(data.email)) {
             setLoading(false);
-            setEmailError("Invalid email");
+            setEmailError(t("form.login.errors.password"));
         }
     };
 
@@ -71,7 +74,7 @@ export default function LoginPage() {
                             textAlign: "center"
                         }}
                     >
-                        <strong>Sign in</strong>
+                        <strong>{t("form.login.name")}</strong>
                     </Typography>
                     <Box
                         component={Paper}
@@ -97,7 +100,7 @@ export default function LoginPage() {
                                 fullWidth
                                 id="email"
                                 onChange={handleChange}
-                                label="Email"
+                                label={t("form.labels.email")}
                                 name="email"
                                 value={data.email}
                                 autoComplete="email"
@@ -119,7 +122,7 @@ export default function LoginPage() {
                                 name="password"
                                 onChange={handleChange}
                                 value={data.password}
-                                label="Password"
+                                label={t("form.labels.password")}
                                 type={showPassword ? "text" : "password"}
                                 id="password"
                                 autoComplete="current-password"
@@ -154,17 +157,17 @@ export default function LoginPage() {
                                     }
                                 }}
                             >
-                                Sign in
+                                {t("form.login.name")}
                             </LoadingButton>
                             <Grid container>
-                                <Grid item>
+                                <Grid item xs={12}>
                                     <Link to="/" variant="body2">
-                                        {"Forgot password?"}
+                                        {t("form.login.link.password")}
                                     </Link>
                                 </Grid>
                                 <Grid item>
                                     <Link to="/signup" variant="body2">
-                                        {"You don't have an account yet? Create an account"}
+                                        {t("form.login.link.register")}
                                     </Link>
                                 </Grid>
                             </Grid>

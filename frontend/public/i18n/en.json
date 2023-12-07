@@ -1,0 +1,209 @@
+{
+  "navBar": {
+    "search": "Search",
+    "visibility": {
+      "name": "Visibility",
+      "language": "Language",
+      "text": {
+        "name": "Text size",
+        "normal": "Normal size",
+        "large": "Large size",
+        "larger": "Larger size"
+      },
+      "mode": {
+        "name": "Mode",
+        "light": "light",
+        "dark": "dark"
+      }
+    },
+    "shoppingCart": "Shopping Cart",
+    "account": {
+      "profile": "Profile",
+      "login": "Login",
+      "signup": "SignUp",
+      "logout": "Logout"
+    }
+  },
+  "home": {
+    "title": "Home",
+    "recommended": "Recommended",
+    "showMore": "Show more",
+    "carousel": {
+      "checkout": "Check it out!"
+    }
+  },
+  "contact": {
+    "title": "Contact"
+  },
+  "about": {
+    "title": "About"
+  },
+  "event": {
+    "name": "Name",
+    "type": "Type",
+    "place": "Place",
+    "date": {
+      "name": "Data",
+      "start": "Start date",
+      "end": "End date",
+      "from": "From",
+      "to": "To"
+    },
+    "page": {
+      "details": "Details",
+      "availability": {
+        "name": "Availability",
+        "little": "little",
+        "limited": "limited",
+        "high": "high",
+        "notAvailable": "Not available"
+      },
+      "buy": {
+        "select": "select a zone and buy a ticket",
+        "notAvailable": "not available"
+      }
+    }
+  },
+  "events": {
+    "title": "Events",
+    "noFound": "No events found",
+    "buy": "Buy ticket",
+    "details": "Details",
+    "filter": {
+      "name": "Filter",
+      "title": "Filters",
+      "close": "Close",
+      "accept": "Accept",
+      "errors": {
+        "fromMinDate": "Please select at least today's date",
+        "toMinDate": "Selected date cannot be earlier than {{date}}"
+      }
+    },
+    "sort": {
+      "title": "Sort by: ",
+      "name": "Name",
+      "date": "Date",
+      "place": "Place"
+    }
+  },
+  "profile": {
+    "name": "My account",
+    "tickets": {
+      "title": "My tickets",
+      "current": "tickets for current events",
+      "all": "transaction history"
+    },
+    "panel": {
+      "title": "Your info",
+      "contact": "Contact details",
+      "phone": "Phone: ",
+      "email": "Email: ",
+      "street": "Street: "
+    },
+    "edit": "Edit your details"
+  },
+  "checkout": {
+    "stepper": {
+      "login": "Login",
+      "billing": "Billing",
+      "reservation": "Reservation info",
+      "payment": "Payment method",
+      "confirm": "Confirm"
+    },
+    "steps": {
+      "login": {
+        "guest": "checkout as a guest",
+        "register": {
+          "description": "Want to have your tickets in one place?",
+          "button": "Sign up"
+        },
+        "login": {
+          "description": "Already have an account?",
+          "button": "sign in"
+        }
+      },
+      "billing": {
+        "title": "Billing",
+        "next": "Choose payment method"
+      },
+      "reservation": {
+        "title": "Reservation info",
+        "next": "Go to summary"
+      },
+      "payment": {
+        "title": "Payment methods",
+        "paymentMethods": {
+          "bank": "Bank transfer",
+          "card": "Credit card"
+        },
+        "next": "Go to summary",
+        "back": "Back",
+        "errors": {
+          "payment": "Please select one of the payment methods"
+        }
+      },
+      "summary": {
+        "payment": {
+          "checkout": "checkout"
+        },
+        "reservation": {
+          "reserve": "Reserve"
+        },
+        "back": "Back",
+        "address": "Address:",
+        "paymentMethod": "Payment method"
+      },
+      "redirect": {
+        "redirect": "Redirect to payment page",
+        "countdown": {
+          "remaining": "Remaining",
+          "seconds": "seconds"
+        },
+        "button": "Redirect now"
+      }
+    }
+  },
+  "finalPage": {
+    "thanks": "Thank you for using the service",
+    "button": "Return to home page"
+  },
+  "form": {
+    "labels": {
+      "name": "Name",
+      "surname": "Surname",
+      "email": "Email",
+      "phone": "Phone",
+      "password": "Password",
+      "street": "Street",
+      "city": "City",
+      "postalCode": "Postal code",
+      "country": "Country"
+    },
+    "signup": {
+      "name": "Sign up",
+      "terms": "By creating an account, you agree to the Terms of Service...",
+      "link": "Already have an account? Login",
+      "password": {
+        "placeholder": "The password should contains at least 8 characters, 1 uppercase letter, 1 number and 1 special character.",
+        "invalid": "It's not a strong password!"
+      },
+      "phone": "Invalid phone number",
+      "email": "Invalid email!"
+    },
+    "login": {
+      "name": "Sign in",
+      "link": {
+        "password": "Forgot password?",
+        "register": "You don't have an account yet? Create an account"
+      },
+      "errors": {
+        "password": "Invalid email"
+      }
+    },
+    "address": {
+      "errors": {
+        "postalCode": "Invalid postal code"
+      }
+    }
+  }
+}

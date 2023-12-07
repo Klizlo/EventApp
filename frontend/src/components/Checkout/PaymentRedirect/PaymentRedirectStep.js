@@ -1,7 +1,10 @@
 import {Box, Button, Typography} from "@mui/material";
 import {CountdownCircleTimer} from "react-countdown-circle-timer";
+import {useTranslation} from "react-i18next";
 
 const PaymentRedirectStep = () => {
+
+    const { t } = useTranslation();
 
     const redirectToPayment = () => {
         window.location.href = '/confirmation'
@@ -18,7 +21,7 @@ const PaymentRedirectStep = () => {
             alignItems: 'center',
             textAlign: 'center'
         }}>
-            <Typography variant="h4" mb={2}>Redirect to payment page</Typography>
+            <Typography variant="h4" mb={2}>{t("checkout.steps.redirect.redirect")}</Typography>
             <CountdownCircleTimer
                 isPlaying
                 duration={15}
@@ -28,9 +31,9 @@ const PaymentRedirectStep = () => {
             >
                 {({remainingTime, color}) => (
                     <Box>
-                        <Typography>Remaining</Typography>
+                        <Typography>{t("checkout.steps.redirect.countdown.remaining")}</Typography>
                         <Typography variant='h3' color={color}>{remainingTime}</Typography>
-                        <Typography>seconds</Typography>
+                        <Typography>{t("checkout.steps.redirect.countdown.seconds")}</Typography>
                     </Box>
                 )}
             </CountdownCircleTimer>
@@ -46,7 +49,7 @@ const PaymentRedirectStep = () => {
                 }}
                 onClick={redirectToPayment}
             >
-                Redirect now
+                {t("checkout.steps.redirect.button")}
             </Button>
         </Box>
     );

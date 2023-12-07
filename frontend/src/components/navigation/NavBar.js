@@ -26,6 +26,7 @@ import ProfileDrawer from "./ProfileDrawer";
 import {Link} from "react-router-dom";
 import {ExpandLess, ExpandMore} from "@mui/icons-material";
 import FormatSizeIcon from "@mui/icons-material/FormatSize";
+import {useTranslation} from "react-i18next";
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -78,6 +79,8 @@ const NavBar = ({sites}) => {
     const isProfileMenuOpen = Boolean(anchorProfileEl);
     const isVisibilityMenuOpen = Boolean(anchorVisibilityEl);
 
+    const { t, i18n } = useTranslation();
+
     const handleProfileMenuOpen = (event) => {
         setAnchorProfileEl(event.currentTarget);
     };
@@ -92,6 +95,11 @@ const NavBar = ({sites}) => {
 
     const handleVisibilityMenuClose = () => {
         setAnchorVisibilityEl(null);
+    };
+
+    const changeLanguage = (language) => {
+        i18n.changeLanguage(language);
+        localStorage.setItem("lang", language);
     };
 
     const renderProfileMenu = (
@@ -110,8 +118,8 @@ const NavBar = ({sites}) => {
             open={isProfileMenuOpen}
             onClose={handleProfileMenuClose}
         >
-            <MenuItem component={Link} to="/profile" onClick={handleProfileMenuClose}>Profile</MenuItem>
-            <MenuItem onClick={handleProfileMenuClose}>Logout</MenuItem>
+            <MenuItem component={Link} to="/profile" onClick={handleProfileMenuClose}>{t("navBar.account.profile")}</MenuItem>
+            <MenuItem onClick={handleProfileMenuClose}>{t("navBar.account.logout")}</MenuItem>
         </Menu>
     );
 
@@ -131,10 +139,10 @@ const NavBar = ({sites}) => {
             open={isVisibilityMenuOpen}
             onClose={handleVisibilityMenuClose}
         >
-            <Divider>Language</Divider>
-            <MenuItem>Polski</MenuItem>
-            <MenuItem>English</MenuItem>
-            <Divider >Text size</Divider>
+            <Divider>{t("navBar.visibility.language")}</Divider>
+            <MenuItem onClick={() => changeLanguage("pl")}>Polski</MenuItem>
+            <MenuItem onClick={() => changeLanguage("en")}>English</MenuItem>
+            <Divider >{t("navBar.visibility.text.name")}</Divider>
             <Box
                 sx={{
                     display: 'flex',
@@ -149,23 +157,23 @@ const NavBar = ({sites}) => {
                     },
                 }}
             >
-                <Tooltip title="Normal size" >
+                <Tooltip title={t("navBar.visibility.text.normal")} >
                     <IconButton color="inherit" >
                         <FormatSizeIcon fontSize="small"/>
                     </IconButton>
                 </Tooltip>
-                <Tooltip title="Large size" >
+                <Tooltip title={t("navBar.visibility.text.large")} >
                     <IconButton color="inherit">
                         <FormatSizeIcon />
                     </IconButton>
                 </Tooltip>
-                <Tooltip title="Larger size" >
+                <Tooltip title={t("navBar.visibility.text.larger")} >
                     <IconButton color="inherit">
                         <FormatSizeIcon fontSize="large"/>
                     </IconButton>
                 </Tooltip>
             </Box>
-            <Divider>Mode</Divider>
+            <Divider>{t("navBar.visibility.mode.name")}</Divider>
             <MenuItem sx={{
                 textAlign: "center"
             }}>
@@ -180,7 +188,7 @@ const NavBar = ({sites}) => {
                         mx: 0.5,
                     },
                 }}>
-                    <Typography>light</Typography>
+                    <Typography>{t("navBar.visibility.mode.light")}</Typography>
                     <LightModeIcon />
                 </Box>
             </MenuItem>
@@ -230,14 +238,14 @@ const NavBar = ({sites}) => {
                             <SearchIcon />
                         </SearchIconWrapper>
                         <StyledInputBase
-                            placeholder="Search…"
+                            placeholder={t("navBar.search")}
                             inputProps={{ 'aria-label': 'search' }}
                             onKeyDown={keyPress}
                         />
                     </Search>
                     <Box sx={{ flexGrow: 1 }} />
                     <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-                        <Tooltip title="Visibility">
+                        <Tooltip title={t("navBar.visibility.name")}>
                             <IconButton
                                 size="large"
                                 color="inherit"
@@ -248,7 +256,7 @@ const NavBar = ({sites}) => {
                                 {isVisibilityMenuOpen ? <ExpandLess /> : <ExpandMore />}
                             </IconButton>
                         </Tooltip>
-                        <Tooltip title="Shopping Cart">
+                        <Tooltip title={t("navBar.shoppingCart")}>
                             <IconButton
                                 size="large"
                                 color="inherit"
@@ -258,7 +266,7 @@ const NavBar = ({sites}) => {
                                 </Badge>
                             </IconButton>
                         </Tooltip>
-                        <Tooltip title="Profile">
+                        <Tooltip title={t("navBar.account.profile")}>
                             <IconButton
                                 size="large"
                                 edge="end"
@@ -308,7 +316,7 @@ const NavBar = ({sites}) => {
                     display: { xs: 'block' },
                     '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth, background: "black" },
                 }}>
-                <ProfileDrawer handleDrawerToggle={handleProfileDrawerToggle} />
+                <ProfileDrawer changeLanguage={changeLanguage}/>
             </Drawer>
             {renderProfileMenu}
             {renderVisibilityMenu}

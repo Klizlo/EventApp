@@ -3,12 +3,16 @@ import {useState} from "react";
 import ClientDataPanel from "./ClientDataPanel";
 import ClientAddressPanel from "./ClientAddressPanel";
 import validator from "validator/es";
+import {useTranslation} from "react-i18next";
 
 const BillingStep = ({client, setClient, handleNext}) => {
 
     const [emailError, setEmailError] = useState("");
     const [phoneError, setPhoneError] = useState("");
     const [postalCodeError, setPostalCodeError] = useState("");
+
+    const { t } = useTranslation();
+
     const handleChange = (e) => {
         setClient({...client, [e.target.name]: e.target.value});
     };
@@ -25,19 +29,19 @@ const BillingStep = ({client, setClient, handleNext}) => {
     const validateData = () => {
         // validate email
         if(!validator.isEmail(client.email)) {
-            setEmailError("Invalid email!");
+            setEmailError(t("form.signup.email"));
             return false;
         }
 
         //validate phone number
         if(!validator.isMobilePhone(client.phone, ['pl-PL'])){
-            setPhoneError("Invalid phone number")
+            setPhoneError(t("form.signup.email"))
             return false;
         }
 
         //validate postal code
         if(!validator.isPostalCode(client.postalCode, ['PL'])){
-            setPostalCodeError("Invalid postal code")
+            setPostalCodeError(t("form.address.errors.postalCode"))
             return false;
         }
 
@@ -46,7 +50,7 @@ const BillingStep = ({client, setClient, handleNext}) => {
 
     return (
         <Box my={5}>
-            <Typography variant='h5' color='#FF8834'>Billing</Typography>
+            <Typography variant='h5' color='#FF8834'>{t("checkout.steps.billing.title")}</Typography>
             <Box component='form' method='POST' onSubmit={handleSubmit}>
                 <Grid container>
                     <Grid item xs p={2}>
@@ -70,7 +74,7 @@ const BillingStep = ({client, setClient, handleNext}) => {
                                 backgroundColor: 'black'
                             }
                         }}>
-                        Next
+                        {t("checkout.steps.billing.next")}
                     </Button>
                 </Box>
             </Box>

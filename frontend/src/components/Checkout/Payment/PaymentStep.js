@@ -1,14 +1,17 @@
 import {Box, Button, Grid} from "@mui/material";
 import PaymentList from "./PaymentList";
 import BillingPanel from "./BillingPanel";
+import {useTranslation} from "react-i18next";
 
 const PaymentStep = ({currentPayment, setPayment, client, handleNext, handleBack, setError, setOpenSnackBar}) => {
+
+    const { t } = useTranslation();
 
     const nextPage = () => {
         if (currentPayment.name !== null) {
             handleNext();
         } else {
-            setError("Please select one of the payment methods");
+            setError(t("checkout.steps.payment.errors.payment"));
             setOpenSnackBar(true);
         }
     }
@@ -20,11 +23,11 @@ const PaymentStep = ({currentPayment, setPayment, client, handleNext, handleBack
         },
         {
             id: 2,
-            name: "Credit card"
+            name: t("checkout.steps.payment.paymentMethods.card")
         },
         {
             id: 3,
-            name: "Bank transfer"
+            name: t("checkout.steps.payment.paymentMethods.bank")
         }
     ];
 
@@ -51,7 +54,7 @@ const PaymentStep = ({currentPayment, setPayment, client, handleNext, handleBack
                         }
                     }}
                 >
-                    Back
+                    {t("checkout.steps.payment.back")}
                 </Button>
                 <Box sx={{ flex: '1 1 auto' }} />
                 <Button
@@ -65,7 +68,7 @@ const PaymentStep = ({currentPayment, setPayment, client, handleNext, handleBack
                         }
                     }}
                     onClick={nextPage}>
-                    Next
+                    {t("checkout.steps.payment.next")}
                 </Button>
             </Box>
         </Box>

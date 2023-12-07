@@ -2,6 +2,7 @@ import {useState} from "react";
 import validator from "validator/es";
 import {Box, Button, InputAdornment, TextField, Typography} from "@mui/material";
 import ErrorIcon from "@mui/icons-material/Error";
+import {useTranslation} from "react-i18next";
 
 const ReservationStep = ({client, setClient, handleNext}) => {
     const [emailError, setEmailError] = useState("");
@@ -10,6 +11,8 @@ const ReservationStep = ({client, setClient, handleNext}) => {
     const handleChange = (e) => {
         setClient({...client, [e.target.name]: e.target.value});
     };
+
+    const { t } = useTranslation();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -23,13 +26,13 @@ const ReservationStep = ({client, setClient, handleNext}) => {
     const validateData = () => {
         // validate email
         if (!validator.isEmail(client.email)) {
-            setEmailError("Invalid email!");
+            setEmailError(t("form.signup.email"));
             return false;
         }
 
         //validate phone number
         if (!validator.isMobilePhone(client.phone, ['pl-PL'])) {
-            setPhoneError("Invalid phone number")
+            setPhoneError(t("form.signup.phone"))
             return false;
         }
 
@@ -47,7 +50,7 @@ const ReservationStep = ({client, setClient, handleNext}) => {
             }}
              component='form' method='POST' onSubmit={handleSubmit}
         >
-            <Typography variant='h5' color='#FF8834'>Reservation info</Typography>
+            <Typography variant='h5' color='#FF8834'>{t("checkout.steps.reservation.title")}</Typography>
             <Box
                 sx={{
                     width: '60%',
@@ -60,7 +63,7 @@ const ReservationStep = ({client, setClient, handleNext}) => {
                     fullWidth
                     id="name"
                     onChange={handleChange}
-                    label="Name"
+                    label={t("form.labels.name")}
                     name="name"
                     value={client?.name}
                     autoComplete="given-name"
@@ -72,7 +75,7 @@ const ReservationStep = ({client, setClient, handleNext}) => {
                     fullWidth
                     id="surname"
                     onChange={handleChange}
-                    label="Surname"
+                    label={t("form.labels.surname")}
                     name="surname"
                     value={client?.surname}
                     autoComplete="family-name"
@@ -84,7 +87,7 @@ const ReservationStep = ({client, setClient, handleNext}) => {
                     fullWidth
                     id="email"
                     onChange={handleChange}
-                    label="Email"
+                    label={t("form.labels.email")}
                     name="email"
                     value={client?.email}
                     autoComplete="email"
@@ -104,7 +107,7 @@ const ReservationStep = ({client, setClient, handleNext}) => {
                     fullWidth
                     id="phone"
                     onChange={handleChange}
-                    label="Phone"
+                    label={t("form.labels.phone")}
                     name="phone"
                     value={client?.phone}
                     autoComplete="phone"
@@ -138,7 +141,7 @@ const ReservationStep = ({client, setClient, handleNext}) => {
                             backgroundColor: 'black'
                         }
                     }}>
-                    Next
+                    {t("checkout.steps.reservation.next")}
                 </Button>
             </Box>
         </Box>

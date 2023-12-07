@@ -2,8 +2,11 @@ import {Box, Button} from "@mui/material";
 import {Link} from "react-router-dom";
 import HomeCarousel from "../../components/home/HomeCarousel";
 import HomeSection from "../../components/home/HomeSection";
+import {useTranslation} from "react-i18next";
 
 const MainPage = () => {
+
+    const { t } = useTranslation();
 
     const events = [
         {
@@ -53,9 +56,9 @@ const MainPage = () => {
                         "&.MuiButtonBase-root:hover": {
                             backgroundColor: 'transparent'
                         }
-                    }}>Home</Button>
+                    }}>{t("home.title")}</Button>
             <HomeCarousel />
-            <HomeSection title={"Recommended"} events={events} link={"/events"}/>
+            <HomeSection title={t("home.recommended")} events={events} link={"/events"}/>
         </Box>
     );
 }

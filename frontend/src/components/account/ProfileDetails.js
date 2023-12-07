@@ -1,8 +1,12 @@
 import {Avatar, Box, Button, Paper, Typography} from "@mui/material";
 import {Person} from "@mui/icons-material";
 import {Link} from "react-router-dom";
+import {useTranslation} from "react-i18next";
 
 const ProfileDetails = () => {
+
+    const {t} = useTranslation();
+
   return (
      <Box
          component={Paper}
@@ -15,7 +19,7 @@ const ProfileDetails = () => {
          flexDirection: 'column',
          alignItems: 'center',
      }}>
-         <Typography variant="h4">Customer data</Typography>
+         <Typography variant="h4">{t("profile.panel.title")}</Typography>
          <Avatar sx={{ m: 1, bgcolor: '#FF8834' , width: "100px", height: "100px"}} >
              <Person style={{
                  fontSize: 60
@@ -23,10 +27,10 @@ const ProfileDetails = () => {
          </Avatar>
          <Typography variant="h5">Name Surname</Typography>
          <Box width="100%">
-             <Typography variant="h6">Contact details</Typography>
-             <Typography>Phone number: ...</Typography>
-             <Typography>Email: ...</Typography>
-             <Typography>Street: ...</Typography>
+             <Typography variant="h6">{t("profile.panel.contact")}</Typography>
+             <Typography>{t("profile.panel.phone")}...</Typography>
+             <Typography>{t("profile.panel.email")}...</Typography>
+             <Typography>{t("profile.panel.street")}...</Typography>
              <Typography>Zip and City</Typography>
              <Typography>Country</Typography>
          </Box>
@@ -35,7 +39,7 @@ const ProfileDetails = () => {
                 color: '#FF8834',
                 textDecoration: 'underline'
             }}
-         >Edit your details</Button>
+         >{t("profile.edit")}</Button>
      </Box>
   );
 }

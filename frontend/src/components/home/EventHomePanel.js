@@ -1,11 +1,14 @@
 import {Box, Paper, Typography} from "@mui/material";
 import {getDays, getMonthWithYear} from "../../helpers/EventData";
+import {useTranslation} from "react-i18next";
 
 const EventHomePanel = ({event}) => {
 
     function showEvent() {
         window.location = '/events/' + event.id;
     }
+
+    const { i18n } = useTranslation();
 
     return (
         <Box component={Paper} sx={{
@@ -37,10 +40,10 @@ const EventHomePanel = ({event}) => {
                 color: '#FF8834',
                 fontWeight: 'bold'
             }}>
-                {getDays(event.start_date, event.end_date)}
+                {getDays(event.start_date, event.end_date, i18n.language)}
             </Typography>
             <Typography>
-                {getMonthWithYear(event.start_date, event.end_date)}
+                {getMonthWithYear(event.start_date, event.end_date, i18n.language)}
             </Typography>
             <Typography></Typography>
         </Box>

@@ -4,8 +4,11 @@ import EventImage from "../../components/event/EventImage";
 import EventDescription from "../../components/event/EventDescription";
 import EventShoppingPanel from "../../components/event/EventShoppingPanel";
 import EventZoneMap from "../../components/event/EventZoneMap";
+import {useTranslation} from "react-i18next";
 
 const EventPage = () => {
+
+    const { t } = useTranslation();
 
     const event = {
             id: 1,
@@ -31,7 +34,7 @@ const EventPage = () => {
                             "&.MuiButtonBase-root:hover": {
                                 backgroundColor: 'transparent'
                             }
-                        }}>Events</Button>
+                        }}>{t("events.title")}</Button>
                 >
                 <Button component={Link} to={"/events/"+event.id}
                         disableRipple

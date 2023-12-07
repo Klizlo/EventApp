@@ -3,8 +3,11 @@ import {useState} from "react";
 import EventListItem from "./EventListItem";
 import {dynamicFilter, dynamicSort} from "../../helpers/ArrayOperations";
 import EventFilterDrawer from "../Filter/EventFilterDrawer";
+import {useTranslation} from "react-i18next";
 
 const EventListBox = ({events}) => {
+
+    const { t } = useTranslation();
 
     const [page, setPage] = useState(1);
     const [sort, setSort] = useState('name');
@@ -46,7 +49,7 @@ const EventListBox = ({events}) => {
                     color: 'black',
                     border: 'black solid 2px'
                 }} onClick={() => setDrawerOpen(true)}>
-                    Filter
+                    {t("events.filter.name")}
                 </Button>
                 <Box sx={{
                     display: 'flex',
@@ -55,15 +58,15 @@ const EventListBox = ({events}) => {
                     alignItems: 'center',
                     justifyContent: 'space-between'
                 }}>
-                    <Typography>Sort by:</Typography>
+                    <Typography>{t("events.sort.title")}</Typography>
                     <FormControl variant='standard' sx={{
                         minWidth: 80
                     }}>
                         <Select value={sort}
                                 onChange={handleSortChange}>
-                            <MenuItem value='name'>Name</MenuItem>
-                            <MenuItem value='start_date'>Date</MenuItem>
-                            <MenuItem value='place'>Place</MenuItem>
+                            <MenuItem value='name'>{t("events.sort.name")}</MenuItem>
+                            <MenuItem value='start_date'>{t("events.sort.date")}</MenuItem>
+                            <MenuItem value='place'>{t("events.sort.place")}</MenuItem>
                         </Select>
                     </FormControl>
                 </Box>
@@ -75,7 +78,7 @@ const EventListBox = ({events}) => {
                 (<Typography sx={{
                     my: '10%',
                     textAlign: 'center'
-                }}>No events found</Typography>)}
+                }}>{t("events.noFound")}</Typography>)}
 
             <Box sx={{
                 display: 'flex',

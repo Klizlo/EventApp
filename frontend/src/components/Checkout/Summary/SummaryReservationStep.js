@@ -1,7 +1,10 @@
 import {Box, Button, Grid} from "@mui/material";
 import ClientReservationPanel from "./ClientReservationPanel";
+import {useTranslation} from "react-i18next";
 
 const SummaryReservationStep = ({client, order, handleBack}) => {
+
+    const { t } = useTranslation();
 
     const handleCheckout = () => {
         window.location.href = '/confirmation';
@@ -30,7 +33,7 @@ const SummaryReservationStep = ({client, order, handleBack}) => {
                         }
                     }}
                 >
-                    Back
+                    {t("checkout.steps.summary.back")}
                 </Button>
                 <Box sx={{ flex: '1 1 auto' }} />
                 <Button
@@ -44,7 +47,7 @@ const SummaryReservationStep = ({client, order, handleBack}) => {
                         }
                     }}
                     onClick={handleCheckout}>
-                    checkout
+                    {t("checkout.steps.summary.reservation.reserve")}
                 </Button>
             </Box>
         </Box>

@@ -1,6 +1,10 @@
 import {Box, Button, Container, Grid} from "@mui/material";
+import {useTranslation} from "react-i18next";
 
 const CarouselItem = (props) => {
+
+    const { t } = useTranslation();
+
     return (
         <Container>
             <Grid container
@@ -33,7 +37,7 @@ const CarouselItem = (props) => {
                                 border: 'white solid'
                             }}
                         >
-                            Check it out!
+                            {t("home.carousel.checkout")}
                         </Button>
                     </Box>
                 </Grid>

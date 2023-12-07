@@ -19,12 +19,13 @@ import LoginStep from "./Login/LoginStep";
 import BillingStep from "./Billing/BillingStep";
 import SummaryPaymentStep from "./Summary/SummaryPaymentStep";
 import PaymentRedirectStep from "./PaymentRedirect/PaymentRedirectStep";
+import {useTranslation} from "react-i18next";
 
 const steps = [
-        "Login",
-        "Billing",
-        "Payment",
-        "Confirm",
+        "checkout.stepper.login",
+        "checkout.stepper.billing",
+        "checkout.stepper.payment",
+        "checkout.stepper.confirm",
 ];
 
 const ShoppingConnector = styled(StepConnector)(({ theme }) => ({
@@ -134,6 +135,8 @@ const CheckoutPaymentStepper = () => {
         setActiveStep((prevActiveStep) => prevActiveStep - 1);
     };
 
+    const { t } = useTranslation();
+
     function _renderStepContent(step) {
 
         switch (step) {
@@ -167,7 +170,7 @@ const CheckoutPaymentStepper = () => {
                 {steps.map((label, index) => {
                     return (
                         <Step key={label}>
-                            <StepLabel StepIconComponent={ShoppingStepIcon}>{label}</StepLabel>
+                            <StepLabel StepIconComponent={ShoppingStepIcon}>{t(label)}</StepLabel>
                         </Step>
                     );
                 })}

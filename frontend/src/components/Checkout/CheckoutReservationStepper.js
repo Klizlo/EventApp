@@ -14,11 +14,12 @@ import DescriptionIcon from "@mui/icons-material/Description";
 import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
 import ReservationStep from "./Reservation/ReservationStep";
 import SummaryReservationStep from "./Summary/SummaryReservationStep";
+import {useTranslation} from "react-i18next";
 
 const steps = [
-    "Login",
-    "Reservation",
-    "Confirm",
+    "checkout.stepper.login",
+    "checkout.stepper.reservation",
+    "checkout.stepper.confirm",
 ];
 
 const ShoppingConnector = styled(StepConnector)(({ theme }) => ({
@@ -116,6 +117,8 @@ const CheckoutReservationStepper = () => {
         setActiveStep((prevActiveStep) => prevActiveStep - 1);
     };
 
+    const { t } = useTranslation();
+
     function _renderStepContent(step) {
 
         switch (step) {
@@ -139,7 +142,7 @@ const CheckoutReservationStepper = () => {
                 {steps.map((label, index) => {
                     return (
                         <Step key={label}>
-                            <StepLabel StepIconComponent={ShoppingStepIcon}>{label}</StepLabel>
+                            <StepLabel StepIconComponent={ShoppingStepIcon}>{t(label)}</StepLabel>
                         </Step>
                     );
                 })}

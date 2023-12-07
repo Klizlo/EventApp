@@ -1,7 +1,10 @@
 import {Box, Button, Typography} from "@mui/material";
 import AddCircleIcon from '@mui/icons-material/AddCircle';
+import {useTranslation} from "react-i18next";
 
 const EventShoppingPanel = ({event}) => {
+
+    const { t } = useTranslation();
 
     const getColor = () => {
         const ratio = event.availableTickets / event.numberOfTickets;
@@ -19,14 +22,14 @@ const EventShoppingPanel = ({event}) => {
     const getAvailability = () => {
         const ratio = event.availableTickets / event.numberOfTickets;
         if (ratio >= 0.5) {
-            return 'high';
+            return t("event.page.availability.high");
         } else if (ratio >= 0.3) {
-            return 'limited';
+            return t("event.page.availability.limited");
         } else if (ratio > 0) {
-            return 'little';
+            return t("event.page.availability.little");
         }
 
-        return 'not available';
+        return t("event.page.availability.notAvailable");
     };
 
     return (
@@ -42,7 +45,7 @@ const EventShoppingPanel = ({event}) => {
                 display: 'flex',
                 flexDirection: 'row'
             }}>
-                <Typography mr='10px'>Availability:</Typography>
+                <Typography mr='10px'>{t("event.page.availability.name")}:</Typography>
                 <Typography color={getColor} >{getAvailability()}</Typography>
             </Box>
             <Button variant='contained' endIcon={<AddCircleIcon />} sx={{
@@ -53,7 +56,7 @@ const EventShoppingPanel = ({event}) => {
                     bgcolor: 'black'
                 }
             }} disabled={getColor() === 'gray'}>
-                { getColor() !== 'gray' ? "select a zone and buy a ticket" : "not available"}
+                { getColor() !== 'gray' ? t("event.page.buy.select") : t("event.page.buy.notAvailable")}
             </Button>
         </Box>
     );

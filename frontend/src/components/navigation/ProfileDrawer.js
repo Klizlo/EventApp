@@ -3,7 +3,7 @@ import {
     Box, Collapse, Divider, IconButton,
     List, ListItem,
     ListItemButton, ListItemIcon,
-    ListItemText, ListSubheader, Tooltip, Typography,
+    ListItemText, Tooltip, Typography,
 } from "@mui/material";
 import * as React from "react";
 import VisibilityIcon from '@mui/icons-material/Visibility';
@@ -13,8 +13,11 @@ import DarkModeIcon from '@mui/icons-material/DarkMode';
 import FormatSizeIcon from '@mui/icons-material/FormatSize';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import {ExpandLess, ExpandMore} from "@mui/icons-material";
+import {useTranslation} from "react-i18next";
 
-const ProfileDrawer = ({handleDrawerToggle}) => {
+const ProfileDrawer = ({changeLanguage}) => {
+
+    const { t } = useTranslation();
 
     const [openProfileList, setOpenProfileList] = React.useState(false);
     const [openVisibilityList, setOpenVisibilityList] = React.useState(false);
@@ -45,16 +48,16 @@ const ProfileDrawer = ({handleDrawerToggle}) => {
                 >
                     <AccountCircle />
                 </ListItemIcon>
-                <ListItemText primary="Profile" />
+                <ListItemText primary={t("navBar.account.profile")} />
                 {openProfileList ? <ExpandLess /> : <ExpandMore />}
             </ListItemButton>
             <Collapse in={openProfileList} timeout="auto" unmountOnExit >
                 <List component="div" disablePadding >
                     <ListItemButton sx={{ pl: 4 }}>
-                        <ListItemText primary="Profile" />
+                        <ListItemText primary={t("navBar.account.profile")} />
                     </ListItemButton>
                     <ListItemButton sx={{ pl: 4 }}>
-                        <ListItemText primary="Logout" />
+                        <ListItemText primary={t("navBar.account.logout")} />
                     </ListItemButton>
                 </List>
             </Collapse>
@@ -67,7 +70,7 @@ const ProfileDrawer = ({handleDrawerToggle}) => {
                         <ShoppingCartIcon />
                     </Badge>
                 </ListItemIcon>
-                <ListItemText primary="Shoping Cart"/>
+                <ListItemText primary={t("navBar.shoppingCart")}/>
             </ListItemButton>
             <Divider sx={{ background: "darkgray"}}/>
 
@@ -76,19 +79,19 @@ const ProfileDrawer = ({handleDrawerToggle}) => {
                 <ListItemIcon size="large">
                     <VisibilityIcon />
                 </ListItemIcon>
-                <ListItemText primary="Visibility"/>
+                <ListItemText primary={t("navBar.visibility.name")}/>
                 {openVisibilityList ? <ExpandLess /> : <ExpandMore />}
             </ListItemButton>
             <Collapse in={openVisibilityList} timeout="auto" unmountOnExit >
                 <List component="div" disablePadding >
-                    <Divider>Language</Divider>
-                    <ListItemButton>
+                    <Divider>{t("navBar.visibility.language")}</Divider>
+                    <ListItemButton onClick={() => changeLanguage("pl")}>
                         <ListItemText primary="Polski" />
                     </ListItemButton>
-                    <ListItemButton>
+                    <ListItemButton onClick={() => changeLanguage("en")}>
                         <ListItemText primary="English" />
                     </ListItemButton>
-                    <Divider>Text size</Divider>
+                    <Divider>{t("navBar.visibility.text.name")}</Divider>
                     <ListItem>
                         <Box
                             sx={{
@@ -104,26 +107,26 @@ const ProfileDrawer = ({handleDrawerToggle}) => {
                                 },
                             }}
                         >
-                            <Tooltip title="Normal size" >
+                            <Tooltip title={t("navBar.visibility.text.normal")} >
                                 <IconButton color="inherit" >
                                     <FormatSizeIcon fontSize="small"/>
                                 </IconButton>
                             </Tooltip>
-                            <Tooltip title="Large size" >
+                            <Tooltip title={t("navBar.visibility.text.large")} >
                                 <IconButton color="inherit">
                                     <FormatSizeIcon />
                                 </IconButton>
                             </Tooltip>
-                            <Tooltip title="Larger size" >
+                            <Tooltip title={t("navBar.visibility.text.larger")} >
                                 <IconButton color="inherit">
                                     <FormatSizeIcon fontSize="large"/>
                                 </IconButton>
                             </Tooltip>
                         </Box>
                     </ListItem>
-                    <Divider>Mode</Divider>
+                    <Divider>{t("navBar.visibility.mode.name")}</Divider>
                     <ListItemButton>
-                        <ListItemText primary="Light" />
+                        <ListItemText primary={t("navBar.visibility.mode.light")} />
                         <ListItemIcon>
                             <LightModeIcon />
                         </ListItemIcon>
