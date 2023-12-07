@@ -25,7 +25,7 @@ export default function DateFilter ({setPage, fromDate, toDate}) {
             }
             default: return '';
         }
-    }, [fromError]);
+    }, [t, fromError]);
 
     const toErrorMessage = useMemo(() => {
         switch (toError) {
@@ -35,7 +35,7 @@ export default function DateFilter ({setPage, fromDate, toDate}) {
             }
             default: return '';
         }
-    }, [toError]);
+    }, [from, toError, t, i18n]);
 
     const handleClick = () => {
         const url = new URL(window.location.href);
@@ -118,9 +118,11 @@ export default function DateFilter ({setPage, fromDate, toDate}) {
                 }}/>
                 <Button onClick={handleClick}
                         sx={{
-                    color: 'black',
-                    backgroundColor: 'white',
-                    border: 'black solid 2px'
+                            color: 'text.primary',
+                            backgroundColor: 'background.inherit',
+                            borderColor: 'text.primary',
+                            borderStyle: 'solid',
+                            borderWidth: '2px'
                 }}>
                     {t("events.filter.accept")}
                 </Button>

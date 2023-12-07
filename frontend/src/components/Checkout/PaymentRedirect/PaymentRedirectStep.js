@@ -40,11 +40,11 @@ const PaymentRedirectStep = () => {
             <Button
                 variant='contained'
                 sx={{
+                    fontWeight: 'bold',
                     mt: 2,
                     background: '#FF8834',
-                    fontWeight: 'bold',
                     '&:hover': {
-                        backgroundColor: 'black'
+                        backgroundColor: 'action.active'
                     }
                 }}
                 onClick={redirectToPayment}

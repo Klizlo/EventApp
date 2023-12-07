@@ -9,11 +9,11 @@ export default function ProfilePage() {
     const { t } = useTranslation();
 
     return(
-        <Box sx={{padding: "2% 0", mt: "50px"}}>
+        <Box sx={{padding: "2%", pt: "70px"}}>
             <Button component={Link} to="/profile"
                     disableRipple
                     sx={{
-                color: "black",
+                color: "text.primary",
                 "&.MuiButtonBase-root:hover": {
                     backgroundColor: 'transparent'
                 }

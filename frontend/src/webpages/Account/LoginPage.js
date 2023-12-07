@@ -10,13 +10,13 @@ import {
     Typography
 } from "@mui/material";
 import {Person, VisibilityOff} from "@mui/icons-material";
-import {Link} from "react-router-dom";
 import {LoadingButton} from "@mui/lab";
 import SaveIcon from '@mui/icons-material/Send';
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import ErrorIcon from '@mui/icons-material/Error';
 import validator from "validator/es";
 import {useTranslation} from "react-i18next";
+import Link from "@mui/material/Link";
 
 export default function LoginPage() {
 
@@ -51,7 +51,7 @@ export default function LoginPage() {
 
     return (
         <Container>
-            <Grid container component="main" sx={{ height: '90vh', padding: '2% 0', mt: "20px" }}>
+            <Grid container component="main" sx={{ height: '90vh', padding: "2%", pt: "70px" }}>
                 <Grid
                     item
                     xs={false}
@@ -153,7 +153,7 @@ export default function LoginPage() {
                                     mb: 2,
                                     background: '#FF8834',
                                     '&:hover': {
-                                        backgroundColor: 'black'
+                                        backgroundColor: 'action.active'
                                     }
                                 }}
                             >
@@ -161,12 +161,16 @@ export default function LoginPage() {
                             </LoadingButton>
                             <Grid container>
                                 <Grid item xs={12}>
-                                    <Link to="/" variant="body2">
+                                    <Link href="/" variant="body2" sx={{
+                                        color: '#FF8834'
+                                    }}>
                                         {t("form.login.link.password")}
                                     </Link>
                                 </Grid>
                                 <Grid item>
-                                    <Link to="/signup" variant="body2">
+                                    <Link href="/signup" variant="body2" sx={{
+                                        color: '#FF8834'
+                                    }}>
                                         {t("form.login.link.register")}
                                     </Link>
                                 </Grid>

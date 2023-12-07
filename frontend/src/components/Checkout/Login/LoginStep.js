@@ -11,15 +11,16 @@ const LoginStep = ({handleNext}) => {
                 p: 2
             }}>
                 <Button
+                    variant='contained'
                     onClick={handleNext}
                     sx={{
-                    backgroundColor: 'grey',
-                    width: '100%',
-                    py: 5,
-                    color: 'white',
-                    '&:hover': {
-                        backgroundColor: 'black'
-                    }
+                        fontWeight: 'bold',
+                        backgroundColor: 'grey',
+                        width: '100%',
+                        py: 5,
+                        '&:hover': {
+                            backgroundColor: 'action.active'
+                        }
                 }}>
                     {t("checkout.steps.login.guest")}
                 </Button>
@@ -32,15 +33,16 @@ const LoginStep = ({handleNext}) => {
                     {t("checkout.steps.login.register.description")}
                 </Typography>
                 <Button
+                    variant='contained'
                     onClick={() => window.location='/signup'}
                     sx={{
-                    backgroundColor: 'grey',
-                    width: '100%',
-                    py: 2,
-                    color: 'white',
-                    '&:hover': {
-                        backgroundColor: 'black'
-                    }
+                        fontWeight: 'bold',
+                        backgroundColor: 'grey',
+                        width: '100%',
+                        py: 2,
+                        '&:hover': {
+                            backgroundColor: 'action.active'
+                        }
                 }}>
                     {t("checkout.steps.login.register.button")}
                 </Button>
@@ -53,15 +55,16 @@ const LoginStep = ({handleNext}) => {
                     {t("checkout.steps.login.login.description")}
                 </Typography>
                 <Button
+                    variant='contained'
                     onClick={() => window.location='/login'}
                     sx={{
-                    backgroundColor: 'grey',
-                    width: '100%',
-                    py: 2,
-                    color: 'white',
-                    '&:hover': {
-                        backgroundColor: 'black'
-                    }
+                        fontWeight: 'bold',
+                        backgroundColor: 'grey',
+                        width: '100%',
+                        py: 2,
+                        '&:hover': {
+                            backgroundColor: 'action.active'
+                        }
                 }}>
                     {t("checkout.steps.login.login.button")}
                 </Button>

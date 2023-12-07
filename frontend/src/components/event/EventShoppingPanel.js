@@ -53,7 +53,7 @@ const EventShoppingPanel = ({event}) => {
                 fontWeight: 'bold',
                 p: '3%',
                 '&:hover': {
-                    bgcolor: 'black'
+                    bgcolor: 'action.active'
                 }
             }} disabled={getColor() === 'gray'}>
                 { getColor() !== 'gray' ? t("event.page.buy.select") : t("event.page.buy.notAvailable")}

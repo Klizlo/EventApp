@@ -18,16 +18,20 @@ const MyTicketsPanel = () => {
           <Typography variant="h5" color="#FF8834" fontWeight="bold" mb="2%">{t("profile.tickets.title")}</Typography>
           <Button component={Link} to=""
                   sx={{
-                      color: 'black',
-                      border: 'black solid',
+                      color: 'text.primary',
+                      borderColor: 'text.primary',
+                      borderStyle: 'solid',
+                      borderWidth: '2px',
                       height: '80px',
                       my: '2%'
                   }}
             >{t("profile.tickets.current")}</Button>
           <Button component={Link} to=""
                   sx={{
-                      color: 'black',
-                      border: 'black solid',
+                      color: 'text.primary',
+                      borderColor: 'text.primary',
+                      borderStyle: 'solid',
+                      borderWidth: '2px',
                       height: '80px',
                       my: '2%'
                   }}

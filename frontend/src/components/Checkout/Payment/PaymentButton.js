@@ -10,13 +10,16 @@ const PaymentButton = ({payment, currentPayment, setPayment}) => {
     return(
         <Button
             sx={{
-                color: currentPayment.name === payment.name ? 'white' : 'black',
-                border: currentPayment.name === payment.name ? '' : '2px black solid',
-                backgroundColor: currentPayment.name === payment.name ? '#FF8834' : 'white',
+                fontWeight: 'bold',
+                color: "text.primary",
+                borderColor: currentPayment.name === payment.name ? '' : 'text.primary',
+                borderStyle: currentPayment.name === payment.name ? '' : 'solid',
+                borderWidth: currentPayment.name === payment.name ? '' : '2px',
+                backgroundColor: currentPayment.name === payment.name ? '#FF8834' : 'backgroundColor.default',
                 height: 50,
                 m: 1,
                 '&:hover': {
-                    backgroundColor: currentPayment.name === payment.name ? 'black' : ''
+                    backgroundColor: 'action.selected'
                 }
             }}
             onClick={handleClick}

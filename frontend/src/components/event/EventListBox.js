@@ -46,8 +46,10 @@ const EventListBox = ({events}) => {
                 justifyContent: 'space-between'
             }}>
                 <Button sx={{
-                    color: 'black',
-                    border: 'black solid 2px'
+                    color: 'text.primary',
+                    borderColor: 'text.primary',
+                    borderStyle: 'solid',
+                    borderWidth: '2px'
                 }} onClick={() => setDrawerOpen(true)}>
                     {t("events.filter.name")}
                 </Button>

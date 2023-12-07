@@ -25,12 +25,12 @@ const EventPage = () => {
         };
 
     return(
-        <Box sx={{padding: "2% 0", mt: "50px"}}>
+        <Box sx={{padding: "2%", pt: "70px"}}>
             <Box>
                 <Button component={Link} to="/events"
                         disableRipple
                         sx={{
-                            color: "black", // color of my soul
+                            color: "text.primary", // color of my soul
                             "&.MuiButtonBase-root:hover": {
                                 backgroundColor: 'transparent'
                             }
@@ -39,7 +39,7 @@ const EventPage = () => {
                 <Button component={Link} to={"/events/"+event.id}
                         disableRipple
                         sx={{
-                            color: "black", // color of my soul
+                            color: "text.primary", // color of my soul
                             "&.MuiButtonBase-root:hover": {
                                 backgroundColor: 'transparent'
                             }

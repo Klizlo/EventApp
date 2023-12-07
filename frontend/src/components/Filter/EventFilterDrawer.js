@@ -62,10 +62,10 @@ export default function EventFilterDrawer ({events, setPage, close}) {
                     </FormControl>
                 </ListItem>
             </List>
-            <Button onClick={close} sx={{
+            <Button wariant='contained' onClick={close} sx={{
                 width: '90%',
                 mb: '10%',
-                color: 'white',
+                color: 'text.primary',
                 backgroundColor: '#FF8834',
                 '&:hover': {
                     backgroundColor: 'black'

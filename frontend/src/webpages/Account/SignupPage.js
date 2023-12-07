@@ -15,9 +15,9 @@ import ErrorIcon from "@mui/icons-material/Error";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import {LoadingButton} from "@mui/lab";
 import SaveIcon from "@mui/icons-material/Send";
-import {Link} from "react-router-dom";
 import validator from "validator/es";
 import {useTranslation} from "react-i18next";
+import Link from "@mui/material/Link";
 
 export default function SignupPage() {
 
@@ -83,7 +83,7 @@ export default function SignupPage() {
 
     return (
         <Container>
-            <Grid container component="main" sx={{ height: '90vh', padding: '2% 0', mt: "20px" }}>
+            <Grid container component="main" sx={{ height: '90vh', padding: "2%", pt: "70px" }}>
                 <Grid
                     item
                     xs={false}
@@ -234,7 +234,7 @@ export default function SignupPage() {
                                     mb: 2,
                                     background: '#FF8834',
                                     '&:hover': {
-                                        backgroundColor: 'black'
+                                        backgroundColor: 'action.active'
                                     }
                                 }}
                             >
@@ -242,7 +242,9 @@ export default function SignupPage() {
                             </LoadingButton>
                             <Grid container>
                                 <Grid item>
-                                    <Link to="/login" variant="body2">
+                                    <Link href="/login" variant="body2" sx={{
+                                        color: '#FF8834'
+                                    }}>
                                         {t("form.signup.link")}
                                     </Link>
                                 </Grid>

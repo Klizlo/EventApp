@@ -25,11 +25,12 @@ const SummaryReservationStep = ({client, order, handleBack}) => {
                     onClick={handleBack}
                     variant="contained"
                     sx={{
+                        fontWeight: 'bold',
                         mt: 3,
                         mb: 2,
                         background: '#FF8834',
                         '&:hover': {
-                            backgroundColor: 'black'
+                            backgroundColor: 'action.active'
                         }
                     }}
                 >
@@ -39,11 +40,12 @@ const SummaryReservationStep = ({client, order, handleBack}) => {
                 <Button
                     variant="contained"
                     sx={{
+                        fontWeight: 'bold',
                         mt: 3,
                         mb: 2,
                         background: '#FF8834',
                         '&:hover': {
-                            backgroundColor: 'black'
+                            backgroundColor: 'action.active'
                         }
                     }}
                     onClick={handleCheckout}>

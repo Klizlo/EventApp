@@ -1,4 +1,4 @@
-import {Box, Typography} from "@mui/material";
+import {Box, Paper, Typography} from "@mui/material";
 import {useTranslation} from "react-i18next";
 
 const BillingPanel = ({client}) => {
@@ -6,7 +6,7 @@ const BillingPanel = ({client}) => {
     const { t } = useTranslation();
 
     return (
-        <Box mx={5} boxShadow={5}>
+        <Box mx={5} component={Paper} boxShadow={5} p={3}>
             <Typography variant='h6'>{t("checkout.steps.billing.title")}</Typography>
             <Box width="100%">
                 <Typography>{client.name + " " + client.surname}</Typography>

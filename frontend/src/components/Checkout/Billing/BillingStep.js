@@ -67,11 +67,12 @@ const BillingStep = ({client, setClient, handleNext}) => {
                         type='submit'
                         variant="contained"
                         sx={{
+                            fontWeight: 'bold',
                             mt: 3,
                             mb: 2,
                             background: '#FF8834',
                             '&:hover': {
-                                backgroundColor: 'black'
+                                backgroundColor: 'action.active'
                             }
                         }}>
                         {t("checkout.steps.billing.next")}

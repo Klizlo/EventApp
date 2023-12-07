@@ -9,8 +9,8 @@ const FinalPage = () => {
 
     return (
         <Box sx={{
-            p: '2%',
-            mt: "50px",
+            padding: "2%",
+            pt: "200px",
             maxHeight: '100vh',
             width: '100vw',
             display: "flex",
@@ -28,8 +28,9 @@ const FinalPage = () => {
                     textAlign: 'center'
                 }}
             >
-                <CheckCircleOutlineIcon color='success' sx={{
-                    fontSize: '70px'
+                <CheckCircleOutlineIcon sx={{
+                    fontSize: '70px',
+                    color: 'green'
                 }}/>
                 <Typography variant='h4' color='green'>{t("finalPage.thanks")}</Typography>
             </Box>
@@ -47,11 +48,12 @@ const FinalPage = () => {
                     to='/'
                     variant="contained"
                     sx={{
+                        fontWeight: 'bold',
                         mt: 3,
                         mb: 2,
                         background: '#FF8834',
                         '&:hover': {
-                            backgroundColor: 'black'
+                            backgroundColor: 'action.active'
                         }
                     }}>
                     {t("finalPage.button")}

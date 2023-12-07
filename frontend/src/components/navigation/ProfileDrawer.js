@@ -3,7 +3,7 @@ import {
     Box, Collapse, Divider, IconButton,
     List, ListItem,
     ListItemButton, ListItemIcon,
-    ListItemText, Tooltip, Typography,
+    ListItemText, Tooltip, Typography, useTheme,
 } from "@mui/material";
 import * as React from "react";
 import VisibilityIcon from '@mui/icons-material/Visibility';
@@ -14,8 +14,13 @@ import FormatSizeIcon from '@mui/icons-material/FormatSize';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import {ExpandLess, ExpandMore} from "@mui/icons-material";
 import {useTranslation} from "react-i18next";
+import {useContext} from "react";
+import {ColorModeContext} from "../../ColorModeContext";
 
-const ProfileDrawer = ({changeLanguage}) => {
+const ProfileDrawer = ({changeLanguage, changeFontSize}) => {
+
+    const theme = useTheme();
+    const colorMode = useContext(ColorModeContext);
 
     const { t } = useTranslation();
 
@@ -28,6 +33,11 @@ const ProfileDrawer = ({changeLanguage}) => {
 
     const handleVisibilityClick = () => {
         setOpenVisibilityList(!openVisibilityList);
+    };
+
+    const changeMode = () => {
+        localStorage.setItem('mode', theme.palette.mode === 'light' ? 'dark' : 'light');
+        colorMode.toggleColorMode();
     };
 
     return (
@@ -108,27 +118,27 @@ const ProfileDrawer = ({changeLanguage}) => {
                             }}
                         >
                             <Tooltip title={t("navBar.visibility.text.normal")} >
-                                <IconButton color="inherit" >
+                                <IconButton color="inherit" onClick={() => changeFontSize('medium')} >
                                     <FormatSizeIcon fontSize="small"/>
                                 </IconButton>
                             </Tooltip>
                             <Tooltip title={t("navBar.visibility.text.large")} >
-                                <IconButton color="inherit">
+                                <IconButton color="inherit" onClick={() => changeFontSize('large')} >
                                     <FormatSizeIcon />
                                 </IconButton>
                             </Tooltip>
                             <Tooltip title={t("navBar.visibility.text.larger")} >
-                                <IconButton color="inherit">
+                                <IconButton color="inherit" onClick={() => changeFontSize('x-large')} >
                                     <FormatSizeIcon fontSize="large"/>
                                 </IconButton>
                             </Tooltip>
                         </Box>
                     </ListItem>
                     <Divider>{t("navBar.visibility.mode.name")}</Divider>
-                    <ListItemButton>
-                        <ListItemText primary={t("navBar.visibility.mode.light")} />
+                    <ListItemButton onClick={changeMode}>
+                        <ListItemText primary={t(`navBar.visibility.mode.${theme.palette.mode}`)} />
                         <ListItemIcon>
-                            <LightModeIcon />
+                            {theme.palette.mode === 'light' ? <LightModeIcon /> : <DarkModeIcon />}
                         </ListItemIcon>
                     </ListItemButton>
                 </List>

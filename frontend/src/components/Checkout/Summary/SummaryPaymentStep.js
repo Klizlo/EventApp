@@ -21,11 +21,12 @@ const SummaryPaymentStep = ({client, payment, order, handleBack, handleNext}) =>
                     onClick={handleBack}
                     variant="contained"
                     sx={{
+                        fontWeight: 'bold',
                         mt: 3,
                         mb: 2,
                         background: '#FF8834',
                         '&:hover': {
-                            backgroundColor: 'black'
+                            backgroundColor: 'action.active'
                         }
                     }}
                 >
@@ -35,11 +36,12 @@ const SummaryPaymentStep = ({client, payment, order, handleBack, handleNext}) =>
                 <Button
                     variant="contained"
                     sx={{
+                        fontWeight: 'bold',
                         mt: 3,
                         mb: 2,
                         background: '#FF8834',
                         '&:hover': {
-                            backgroundColor: 'black'
+                            backgroundColor: 'action.active'
                         }
                     }}
                     onClick={handleNext}>

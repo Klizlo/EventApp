@@ -10,7 +10,7 @@ import {
     MenuItem,
     styled,
     Toolbar, Tooltip,
-    Typography
+    Typography, useTheme
 } from "@mui/material";
 
 import MenuIcon from '@mui/icons-material/Menu';
@@ -27,6 +27,8 @@ import {Link} from "react-router-dom";
 import {ExpandLess, ExpandMore} from "@mui/icons-material";
 import FormatSizeIcon from "@mui/icons-material/FormatSize";
 import {useTranslation} from "react-i18next";
+import {useContext} from "react";
+import {ColorModeContext} from "../../ColorModeContext";
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -81,6 +83,10 @@ const NavBar = ({sites}) => {
 
     const { t, i18n } = useTranslation();
 
+    const theme = useTheme();
+
+    const colorMode = useContext(ColorModeContext);
+
     const handleProfileMenuOpen = (event) => {
         setAnchorProfileEl(event.currentTarget);
     };
@@ -100,6 +106,18 @@ const NavBar = ({sites}) => {
     const changeLanguage = (language) => {
         i18n.changeLanguage(language);
         localStorage.setItem("lang", language);
+    };
+
+    const changeFontSize = (size) => {
+        console.log(size);
+        document.documentElement.style.setProperty(
+            "font-size", size
+        )
+    }
+
+    const changeMode = () => {
+        localStorage.setItem('mode', theme.palette.mode === 'light' ? 'dark' : 'light');
+        colorMode.toggleColorMode();
     };
 
     const renderProfileMenu = (
@@ -158,28 +176,32 @@ const NavBar = ({sites}) => {
                 }}
             >
                 <Tooltip title={t("navBar.visibility.text.normal")} >
-                    <IconButton color="inherit" >
+                    <IconButton color="inherit" onClick={() => changeFontSize('medium')} >
                         <FormatSizeIcon fontSize="small"/>
                     </IconButton>
                 </Tooltip>
                 <Tooltip title={t("navBar.visibility.text.large")} >
-                    <IconButton color="inherit">
+                    <IconButton color="inherit" onClick={() => changeFontSize('large')} >
                         <FormatSizeIcon />
                     </IconButton>
                 </Tooltip>
                 <Tooltip title={t("navBar.visibility.text.larger")} >
-                    <IconButton color="inherit">
+                    <IconButton color="inherit" onClick={() => changeFontSize('x-large')} >
                         <FormatSizeIcon fontSize="large"/>
                     </IconButton>
                 </Tooltip>
             </Box>
             <Divider>{t("navBar.visibility.mode.name")}</Divider>
-            <MenuItem sx={{
-                textAlign: "center"
+            <MenuItem
+                onClick={changeMode}
+                sx={{
+                    textAlign: "center"
             }}>
                 <Box sx={{
                     display: 'flex',
+                    flexDirection: 'row',
                     alignItems: 'center',
+                    justifyContent: 'center',
                     borderRadius: 1,
                     '& svg': {
                         m: 1.5,
@@ -188,8 +210,8 @@ const NavBar = ({sites}) => {
                         mx: 0.5,
                     },
                 }}>
-                    <Typography>{t("navBar.visibility.mode.light")}</Typography>
-                    <LightModeIcon />
+                    <Typography>{t(`navBar.visibility.mode.${theme.palette.mode}`)}</Typography>
+                    {theme.palette.mode === 'light' ? <LightModeIcon /> : <DarkModeIcon />}
                 </Box>
             </MenuItem>
         </Menu>
@@ -316,7 +338,7 @@ const NavBar = ({sites}) => {
                     display: { xs: 'block' },
                     '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth, background: "black" },
                 }}>
-                <ProfileDrawer changeLanguage={changeLanguage}/>
+                <ProfileDrawer changeLanguage={changeLanguage} changeFontSize={changeFontSize} />
             </Drawer>
             {renderProfileMenu}
             {renderVisibilityMenu}
