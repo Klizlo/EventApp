@@ -83,7 +83,7 @@ export default function SignupPage() {
 
     return (
         <Container>
-            <Grid container component="main" sx={{ height: '90vh', padding: "2%", pt: "70px" }}>
+            <Grid container component="main" sx={{ height: '90vh', padding: "2%", pt: "80px" }}>
                 <Grid
                     item
                     xs={false}

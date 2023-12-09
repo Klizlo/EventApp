@@ -25,7 +25,7 @@ const EventPage = () => {
         };
 
     return(
-        <Box sx={{padding: "2%", pt: "70px"}}>
+        <Box sx={{padding: "2%", pt: "80px"}}>
             <Box>
                 <Button component={Link} to="/events"
                         disableRipple

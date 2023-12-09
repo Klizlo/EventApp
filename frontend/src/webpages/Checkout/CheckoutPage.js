@@ -4,7 +4,7 @@ import CheckoutReservationStepper from "../../components/Checkout/CheckoutReserv
 
 const CheckoutPage = () => {
     return(
-        <Box sx={{padding: "2%", pt: "70px"}}>
+        <Box sx={{padding: "2%", pt: "80px"}}>
             {/*<CheckoutPaymentStepper />*/}
             <CheckoutReservationStepper />
         </Box>

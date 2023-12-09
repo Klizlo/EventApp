@@ -63,6 +63,7 @@ export default function EventFilterDrawer ({events, setPage, close}) {
                 </ListItem>
             </List>
             <Button wariant='contained' onClick={close} sx={{
+                fontWeight: 'bold',
                 width: '90%',
                 mb: '10%',
                 color: 'text.primary',

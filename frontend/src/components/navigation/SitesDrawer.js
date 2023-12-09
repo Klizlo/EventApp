@@ -5,8 +5,12 @@ import {Link} from "react-router-dom";
 const SitesDrawer = ({sites, handleDrawerToggle}) => {
     return (
     <Box sx={{ textAlign: 'center', background: "black", color: "white" }}>
-        <Typography variant="h6" sx={{ my: 2 }}>
-            MUI
+        <Typography variant="h6" sx={{
+            fontFamily: 'Whisper',
+            fontSize: '45px',
+            my: 2
+        }}>
+            KucBilet
         </Typography>
         <Divider />
         <List>

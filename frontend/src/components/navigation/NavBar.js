@@ -251,9 +251,12 @@ const NavBar = ({sites}) => {
                         variant="h6"
                         noWrap
                         component="div"
-                        sx={{ display: { xs: 'none', sm: 'block' } }}
+                        sx={{
+                            fontFamily: 'Whisper',
+                            fontSize: '45px',
+                            display: { xs: 'none', sm: 'block' } }}
                     >
-                        MUI
+                        KucBilet
                     </Typography>
                     <Search>
                         <SearchIconWrapper>

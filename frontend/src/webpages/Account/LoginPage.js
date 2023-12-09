@@ -17,11 +17,13 @@ import ErrorIcon from '@mui/icons-material/Error';
 import validator from "validator/es";
 import {useTranslation} from "react-i18next";
 import Link from "@mui/material/Link";
+import {useNavigate} from "react-router-dom";
+import {authenticationService} from "../../services/authenticateService";
 
 export default function LoginPage() {
 
     const [data, setData] = useState({
-        email: "",
+        username: "",
         password: ""
     });
     const [error, setError] = useState("");
@@ -38,20 +40,26 @@ export default function LoginPage() {
 
     const { t } = useTranslation();
 
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
 
-        if (!validator.isEmail(data.email)) {
-            setLoading(false);
-            setEmailError(t("form.login.errors.password"));
-        }
+        // if (!validator.isEmail(data.email)) {
+        //     setLoading(false);
+        //     setEmailError(t("form.login.errors.email"));
+        // }
+
+        authenticationService.login(data.username, data.password)
+            .then(response => navigate(-1));
+
+        setLoading(false);
     };
 
     return (
         <Container>
-            <Grid container component="main" sx={{ height: '90vh', padding: "2%", pt: "70px" }}>
+            <Grid container component="main" sx={{ height: '90vh', padding: "2%", pt: "80px" }}>
                 <Grid
                     item
                     xs={false}

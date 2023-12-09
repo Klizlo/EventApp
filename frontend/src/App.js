@@ -11,7 +11,7 @@ import EventListPage from "./webpages/Event/EventListPage";
 import CheckoutPage from "./webpages/Checkout/CheckoutPage";
 import FinalPage from "./webpages/Checkout/FinalPage";
 import {useTranslation} from "react-i18next";
-import {Box, createTheme, ThemeProvider} from "@mui/material";
+import {Box, createTheme, CssBaseline, ThemeProvider} from "@mui/material";
 import {ColorModeContext} from "./ColorModeContext";
 
 function App() {
@@ -51,9 +51,9 @@ function App() {
 
   const theme = useMemo(
       () => createTheme({
-        palette: {
-          mode,
-        }
+          palette: {
+            mode,
+          },
       }),
       [mode],
   );
@@ -65,7 +65,8 @@ function App() {
             sx={{
               bgcolor: 'background.default',
               color: 'text.primary',
-              minHeight: '100vh'
+              minHeight: '100vh',
+              fontFamily: 'Roboto'
             }}
           >
             <React.StrictMode>

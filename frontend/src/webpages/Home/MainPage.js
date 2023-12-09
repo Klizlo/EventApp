@@ -48,7 +48,7 @@ const MainPage = () => {
     ];
 
     return (
-        <Box sx={{padding: "2%", pt: "70px"}}>
+        <Box sx={{padding: "2%", pt: "80px"}}>
             <Button component={Link} to="/"
                     disableRipple
                     sx={{
