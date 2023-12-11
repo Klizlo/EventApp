@@ -1,14 +1,12 @@
 import {Box, Button} from "@mui/material";
-import {DatePicker, LocalizationProvider} from "@mui/x-date-pickers";
+import {DatePicker, enUS, LocalizationProvider, plPL} from "@mui/x-date-pickers";
 import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
 import {useMemo, useState} from "react";
 import dayjs from "dayjs";
 import {getFullDate} from "../../helpers/EventData";
 import {useTranslation} from "react-i18next";
-import {enUS} from "@mui/x-date-pickers";
-import {plPL} from "@mui/x-date-pickers";
 
-export default function DateFilter ({setPage, fromDate, toDate}) {
+export default function DateFilter({setPage, fromDate, toDate}) {
 
     const [from, setFrom] = useState(fromDate !== null ? dayjs(fromDate) : null);
     const [to, setTo] = useState(toDate !== null ? dayjs(toDate) : null);
@@ -16,14 +14,15 @@ export default function DateFilter ({setPage, fromDate, toDate}) {
     const [fromError, setFromError] = useState(null);
     const [toError, setToError] = useState(null);
 
-    const { t, i18n } = useTranslation();
+    const {t, i18n} = useTranslation();
 
     const fromErrorMessage = useMemo(() => {
         switch (fromError) {
             case 'minDate': {
                 return t("events.filter.errors.fromMinDate");
             }
-            default: return '';
+            default:
+                return '';
         }
     }, [t, fromError]);
 
@@ -33,7 +32,8 @@ export default function DateFilter ({setPage, fromDate, toDate}) {
                 const date = new Date(from);
                 return t("events.filter.errors.toMinDate", {date: getFullDate(date, date, i18n.language)});
             }
-            default: return '';
+            default:
+                return '';
         }
     }, [from, toError, t, i18n]);
 
@@ -42,12 +42,12 @@ export default function DateFilter ({setPage, fromDate, toDate}) {
         let fromDate = new Date(from);
         const toDate = new Date(to);
 
-        if(from !== null && to !== null && from > to) {
+        if (from !== null && to !== null && from > to) {
             setToError('minDate');
             return;
         }
 
-        if(from === null && to === null) {
+        if (from === null && to === null) {
             url.searchParams.delete('from');
             url.searchParams.delete('to');
 
@@ -55,7 +55,7 @@ export default function DateFilter ({setPage, fromDate, toDate}) {
             return;
         }
 
-        if(from === null && to !== null) {
+        if (from === null && to !== null) {
             fromDate = new Date();
             setFrom(dayjs(fromDate));
         }
@@ -67,7 +67,7 @@ export default function DateFilter ({setPage, fromDate, toDate}) {
             window.history.replaceState(null, null, url);
 
             setPage();
-        } else if(fromDate.getTime() <= toDate.getTime()) {
+        } else if (fromDate.getTime() <= toDate.getTime()) {
 
             url.searchParams.set('from', fromDate.toDateString());
             url.searchParams.set('to', toDate.toDateString());
@@ -114,8 +114,8 @@ export default function DateFilter ({setPage, fromDate, toDate}) {
                                 }
                             }}
                             sx={{
-                    my: '5%'
-                }}/>
+                                my: '5%'
+                            }}/>
                 <Button onClick={handleClick}
                         sx={{
                             color: 'text.primary',
@@ -123,7 +123,7 @@ export default function DateFilter ({setPage, fromDate, toDate}) {
                             borderColor: 'text.primary',
                             borderStyle: 'solid',
                             borderWidth: '2px'
-                }}>
+                        }}>
                     {t("events.filter.accept")}
                 </Button>
             </Box>

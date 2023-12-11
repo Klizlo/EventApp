@@ -5,7 +5,7 @@ import {useTranslation} from "react-i18next";
 
 const HomeSection = ({title, link, events}) => {
 
-    const { t } = useTranslation();
+    const {t} = useTranslation();
 
     return (
         <Box m='2%'>
@@ -14,8 +14,8 @@ const HomeSection = ({title, link, events}) => {
                 flexDirection: "row",
                 justifyContent: "space-between",
                 mb: '2%'
-            }} >
-                <Typography variant="h5" color="#FF8834" fontWeight="bold" >
+            }}>
+                <Typography variant="h5" color="#FF8834" fontWeight="bold">
                     {title}
                 </Typography>
                 <Button component={Link} to={link} sx={{
@@ -27,7 +27,7 @@ const HomeSection = ({title, link, events}) => {
             <Grid container spacing={5}>
                 {events.map((event, index) => (
                     <Grid item xs={6} md={4} lg={3} key={index}>
-                        <EventHomePanel event={event} />
+                        <EventHomePanel event={event}/>
                     </Grid>
                 ))}
             </Grid>

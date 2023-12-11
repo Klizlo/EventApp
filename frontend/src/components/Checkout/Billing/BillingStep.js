@@ -11,7 +11,7 @@ const BillingStep = ({client, setClient, handleNext}) => {
     const [phoneError, setPhoneError] = useState("");
     const [postalCodeError, setPostalCodeError] = useState("");
 
-    const { t } = useTranslation();
+    const {t} = useTranslation();
 
     const handleChange = (e) => {
         setClient({...client, [e.target.name]: e.target.value});
@@ -28,19 +28,19 @@ const BillingStep = ({client, setClient, handleNext}) => {
 
     const validateData = () => {
         // validate email
-        if(!validator.isEmail(client.email)) {
+        if (!validator.isEmail(client.email)) {
             setEmailError(t("form.signup.email"));
             return false;
         }
 
         //validate phone number
-        if(!validator.isMobilePhone(client.phone, ['pl-PL'])){
+        if (!validator.isMobilePhone(client.phone, ['pl-PL'])) {
             setPhoneError(t("form.signup.email"))
             return false;
         }
 
         //validate postal code
-        if(!validator.isPostalCode(client.postalCode, ['PL'])){
+        if (!validator.isPostalCode(client.postalCode, ['PL'])) {
             setPostalCodeError(t("form.address.errors.postalCode"))
             return false;
         }
@@ -54,15 +54,17 @@ const BillingStep = ({client, setClient, handleNext}) => {
             <Box component='form' method='POST' onSubmit={handleSubmit}>
                 <Grid container>
                     <Grid item xs p={2}>
-                        <ClientDataPanel client={client} emailError={emailError} handleChange={handleChange} phoneError={phoneError}/>
+                        <ClientDataPanel client={client} emailError={emailError} handleChange={handleChange}
+                                         phoneError={phoneError}/>
                     </Grid>
-                    <Divider orientation='vertical' flexItem />
+                    <Divider orientation='vertical' flexItem/>
                     <Grid item xs p={2}>
-                        <ClientAddressPanel client={client} handleChange={handleChange} postalCodeError={postalCodeError}/>
+                        <ClientAddressPanel client={client} handleChange={handleChange}
+                                            postalCodeError={postalCodeError}/>
                     </Grid>
                 </Grid>
-                <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
-                    <Box sx={{ flex: '1 1 auto' }} />
+                <Box sx={{display: 'flex', flexDirection: 'row', pt: 2}}>
+                    <Box sx={{flex: '1 1 auto'}}/>
                     <Button
                         type='submit'
                         variant="contained"

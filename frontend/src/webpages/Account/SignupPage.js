@@ -1,8 +1,10 @@
 import {useState} from "react";
 import {
     Alert,
-    Box, Checkbox,
-    Container, FormControlLabel,
+    Box,
+    Checkbox,
+    Container,
+    FormControlLabel,
     Grid,
     IconButton,
     InputAdornment,
@@ -36,7 +38,7 @@ export default function SignupPage() {
     const [showPassword, setShowPassword] = useState(false);
     const [loading, setLoading] = useState(false);
 
-    const { t } = useTranslation();
+    const {t} = useTranslation();
 
     const handleShowPassword = () => setShowPassword(!showPassword);
 
@@ -59,7 +61,7 @@ export default function SignupPage() {
 
     const validateData = () => {
         // validate email
-        if(!validator.isEmail(data.email)) {
+        if (!validator.isEmail(data.email)) {
             setEmailError(t("form.signup.email"));
             return false;
         }
@@ -73,7 +75,7 @@ export default function SignupPage() {
         }
 
         //validate phone number
-        if(!validator.isMobilePhone(data.phone, ['pl-PL'])){
+        if (!validator.isMobilePhone(data.phone, ['pl-PL'])) {
             setPhoneError(t("form.signup.phone"))
             return false;
         }
@@ -83,7 +85,7 @@ export default function SignupPage() {
 
     return (
         <Container>
-            <Grid container component="main" sx={{ height: '90vh', padding: "2%", pt: "80px" }}>
+            <Grid container component="main" sx={{height: '90vh', padding: "2%", pt: "80px"}}>
                 <Grid
                     item
                     xs={false}
@@ -98,9 +100,9 @@ export default function SignupPage() {
                         backgroundPosition: 'center',
                     }}/>
                 <Grid item xs={12} sm={8} md={5} elevation={6} square
-                    sx={{
-                        textAlign: "start"
-                    }}>
+                      sx={{
+                          textAlign: "start"
+                      }}>
                     <Typography
                         variant="h5"
                         mt="10%"
@@ -122,7 +124,7 @@ export default function SignupPage() {
                             flexDirection: 'column',
                             alignItems: 'center',
                         }}>
-                        <Box component="form" method="POST" onSubmit={handleSubmit} sx={{ mt: 1 }}>
+                        <Box component="form" method="POST" onSubmit={handleSubmit} sx={{mt: 1}}>
                             <TextField
                                 margin="normal"
                                 required
@@ -160,7 +162,7 @@ export default function SignupPage() {
                                 InputProps={{
                                     startAdornment: emailError !== "" && (
                                         <InputAdornment position="start">
-                                            <ErrorIcon color="error" />
+                                            <ErrorIcon color="error"/>
                                         </InputAdornment>
                                     )
                                 }}
@@ -180,7 +182,7 @@ export default function SignupPage() {
                                 InputProps={{
                                     startAdornment: phoneError !== "" && (
                                         <InputAdornment position="start">
-                                            <ErrorIcon color="error" />
+                                            <ErrorIcon color="error"/>
                                         </InputAdornment>
                                     )
                                 }}
@@ -201,7 +203,7 @@ export default function SignupPage() {
                                 InputProps={{
                                     endAdornment: (
                                         <IconButton onClick={handleShowPassword}>
-                                            {showPassword ? <VisibilityOff /> : <VisibilityIcon />}
+                                            {showPassword ? <VisibilityOff/> : <VisibilityIcon/>}
                                         </IconButton>
                                     ),
                                     startAdornment: passwordError !== "" && (
@@ -214,12 +216,12 @@ export default function SignupPage() {
                             />
                             {error && <Alert severity="error">{error}</Alert>}
                             <FormControlLabel control={
-                            <Checkbox value="remember" required sx={{
+                                <Checkbox value="remember" required sx={{
                                     color: '#FF8834',
                                     '&.Mui-checked': {
                                         color: '#FF8834',
                                     }
-                                }} onChange={handleChecked}/> }
+                                }} onChange={handleChecked}/>}
                                               label=""/>
                             {t("form.signup.terms")}
                             <LoadingButton
@@ -227,7 +229,7 @@ export default function SignupPage() {
                                 fullWidth
                                 loading={loading}
                                 loadingPosition="start"
-                                startIcon={<SaveIcon />}
+                                startIcon={<SaveIcon/>}
                                 variant="contained"
                                 sx={{
                                     mt: 3,

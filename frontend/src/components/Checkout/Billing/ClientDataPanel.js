@@ -4,7 +4,7 @@ import {useTranslation} from "react-i18next";
 
 const ClientDataPanel = ({client, handleChange, emailError, phoneError}) => {
 
-    const { t } = useTranslation();
+    const {t} = useTranslation();
 
     return (
         <Box>
@@ -45,7 +45,7 @@ const ClientDataPanel = ({client, handleChange, emailError, phoneError}) => {
                 InputProps={{
                     startAdornment: emailError !== "" && (
                         <InputAdornment position="start">
-                            <ErrorIcon color="error" />
+                            <ErrorIcon color="error"/>
                         </InputAdornment>
                     )
                 }}
@@ -65,7 +65,7 @@ const ClientDataPanel = ({client, handleChange, emailError, phoneError}) => {
                 InputProps={{
                     startAdornment: phoneError !== "" && (
                         <InputAdornment position="start">
-                            <ErrorIcon color="error" />
+                            <ErrorIcon color="error"/>
                         </InputAdornment>
                     )
                 }}

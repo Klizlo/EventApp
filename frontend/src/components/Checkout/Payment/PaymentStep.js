@@ -5,7 +5,7 @@ import {useTranslation} from "react-i18next";
 
 const PaymentStep = ({currentPayment, setPayment, client, handleNext, handleBack, setError, setOpenSnackBar}) => {
 
-    const { t } = useTranslation();
+    const {t} = useTranslation();
 
     const nextPage = () => {
         if (currentPayment.name !== null) {
@@ -41,7 +41,7 @@ const PaymentStep = ({currentPayment, setPayment, client, handleNext, handleBack
                     <BillingPanel client={client}/>
                 </Grid>
             </Grid>
-            <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
+            <Box sx={{display: 'flex', flexDirection: 'row', pt: 2}}>
                 <Button
                     onClick={handleBack}
                     variant="contained"
@@ -57,7 +57,7 @@ const PaymentStep = ({currentPayment, setPayment, client, handleNext, handleBack
                 >
                     {t("checkout.steps.payment.back")}
                 </Button>
-                <Box sx={{ flex: '1 1 auto' }} />
+                <Box sx={{flex: '1 1 auto'}}/>
                 <Button
                     variant="contained"
                     sx={{

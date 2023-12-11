@@ -3,7 +3,7 @@ import {useTranslation} from "react-i18next";
 
 const LoginStep = ({handleNext}) => {
 
-    const { t } = useTranslation();
+    const {t} = useTranslation();
 
     return (
         <Grid container my={5}>
@@ -21,7 +21,7 @@ const LoginStep = ({handleNext}) => {
                         '&:hover': {
                             backgroundColor: 'action.active'
                         }
-                }}>
+                    }}>
                     {t("checkout.steps.login.guest")}
                 </Button>
             </Grid>
@@ -34,7 +34,7 @@ const LoginStep = ({handleNext}) => {
                 </Typography>
                 <Button
                     variant='contained'
-                    onClick={() => window.location='/signup'}
+                    onClick={() => window.location = '/signup'}
                     sx={{
                         fontWeight: 'bold',
                         backgroundColor: 'grey',
@@ -43,7 +43,7 @@ const LoginStep = ({handleNext}) => {
                         '&:hover': {
                             backgroundColor: 'action.active'
                         }
-                }}>
+                    }}>
                     {t("checkout.steps.login.register.button")}
                 </Button>
             </Grid>
@@ -56,7 +56,7 @@ const LoginStep = ({handleNext}) => {
                 </Typography>
                 <Button
                     variant='contained'
-                    onClick={() => window.location='/login'}
+                    onClick={() => window.location = '/login'}
                     sx={{
                         fontWeight: 'bold',
                         backgroundColor: 'grey',
@@ -65,7 +65,7 @@ const LoginStep = ({handleNext}) => {
                         '&:hover': {
                             backgroundColor: 'action.active'
                         }
-                }}>
+                    }}>
                     {t("checkout.steps.login.login.button")}
                 </Button>
             </Grid>

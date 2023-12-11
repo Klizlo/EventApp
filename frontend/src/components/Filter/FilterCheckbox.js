@@ -32,6 +32,6 @@ export default function FilterCheckbox({name, value, setPage}) {
                           }
                       }}
             />
-        } />
+        }/>
     );
 }

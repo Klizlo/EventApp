@@ -4,7 +4,7 @@ import {useTranslation} from "react-i18next";
 
 const EventImage = ({event}) => {
 
-    const { t } = useTranslation();
+    const {t} = useTranslation();
 
     return (
         <Box sx={{
@@ -36,10 +36,10 @@ const EventImage = ({event}) => {
                 p: '20px',
                 borderRadius: '0 25px 0 0'
             }}>
-                <Typography color='white' >
+                <Typography color='white'>
                     {t("event.date.name")}: {getFullDate(event.start_date, event.end_date)}
                 </Typography>
-                <Typography color='white' >
+                <Typography color='white'>
                     {t("event.place")}: {event.place}
                 </Typography>
             </Box>

@@ -12,7 +12,7 @@ const ReservationStep = ({client, setClient, handleNext}) => {
         setClient({...client, [e.target.name]: e.target.value});
     };
 
-    const { t } = useTranslation();
+    const {t} = useTranslation();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -41,13 +41,13 @@ const ReservationStep = ({client, setClient, handleNext}) => {
 
     return (
         <Box my={5}
-            sx={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                alignItems: 'center',
-                textAlign: 'center'
-            }}
+             sx={{
+                 display: "flex",
+                 flexDirection: "column",
+                 justifyContent: "center",
+                 alignItems: 'center',
+                 textAlign: 'center'
+             }}
              component='form' method='POST' onSubmit={handleSubmit}
         >
             <Typography variant='h5' color='#FF8834'>{t("checkout.steps.reservation.title")}</Typography>
@@ -94,7 +94,7 @@ const ReservationStep = ({client, setClient, handleNext}) => {
                     InputProps={{
                         startAdornment: emailError !== "" && (
                             <InputAdornment position="start">
-                                <ErrorIcon color="error" />
+                                <ErrorIcon color="error"/>
                             </InputAdornment>
                         )
                     }}
@@ -114,7 +114,7 @@ const ReservationStep = ({client, setClient, handleNext}) => {
                     InputProps={{
                         startAdornment: phoneError !== "" && (
                             <InputAdornment position="start">
-                                <ErrorIcon color="error" />
+                                <ErrorIcon color="error"/>
                             </InputAdornment>
                         )
                     }}
@@ -127,9 +127,9 @@ const ReservationStep = ({client, setClient, handleNext}) => {
                     flexDirection: 'row',
                     pt: 2,
                     width: '100%'
-            }}
+                }}
             >
-                <Box sx={{ flex: '1 1 auto' }} />
+                <Box sx={{flex: '1 1 auto'}}/>
                 <Button
                     type='submit'
                     variant="contained"

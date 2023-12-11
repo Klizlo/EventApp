@@ -1,9 +1,9 @@
 import {Box, Typography} from "@mui/material";
 import {useTranslation} from "react-i18next";
 
-function EventDescription({event}) {
+function EventDetails({event}) {
 
-    const { t } = useTranslation();
+    const {t} = useTranslation();
 
     return (
         <Box>
@@ -15,4 +15,4 @@ function EventDescription({event}) {
     );
 }
 
-export default EventDescription;
+export default EventDetails;

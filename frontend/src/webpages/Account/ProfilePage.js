@@ -6,25 +6,25 @@ import {useTranslation} from "react-i18next";
 
 export default function ProfilePage() {
 
-    const { t } = useTranslation();
+    const {t} = useTranslation();
 
-    return(
+    return (
         <Box sx={{padding: "2%", pt: "80px"}}>
             <Button component={Link} to="/profile"
                     disableRipple
                     sx={{
-                color: "text.primary",
-                "&.MuiButtonBase-root:hover": {
-                    backgroundColor: 'transparent'
-                }
-            }}>{t("profile.name")}</Button>
+                        color: "text.primary",
+                        "&.MuiButtonBase-root:hover": {
+                            backgroundColor: 'transparent'
+                        }
+                    }}>{t("profile.name")}</Button>
             <Container>
                 <Grid container component="main" columnSpacing={20}>
                     <Grid item xs={12} md={7}>
-                        <MyTicketsPanel />
+                        <MyTicketsPanel/>
                     </Grid>
                     <Grid item xs={12} md={5}>
-                        <ProfileDetails />
+                        <ProfileDetails/>
                     </Grid>
                 </Grid>
             </Container>

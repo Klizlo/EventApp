@@ -4,9 +4,10 @@ import {useTranslation} from "react-i18next";
 
 const PaymentList = ({payments, currentPayment, setPayment}) => {
 
-    const showPayments = payments.map(payment => <PaymentButton payment={payment} currentPayment={currentPayment} setPayment={setPayment}/>);
+    const showPayments = payments.map(payment => <PaymentButton payment={payment} currentPayment={currentPayment}
+                                                                setPayment={setPayment}/>);
 
-    const { t } = useTranslation();
+    const {t} = useTranslation();
 
     return (
         <Box sx={{

@@ -1,16 +1,21 @@
 import * as React from "react";
+import {useContext} from "react";
 import {
     alpha,
     AppBar,
     Badge,
-    Box, Divider, Drawer,
+    Box,
+    Divider,
+    Drawer,
     IconButton,
     InputBase,
     Menu,
     MenuItem,
     styled,
-    Toolbar, Tooltip,
-    Typography, useTheme
+    Toolbar,
+    Tooltip,
+    Typography,
+    useTheme
 } from "@mui/material";
 
 import MenuIcon from '@mui/icons-material/Menu';
@@ -27,10 +32,9 @@ import {Link} from "react-router-dom";
 import {ExpandLess, ExpandMore} from "@mui/icons-material";
 import FormatSizeIcon from "@mui/icons-material/FormatSize";
 import {useTranslation} from "react-i18next";
-import {useContext} from "react";
 import {ColorModeContext} from "../../ColorModeContext";
 
-const Search = styled('div')(({ theme }) => ({
+const Search = styled('div')(({theme}) => ({
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
     backgroundColor: alpha(theme.palette.common.white, 0.15),
@@ -46,7 +50,7 @@ const Search = styled('div')(({ theme }) => ({
     },
 }));
 
-const SearchIconWrapper = styled('div')(({ theme }) => ({
+const SearchIconWrapper = styled('div')(({theme}) => ({
     padding: theme.spacing(0, 2),
     height: '100%',
     position: 'absolute',
@@ -56,7 +60,7 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
     justifyContent: 'center',
 }));
 
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
+const StyledInputBase = styled(InputBase)(({theme}) => ({
     color: 'inherit',
     '& .MuiInputBase-input': {
         padding: theme.spacing(1, 1, 1, 0),
@@ -81,7 +85,7 @@ const NavBar = ({sites}) => {
     const isProfileMenuOpen = Boolean(anchorProfileEl);
     const isVisibilityMenuOpen = Boolean(anchorVisibilityEl);
 
-    const { t, i18n } = useTranslation();
+    const {t, i18n} = useTranslation();
 
     const theme = useTheme();
 
@@ -136,7 +140,8 @@ const NavBar = ({sites}) => {
             open={isProfileMenuOpen}
             onClose={handleProfileMenuClose}
         >
-            <MenuItem component={Link} to="/profile" onClick={handleProfileMenuClose}>{t("navBar.account.profile")}</MenuItem>
+            <MenuItem component={Link} to="/profile"
+                      onClick={handleProfileMenuClose}>{t("navBar.account.profile")}</MenuItem>
             <MenuItem onClick={handleProfileMenuClose}>{t("navBar.account.logout")}</MenuItem>
         </Menu>
     );
@@ -160,7 +165,7 @@ const NavBar = ({sites}) => {
             <Divider>{t("navBar.visibility.language")}</Divider>
             <MenuItem onClick={() => changeLanguage("pl")}>Polski</MenuItem>
             <MenuItem onClick={() => changeLanguage("en")}>English</MenuItem>
-            <Divider >{t("navBar.visibility.text.name")}</Divider>
+            <Divider>{t("navBar.visibility.text.name")}</Divider>
             <Box
                 sx={{
                     display: 'flex',
@@ -175,18 +180,18 @@ const NavBar = ({sites}) => {
                     },
                 }}
             >
-                <Tooltip title={t("navBar.visibility.text.normal")} >
-                    <IconButton color="inherit" onClick={() => changeFontSize('medium')} >
+                <Tooltip title={t("navBar.visibility.text.normal")}>
+                    <IconButton color="inherit" onClick={() => changeFontSize('medium')}>
                         <FormatSizeIcon fontSize="small"/>
                     </IconButton>
                 </Tooltip>
-                <Tooltip title={t("navBar.visibility.text.large")} >
-                    <IconButton color="inherit" onClick={() => changeFontSize('large')} >
-                        <FormatSizeIcon />
+                <Tooltip title={t("navBar.visibility.text.large")}>
+                    <IconButton color="inherit" onClick={() => changeFontSize('large')}>
+                        <FormatSizeIcon/>
                     </IconButton>
                 </Tooltip>
-                <Tooltip title={t("navBar.visibility.text.larger")} >
-                    <IconButton color="inherit" onClick={() => changeFontSize('x-large')} >
+                <Tooltip title={t("navBar.visibility.text.larger")}>
+                    <IconButton color="inherit" onClick={() => changeFontSize('x-large')}>
                         <FormatSizeIcon fontSize="large"/>
                     </IconButton>
                 </Tooltip>
@@ -196,7 +201,7 @@ const NavBar = ({sites}) => {
                 onClick={changeMode}
                 sx={{
                     textAlign: "center"
-            }}>
+                }}>
                 <Box sx={{
                     display: 'flex',
                     flexDirection: 'row',
@@ -211,7 +216,7 @@ const NavBar = ({sites}) => {
                     },
                 }}>
                     <Typography>{t(`navBar.visibility.mode.${theme.palette.mode}`)}</Typography>
-                    {theme.palette.mode === 'light' ? <LightModeIcon /> : <DarkModeIcon />}
+                    {theme.palette.mode === 'light' ? <LightModeIcon/> : <DarkModeIcon/>}
                 </Box>
             </MenuItem>
         </Menu>
@@ -226,13 +231,36 @@ const NavBar = ({sites}) => {
     };
 
     const keyPress = (e) => {
-        if(e.keyCode === 13) {
+        if (e.keyCode === 13) {
             console.log(e.target.value);
         }
     }
 
+    const tickets = () => {
+        let orders = JSON.parse(sessionStorage.getItem("order"));
+
+        if (orders !== null) {
+            orders = orders
+                .filter(orderToEdit => {
+
+                    const orderTime = (new Date(orderToEdit.time)).getTime();
+                    const now = ((new Date()).getTime() - 15*60*1000);
+                    console.log(orderTime);
+                    console.log(now);
+
+                    return orderTime >= now;
+                });
+
+            sessionStorage.setItem("order", JSON.stringify(orders));
+
+            return orders.flatMap(order => order.tickets).length;
+        }
+
+        return 0;
+    }
+
     return (
-        <Box sx={{ flexGrow: 1 }}>
+        <Box sx={{flexGrow: 1}}>
             <AppBar position="fixed" sx={{
                 background: "black"
             }}>
@@ -243,9 +271,9 @@ const NavBar = ({sites}) => {
                         edge="start"
                         color="inherit"
                         aria-label="open drawer"
-                        sx={{ mr: 2 }}
+                        sx={{mr: 2}}
                     >
-                        <MenuIcon />
+                        <MenuIcon/>
                     </IconButton>
                     <Typography
                         variant="h6"
@@ -254,22 +282,23 @@ const NavBar = ({sites}) => {
                         sx={{
                             fontFamily: 'Whisper',
                             fontSize: '45px',
-                            display: { xs: 'none', sm: 'block' } }}
+                            display: {xs: 'none', sm: 'block'}
+                        }}
                     >
                         KucBilet
                     </Typography>
                     <Search>
                         <SearchIconWrapper>
-                            <SearchIcon />
+                            <SearchIcon/>
                         </SearchIconWrapper>
                         <StyledInputBase
                             placeholder={t("navBar.search")}
-                            inputProps={{ 'aria-label': 'search' }}
+                            inputProps={{'aria-label': 'search'}}
                             onKeyDown={keyPress}
                         />
                     </Search>
-                    <Box sx={{ flexGrow: 1 }} />
-                    <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+                    <Box sx={{flexGrow: 1}}/>
+                    <Box sx={{display: {xs: 'none', md: 'flex'}}}>
                         <Tooltip title={t("navBar.visibility.name")}>
                             <IconButton
                                 size="large"
@@ -277,8 +306,8 @@ const NavBar = ({sites}) => {
                                 aria-haspopup="true"
                                 onClick={handleVisibilityMenuOpen}
                             >
-                                <VisibilityIcon />
-                                {isVisibilityMenuOpen ? <ExpandLess /> : <ExpandMore />}
+                                <VisibilityIcon/>
+                                {isVisibilityMenuOpen ? <ExpandLess/> : <ExpandMore/>}
                             </IconButton>
                         </Tooltip>
                         <Tooltip title={t("navBar.shoppingCart")}>
@@ -286,8 +315,8 @@ const NavBar = ({sites}) => {
                                 size="large"
                                 color="inherit"
                             >
-                                <Badge badgeContent={17} color="error">
-                                    <ShoppingCartIcon />
+                                <Badge badgeContent={tickets()} color="error">
+                                    <ShoppingCartIcon/>
                                 </Badge>
                             </IconButton>
                         </Tooltip>
@@ -299,18 +328,18 @@ const NavBar = ({sites}) => {
                                 onClick={handleProfileMenuOpen}
                                 color="inherit"
                             >
-                                <AccountCircle />
+                                <AccountCircle/>
                             </IconButton>
                         </Tooltip>
                     </Box>
-                    <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+                    <Box sx={{display: {xs: 'flex', md: 'none'}}}>
                         <IconButton
                             size="large"
                             aria-label="show more"
                             onClick={handleProfileDrawerToggle}
                             color="inherit"
                         >
-                            <MoreIcon />
+                            <MoreIcon/>
                         </IconButton>
                     </Box>
                 </Toolbar>
@@ -324,10 +353,10 @@ const NavBar = ({sites}) => {
                     keepMounted: true, // Better open performance on mobile.
                 }}
                 sx={{
-                    display: { xs: 'block' },
-                    '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth, background: "black" },
+                    display: {xs: 'block'},
+                    '& .MuiDrawer-paper': {boxSizing: 'border-box', width: drawerWidth, background: "black"},
                 }}>
-                <SitesDrawer sites={sites} handleDrawerToggle={handleSitesDrawerToggle} />
+                <SitesDrawer sites={sites} handleDrawerToggle={handleSitesDrawerToggle}/>
             </Drawer>
             <Drawer
                 variant="temporary"
@@ -338,10 +367,10 @@ const NavBar = ({sites}) => {
                     keepMounted: true, // Better open performance on mobile.
                 }}
                 sx={{
-                    display: { xs: 'block' },
-                    '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth, background: "black" },
+                    display: {xs: 'block'},
+                    '& .MuiDrawer-paper': {boxSizing: 'border-box', width: drawerWidth, background: "black"},
                 }}>
-                <ProfileDrawer changeLanguage={changeLanguage} changeFontSize={changeFontSize} />
+                <ProfileDrawer changeLanguage={changeLanguage} changeFontSize={changeFontSize}/>
             </Drawer>
             {renderProfileMenu}
             {renderVisibilityMenu}

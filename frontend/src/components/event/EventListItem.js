@@ -6,7 +6,7 @@ import Link from "@mui/material/Link";
 
 const EventListItem = ({event}) => {
 
-    const { t } = useTranslation();
+    const {t} = useTranslation();
 
     return (
         <Box component={Paper} sx={{
@@ -17,7 +17,7 @@ const EventListItem = ({event}) => {
                 <Grid item xs={3} sx={{
                     backgroundImage: `url(${event.image})`,
                     backgroundSize: 'cover'
-                }} />
+                }}/>
                 <Grid item xs={9} sx={{
                     p: '2%',
                     display: 'flex',
@@ -32,7 +32,11 @@ const EventListItem = ({event}) => {
                                 <Typography variant='h5' color='#FF8834'>{event.name}</Typography>
                                 <Typography>{event.type}</Typography>
                                 <Typography>{getFullDate(event.start_date, event.end_date)}</Typography>
-                                <Box sx={{overflow: "hidden", textOverflow: "ellipsis", width: {xs: '50vw', md: '30vw'} }}>
+                                <Box sx={{
+                                    overflow: "hidden",
+                                    textOverflow: "ellipsis",
+                                    width: {xs: '50vw', md: '30vw'}
+                                }}>
                                     <Typography noWrap>{event.description}</Typography>
                                 </Box>
                             </Box>
@@ -40,13 +44,13 @@ const EventListItem = ({event}) => {
                         <Grid item xs={12} md={4}>
                             <Box sx={{
                                 display: 'flex',
-                                flexDirection: {xs: 'row', md:'column'},
+                                flexDirection: {xs: 'row', md: 'column'},
                                 alignContent: 'center',
                                 alignItems: 'center',
                                 justifyContent: 'space-between',
                                 p: 2
                             }}>
-                                <Button variant="contained" endIcon={<AddCircleIcon />} sx={{
+                                <Button variant="contained" endIcon={<AddCircleIcon/>} sx={{
                                     fontWeight: 'bold',
                                     backgroundColor: '#FF8834',
                                     '&:hover': {

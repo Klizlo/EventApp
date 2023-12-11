@@ -102,6 +102,29 @@
     },
     "edit": "Edytuj swoje dane"
   },
+  "tickets": {
+    "numberOfTickets": "Wprowadź liczbę biletów",
+    "add": "Dodaj do koszyka",
+    "ticket": {
+      "select": "Wybierz bilet {{ticketNumber}}: ",
+      "zone": "Strefa",
+      "row": "Rząd",
+      "seat": "Miejsce",
+      "add": "Dodaj bilet",
+      "edit": "Edytuj bilet"
+    },
+    "type": {
+      "label": "Typ zamówienia",
+      "reservation": "Rezerwacja",
+      "buy": "Zakup"
+    },
+    "dialog": {
+      "title": "Dodajesz bilet do koszyka!",
+      "text": "Po dodaniu biletów do koszyka, będziesz miał 15 minut na ukończenie rezerwacji/zakupu. Podczas tego zamówienia wszystkie bilety będą dla Ciebie zarezerwowane.",
+      "cancel": "Anuluj",
+      "add": "Dodaj"
+    }
+  },
   "checkout": {
     "stepper": {
       "login": "Logowanie",

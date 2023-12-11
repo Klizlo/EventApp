@@ -4,17 +4,20 @@ import FilterCheckbox from "./FilterCheckbox";
 import DateFilter from "./DateFilter";
 import {useTranslation} from "react-i18next";
 
-export default function EventFilterDrawer ({events, setPage, close}) {
+export default function EventFilterDrawer({events, setPage, close}) {
 
-    const types = events.map(event => event.type).filter(unique).map(type => <FilterCheckbox name={'type'} value={type} setPage={setPage}/>);
-    const places = events.map(event => event.place).filter(unique).map(place => <FilterCheckbox name={'place'} value={place} setPage={setPage} /> );
+    const types = events.map(event => event.type).filter(unique).map(type => <FilterCheckbox name={'type'} value={type}
+                                                                                             setPage={setPage}/>);
+    const places = events.map(event => event.place).filter(unique).map(place => <FilterCheckbox name={'place'}
+                                                                                                value={place}
+                                                                                                setPage={setPage}/>);
 
     const params = new URLSearchParams(window.location.search);
 
     const fromDate = params.get('from');
     const toDate = params.get('to');
 
-    const { t } = useTranslation();
+    const {t} = useTranslation();
 
     return (
         <Box sx={{
@@ -25,7 +28,7 @@ export default function EventFilterDrawer ({events, setPage, close}) {
             alignItems: 'center',
             justifyContent: 'space-between'
         }}>
-            <Typography variant='h5' sx={{ m: '2%' }}>{t("events.filter.title")}</Typography>
+            <Typography variant='h5' sx={{m: '2%'}}>{t("events.filter.title")}</Typography>
             <List>
                 <ListItem>
                     <FormControl component="fieldset" variant="standard">

@@ -4,7 +4,7 @@ import {useTranslation} from "react-i18next";
 
 const EventShoppingPanel = ({event}) => {
 
-    const { t } = useTranslation();
+    const {t} = useTranslation();
 
     const getColor = () => {
         const ratio = event.availableTickets / event.numberOfTickets;
@@ -32,6 +32,10 @@ const EventShoppingPanel = ({event}) => {
         return t("event.page.availability.notAvailable");
     };
 
+    const buyTicket = () => {
+        window.location.href += '/tickets';
+    };
+
     return (
         <Box sx={{
             display: 'flex',
@@ -46,17 +50,23 @@ const EventShoppingPanel = ({event}) => {
                 flexDirection: 'row'
             }}>
                 <Typography mr='10px'>{t("event.page.availability.name")}:</Typography>
-                <Typography color={getColor} >{getAvailability()}</Typography>
+                <Typography color={getColor}>{getAvailability()}</Typography>
             </Box>
-            <Button variant='contained' endIcon={<AddCircleIcon />} sx={{
-                bgcolor: '#FF8834',
-                fontWeight: 'bold',
-                p: '3%',
-                '&:hover': {
-                    bgcolor: 'action.active'
-                }
-            }} disabled={getColor() === 'gray'}>
-                { getColor() !== 'gray' ? t("event.page.buy.select") : t("event.page.buy.notAvailable")}
+            <Button
+                variant='contained'
+                endIcon={<AddCircleIcon/>}
+                sx={{
+                    bgcolor: '#FF8834',
+                    fontWeight: 'bold',
+                    p: '3%',
+                    '&:hover': {
+                        bgcolor: 'action.active'
+                    }
+                }}
+                disabled={getColor() === 'gray'}
+                onClick={buyTicket}
+            >
+                {getColor() !== 'gray' ? t("event.page.buy.select") : t("event.page.buy.notAvailable")}
             </Button>
         </Box>
     );

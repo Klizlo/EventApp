@@ -3,7 +3,7 @@ import {useTranslation} from "react-i18next";
 
 const BillingPanel = ({client}) => {
 
-    const { t } = useTranslation();
+    const {t} = useTranslation();
 
     return (
         <Box mx={5} component={Paper} boxShadow={5} p={3}>

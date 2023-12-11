@@ -7,7 +7,7 @@ import {useTranslation} from "react-i18next";
 
 const EventListBox = ({events}) => {
 
-    const { t } = useTranslation();
+    const {t} = useTranslation();
 
     const [page, setPage] = useState(1);
     const [sort, setSort] = useState('name');
@@ -22,14 +22,14 @@ const EventListBox = ({events}) => {
     };
 
     const count = Math.ceil(events
-            .filter(event => dynamicFilter(new URLSearchParams(window.location.search), event))
-            .length / 10)
+        .filter(event => dynamicFilter(new URLSearchParams(window.location.search), event))
+        .length / 10)
 
     const showEvents = events
         .filter(event => dynamicFilter(new URLSearchParams(window.location.search), event))
         .sort(dynamicSort(sort))
         .slice(((page - 1) * 10), (page * 10))
-        .map(event => <EventListItem event={event} /> );
+        .map(event => <EventListItem event={event}/>);
 
     return (
         <Box sx={{
@@ -102,8 +102,8 @@ const EventListBox = ({events}) => {
                     keepMounted: true, // Better open performance on mobile.
                 }}
                 sx={{
-                    display: { xs: 'block' },
-                    '& .MuiDrawer-paper': { boxSizing: 'border-box', width: 300 },
+                    display: {xs: 'block'},
+                    '& .MuiDrawer-paper': {boxSizing: 'border-box', width: 300},
                 }}>
                 <EventFilterDrawer events={events} setPage={() => setPage(1)} close={handleDrawerToggle}/>
             </Drawer>

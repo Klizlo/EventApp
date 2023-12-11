@@ -3,9 +3,9 @@ import {useTranslation} from "react-i18next";
 
 const ClientReservationPanel = ({client}) => {
 
-    const { t } = useTranslation();
+    const {t} = useTranslation();
 
-    return(
+    return (
         <Box component={Paper} p={2} boxShadow={5}>
             <Typography variant="h6" textAlign='center'>{t("checkout.steps.reservation.title")}</Typography>
             <Typography>{client.name + " " + client.surname}</Typography>

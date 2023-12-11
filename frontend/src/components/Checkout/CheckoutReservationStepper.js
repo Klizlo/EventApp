@@ -1,14 +1,6 @@
 import {useState} from "react";
 import LoginStep from "./Login/LoginStep";
-import {
-    Box,
-    Step,
-    StepConnector,
-    stepConnectorClasses,
-    StepLabel,
-    Stepper,
-    styled
-} from "@mui/material";
+import {Box, Step, StepConnector, stepConnectorClasses, StepLabel, Stepper, styled} from "@mui/material";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import DescriptionIcon from "@mui/icons-material/Description";
 import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
@@ -22,7 +14,7 @@ const steps = [
     "checkout.stepper.confirm",
 ];
 
-const ShoppingConnector = styled(StepConnector)(({ theme }) => ({
+const ShoppingConnector = styled(StepConnector)(({theme}) => ({
     [`&.${stepConnectorClasses.alternativeLabel}`]: {
         top: 22,
     },
@@ -117,7 +109,7 @@ const CheckoutReservationStepper = () => {
         setActiveStep((prevActiveStep) => prevActiveStep - 1);
     };
 
-    const { t } = useTranslation();
+    const {t} = useTranslation();
 
     function _renderStepContent(step) {
 
@@ -128,25 +120,26 @@ const CheckoutReservationStepper = () => {
                 return <ReservationStep client={client} setClient={setClient} handleNext={handleNext}/>
             case 2:
                 return <SummaryReservationStep order={order}
-                                           client={client}
-                                           handleNext={handleNext}
-                                           handleBack={handleBack}/>
+                                               client={client}
+                                               handleNext={handleNext}
+                                               handleBack={handleBack}/>
             default:
         }
 
     }
 
     return (
-        <Box sx={{ width: '100%' }}>
-            {activeStep !== steps.length && (<Stepper activeStep={activeStep} alternativeLabel connector={<ShoppingConnector/>}>
-                {steps.map((label, index) => {
-                    return (
-                        <Step key={label}>
-                            <StepLabel StepIconComponent={ShoppingStepIcon}>{t(label)}</StepLabel>
-                        </Step>
-                    );
-                })}
-            </Stepper>)}
+        <Box sx={{width: '100%'}}>
+            {activeStep !== steps.length && (
+                <Stepper activeStep={activeStep} alternativeLabel connector={<ShoppingConnector/>}>
+                    {steps.map((label, index) => {
+                        return (
+                            <Step key={label}>
+                                <StepLabel StepIconComponent={ShoppingStepIcon}>{t(label)}</StepLabel>
+                            </Step>
+                        );
+                    })}
+                </Stepper>)}
             {_renderStepContent(activeStep)}
         </Box>
     );

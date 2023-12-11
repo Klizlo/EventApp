@@ -4,13 +4,13 @@ import {useTranslation} from "react-i18next";
 
 const SummaryReservationStep = ({client, order, handleBack}) => {
 
-    const { t } = useTranslation();
+    const {t} = useTranslation();
 
     const handleCheckout = () => {
         window.location.href = '/confirmation';
     };
 
-    return(
+    return (
         <Box my={5}>
             <Grid container>
                 <Grid item xs={12} md={6} p={2}>
@@ -20,7 +20,7 @@ const SummaryReservationStep = ({client, order, handleBack}) => {
                     <ClientReservationPanel client={client}/>
                 </Grid>
             </Grid>
-            <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
+            <Box sx={{display: 'flex', flexDirection: 'row', pt: 2}}>
                 <Button
                     onClick={handleBack}
                     variant="contained"
@@ -36,7 +36,7 @@ const SummaryReservationStep = ({client, order, handleBack}) => {
                 >
                     {t("checkout.steps.summary.back")}
                 </Button>
-                <Box sx={{ flex: '1 1 auto' }} />
+                <Box sx={{flex: '1 1 auto'}}/>
                 <Button
                     variant="contained"
                     sx={{

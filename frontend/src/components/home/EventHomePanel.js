@@ -8,7 +8,7 @@ const EventHomePanel = ({event}) => {
         window.location = '/events/' + event.id;
     }
 
-    const { i18n } = useTranslation();
+    const {i18n} = useTranslation();
 
     return (
         <Box component={Paper} sx={{
@@ -19,7 +19,7 @@ const EventHomePanel = ({event}) => {
             flexDirection: 'column',
             alignContent: 'center',
             alignItems: 'center'
-        }} onClick={showEvent} >
+        }} onClick={showEvent}>
             <Box sx={{
                 backgroundImage: `url(${event.image})`,
                 backgroundPosition: 'center',

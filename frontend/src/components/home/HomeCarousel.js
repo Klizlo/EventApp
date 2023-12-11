@@ -20,13 +20,13 @@ const HomeCarousel = () => {
         <Carousel
             animation="slide"
             navButtonsAlwaysVisible="true"
-            NextIcon={<NavigateNextIcon />}
-            PrevIcon={<NavigateBeforeIcon />}
+            NextIcon={<NavigateNextIcon/>}
+            PrevIcon={<NavigateBeforeIcon/>}
             duration={2000}
             interval={8000}
             fullHeightHover={false}
         >
-            { items.map((item, i) => <CarouselItem key={i} item={item} />) }
+            {items.map((item, i) => <CarouselItem key={i} item={item}/>)}
         </Carousel>
     );
 }

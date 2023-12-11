@@ -4,7 +4,9 @@ import {
     Avatar,
     Box,
     Container,
-    Grid, IconButton, InputAdornment,
+    Grid,
+    IconButton,
+    InputAdornment,
     Paper,
     TextField,
     Typography
@@ -14,7 +16,6 @@ import {LoadingButton} from "@mui/lab";
 import SaveIcon from '@mui/icons-material/Send';
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import ErrorIcon from '@mui/icons-material/Error';
-import validator from "validator/es";
 import {useTranslation} from "react-i18next";
 import Link from "@mui/material/Link";
 import {useNavigate} from "react-router-dom";
@@ -38,7 +39,7 @@ export default function LoginPage() {
         setData({...data, [e.target.name]: e.target.value});
     };
 
-    const { t } = useTranslation();
+    const {t} = useTranslation();
 
     const navigate = useNavigate();
 
@@ -59,7 +60,7 @@ export default function LoginPage() {
 
     return (
         <Container>
-            <Grid container component="main" sx={{ height: '90vh', padding: "2%", pt: "80px" }}>
+            <Grid container component="main" sx={{height: '90vh', padding: "2%", pt: "80px"}}>
                 <Grid
                     item
                     xs={false}
@@ -95,12 +96,12 @@ export default function LoginPage() {
                             flexDirection: 'column',
                             alignItems: 'center',
                         }}>
-                        <Avatar sx={{ m: 1, bgcolor: '#FF8834' , width: "100px", height: "100px"}} >
+                        <Avatar sx={{m: 1, bgcolor: '#FF8834', width: "100px", height: "100px"}}>
                             <Person style={{
                                 fontSize: 60
                             }}/>
                         </Avatar>
-                        <Box component="form" method="POST" onSubmit={handleSubmit} sx={{ mt: 1 }}>
+                        <Box component="form" method="POST" onSubmit={handleSubmit} sx={{mt: 1}}>
                             <TextField
                                 error={emailError !== ""}
                                 margin="normal"
@@ -116,7 +117,7 @@ export default function LoginPage() {
                                 InputProps={{
                                     startAdornment: emailError !== "" && (
                                         <InputAdornment position="start">
-                                            <ErrorIcon color="error" />
+                                            <ErrorIcon color="error"/>
                                         </InputAdornment>
                                     )
                                 }}
@@ -137,7 +138,7 @@ export default function LoginPage() {
                                 InputProps={{
                                     endAdornment: (
                                         <IconButton onClick={handleShowPassword}>
-                                            {showPassword ? <VisibilityOff /> : <VisibilityIcon />}
+                                            {showPassword ? <VisibilityOff/> : <VisibilityIcon/>}
                                         </IconButton>
                                     ),
                                     startAdornment: passwordError !== "" && (
@@ -154,7 +155,7 @@ export default function LoginPage() {
                                 fullWidth
                                 loading={loading}
                                 loadingPosition="start"
-                                startIcon={<SaveIcon />}
+                                startIcon={<SaveIcon/>}
                                 variant="contained"
                                 sx={{
                                     mt: 3,

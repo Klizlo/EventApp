@@ -9,13 +9,15 @@ export const authenticationService = {
     register,
     logout,
     currentUser: currentUserSubject.asObservable(),
-    get currentUserValue () { return currentUserSubject.value }
+    get currentUserValue() {
+        return currentUserSubject.value
+    }
 };
 
 function login(username, password) {
     const requestOptions = {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' }
+        headers: {'Content-Type': 'application/json'}
     };
 
     return fetch(`${globals.API}/login?username=${username}&password=${password}`, requestOptions)
@@ -32,8 +34,8 @@ function login(username, password) {
 function register(username, email, password) {
     const requestOptions = {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, email, password })
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({username, email, password})
     };
 
     return fetch(`${globals.API}/auth/register`, requestOptions)

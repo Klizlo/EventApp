@@ -102,6 +102,29 @@
     },
     "edit": "Edit your details"
   },
+  "tickets": {
+    "numberOfTickets": "Enter number of tickets",
+    "add": "Add to cart",
+    "ticket": {
+      "select": "Select ticket {{ticketNumber}}: ",
+      "zone": "Zone",
+      "row": "Row",
+      "seat": "Seat",
+      "add": "Add ticket",
+      "edit": "Edit ticket"
+    },
+    "type": {
+      "label": "Order type",
+      "reservation": "Reservation",
+      "buy": "Purchase"
+    },
+    "dialog": {
+      "title": "You add tickets to your cart!",
+      "text": "After adding tickets to your cart, you will have 15 minutes to complete your purchase/reservation of tickets. During this time, all tickets will be reserved for you.",
+      "cancel": "Cancel",
+      "add": "Add"
+    }
+  },
   "checkout": {
     "stepper": {
       "login": "Login",

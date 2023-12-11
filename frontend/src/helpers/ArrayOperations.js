@@ -17,7 +17,7 @@ function dynamicFilter(params, event) {
 
     let isBetweenDates = true;
 
-    if(fromDate !== null && toDate !== null) {
+    if (fromDate !== null && toDate !== null) {
         isBetweenDates = ((startDate.getTime() >= fromDate.getTime() && startDate.getTime() <= toDate.getTime()) ||
             (endDate.getTime() >= fromDate.getTime() && endDate.getTime() <= toDate.getTime()));
     } else if (fromDate !== null) {

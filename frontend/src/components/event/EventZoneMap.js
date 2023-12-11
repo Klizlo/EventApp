@@ -21,8 +21,8 @@ const EventZoneMap = () => {
             <Box sx={{
                 position: 'relative'
             }}>
-                <Card sx={{ width: '100%' }}>
-                    <CardMedia component='img' image='/assets/rezim.jpg' height='400'/>
+                <Card sx={{width: '100%'}}>
+                    <CardMedia component='img' image='/assets/stadium.png' height='400'/>
                 </Card>
                 <Fab size='small' sx={{
                     position: 'absolute',
@@ -30,7 +30,7 @@ const EventZoneMap = () => {
                     left: '10px',
                     backgroundColor: 'inherit'
                 }} onClick={handleOpen}>
-                    <OpenInFullIcon />
+                    <OpenInFullIcon/>
                 </Fab>
             </Box>
             <Dialog
@@ -42,7 +42,7 @@ const EventZoneMap = () => {
                     position: 'relative'
                 }}>
                     <Card>
-                        <CardMedia component='img' image='/assets/rezim.jpg' sx={{
+                        <CardMedia component='img' image='/assets/stadium.png' sx={{
                             maxHeight: '100vh'
                         }}/>
                     </Card>
@@ -52,7 +52,7 @@ const EventZoneMap = () => {
                         left: '10px',
                         backgroundColor: 'inherit'
                     }} onClick={handleClose}>
-                        <CloseFullscreenIcon />
+                        <CloseFullscreenIcon/>
                     </Fab>
                 </Box>
             </Dialog>

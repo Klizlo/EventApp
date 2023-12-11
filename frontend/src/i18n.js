@@ -20,7 +20,7 @@ i18n
         interpolation: {
             escapeValue: false,
         },
-        backend:{
+        backend: {
             loadPath: `${window.location.origin}/i18n/{{lng}}.json`
         }
     });

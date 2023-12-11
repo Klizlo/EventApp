@@ -6,7 +6,7 @@ import {useTranslation} from "react-i18next";
 
 const MainPage = () => {
 
-    const { t } = useTranslation();
+    const {t} = useTranslation();
 
     const events = [
         {
@@ -28,7 +28,7 @@ const MainPage = () => {
             image: "/assets/sluchaj_ropuch.jpg"
         },
         {
-            id: 1,
+            id: 2,
             name: "Bal u Kurowej",
             type: 'Event',
             start_date: '06-28-2024',
@@ -57,7 +57,7 @@ const MainPage = () => {
                             backgroundColor: 'transparent'
                         }
                     }}>{t("home.title")}</Button>
-            <HomeCarousel />
+            <HomeCarousel/>
             <HomeSection title={t("home.recommended")} events={events} link={"/events"}/>
         </Box>
     );

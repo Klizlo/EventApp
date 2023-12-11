@@ -4,7 +4,7 @@ import {useTranslation} from "react-i18next";
 
 const PaymentRedirectStep = () => {
 
-    const { t } = useTranslation();
+    const {t} = useTranslation();
 
     const redirectToPayment = () => {
         window.location.href = '/confirmation'

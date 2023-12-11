@@ -22,13 +22,13 @@ import PaymentRedirectStep from "./PaymentRedirect/PaymentRedirectStep";
 import {useTranslation} from "react-i18next";
 
 const steps = [
-        "checkout.stepper.login",
-        "checkout.stepper.billing",
-        "checkout.stepper.payment",
-        "checkout.stepper.confirm",
+    "checkout.stepper.login",
+    "checkout.stepper.billing",
+    "checkout.stepper.payment",
+    "checkout.stepper.confirm",
 ];
 
-const ShoppingConnector = styled(StepConnector)(({ theme }) => ({
+const ShoppingConnector = styled(StepConnector)(({theme}) => ({
     [`&.${stepConnectorClasses.alternativeLabel}`]: {
         top: 22,
     },
@@ -135,7 +135,7 @@ const CheckoutPaymentStepper = () => {
         setActiveStep((prevActiveStep) => prevActiveStep - 1);
     };
 
-    const { t } = useTranslation();
+    const {t} = useTranslation();
 
     function _renderStepContent(step) {
 
@@ -159,25 +159,26 @@ const CheckoutPaymentStepper = () => {
                                            handleNext={handleNext}
                                            handleBack={handleBack}/>
             default:
-                return <PaymentRedirectStep />
+                return <PaymentRedirectStep/>
         }
 
     }
 
     return (
-        <Box sx={{ width: '100%' }}>
-            {activeStep !== steps.length && (<Stepper activeStep={activeStep} alternativeLabel connector={<ShoppingConnector/>}>
-                {steps.map((label, index) => {
-                    return (
-                        <Step key={label}>
-                            <StepLabel StepIconComponent={ShoppingStepIcon}>{t(label)}</StepLabel>
-                        </Step>
-                    );
-                })}
-            </Stepper>)}
+        <Box sx={{width: '100%'}}>
+            {activeStep !== steps.length && (
+                <Stepper activeStep={activeStep} alternativeLabel connector={<ShoppingConnector/>}>
+                    {steps.map((label, index) => {
+                        return (
+                            <Step key={label}>
+                                <StepLabel StepIconComponent={ShoppingStepIcon}>{t(label)}</StepLabel>
+                            </Step>
+                        );
+                    })}
+                </Stepper>)}
             {_renderStepContent(activeStep)}
             <Snackbar open={openSnackbar} autoHideDuration={6000} onClose={() => setOpenSnackBar(false)}>
-                <Alert onClose={() => setOpenSnackBar(false)} severity="error" sx={{ width: '100%' }}>
+                <Alert onClose={() => setOpenSnackBar(false)} severity="error" sx={{width: '100%'}}>
                     {error}
                 </Alert>
             </Snackbar>

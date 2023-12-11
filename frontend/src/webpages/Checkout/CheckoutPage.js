@@ -1,12 +1,11 @@
 import {Box} from "@mui/material";
-import CheckoutPaymentStepper from "../../components/Checkout/CheckoutPaymentStepper";
 import CheckoutReservationStepper from "../../components/Checkout/CheckoutReservationStepper";
 
 const CheckoutPage = () => {
-    return(
+    return (
         <Box sx={{padding: "2%", pt: "80px"}}>
             {/*<CheckoutPaymentStepper />*/}
-            <CheckoutReservationStepper />
+            <CheckoutReservationStepper/>
         </Box>
     );
 }

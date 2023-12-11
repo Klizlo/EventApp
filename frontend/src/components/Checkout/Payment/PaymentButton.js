@@ -7,7 +7,7 @@ const PaymentButton = ({payment, currentPayment, setPayment}) => {
         setPayment(payment);
     };
 
-    return(
+    return (
         <Button
             sx={{
                 fontWeight: 'bold',
@@ -23,7 +23,7 @@ const PaymentButton = ({payment, currentPayment, setPayment}) => {
                 }
             }}
             onClick={handleClick}
-            endIcon={currentPayment.name === payment.name && (<CheckCircleRoundedIcon />)}>
+            endIcon={currentPayment.name === payment.name && (<CheckCircleRoundedIcon/>)}>
             {payment.name}
         </Button>
     )

@@ -3,7 +3,7 @@ import {useTranslation} from "react-i18next";
 
 const CarouselItem = (props) => {
 
-    const { t } = useTranslation();
+    const {t} = useTranslation();
 
     return (
         <Container>
@@ -26,11 +26,11 @@ const CarouselItem = (props) => {
                         alignItems='center'
                         justifyContent='center'
                         sx={{
-                        backgroundColor: 'black',
-                        opacity: '70%',
-                        height: '100%',
-                        width: "100%",
-                    }} >
+                            backgroundColor: 'black',
+                            opacity: '70%',
+                            height: '100%',
+                            width: "100%",
+                        }}>
                         <Button
                             sx={{
                                 color: 'white',

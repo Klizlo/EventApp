@@ -4,7 +4,7 @@ import {useTranslation} from "react-i18next";
 
 const ClientAddressPanel = ({client, handleChange, postalCodeError}) => {
 
-    const { t } = useTranslation();
+    const {t} = useTranslation();
 
     return (
         <Box>
@@ -44,9 +44,9 @@ const ClientAddressPanel = ({client, handleChange, postalCodeError}) => {
                 InputProps={{
                     startAdornment: (
                         postalCodeError !== "" && (
-                        <InputAdornment position="start">
-                            <ErrorIcon color="error" />
-                        </InputAdornment>)
+                            <InputAdornment position="start">
+                                <ErrorIcon color="error"/>
+                            </InputAdornment>)
                     )
                 }}
                 helperText={postalCodeError}

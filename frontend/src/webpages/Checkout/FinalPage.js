@@ -5,7 +5,7 @@ import {useTranslation} from "react-i18next";
 
 const FinalPage = () => {
 
-    const { t } = useTranslation();
+    const {t} = useTranslation();
 
     return (
         <Box sx={{
@@ -42,7 +42,7 @@ const FinalPage = () => {
                     width: '90%'
                 }}
             >
-                <Box sx={{ flex: '1 1 auto' }} />
+                <Box sx={{flex: '1 1 auto'}}/>
                 <Button
                     component={Link}
                     to='/'
