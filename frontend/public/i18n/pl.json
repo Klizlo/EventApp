@@ -125,6 +125,19 @@
       "add": "Dodaj"
     }
   },
+  "cart": {
+    "noTickets": "Nie masz jeszcze żadnych biletów",
+    "checkout": "Do kasy",
+    "total": "Cena całkowita: {{price}}",
+    "delete": "Usuń z koszyka",
+    "ticket": {
+      "remaining": "Pozostały czas: ",
+      "zone": "Strefa: {{zone}}",
+      "row": "Rząd: {{row}}",
+      "seat": "Miejsce: {{seat}}",
+      "price": "Cena: {{price}}"
+    }
+  },
   "checkout": {
     "stepper": {
       "login": "Logowanie",

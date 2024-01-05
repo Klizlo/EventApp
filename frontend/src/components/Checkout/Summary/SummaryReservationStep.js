@@ -1,8 +1,9 @@
 import {Box, Button, Grid} from "@mui/material";
 import ClientReservationPanel from "./ClientReservationPanel";
 import {useTranslation} from "react-i18next";
+import OrderList from "./OrderList";
 
-const SummaryReservationStep = ({client, order, handleBack}) => {
+const SummaryReservationStep = ({client, order, setOrder, handleBack}) => {
 
     const {t} = useTranslation();
 
@@ -14,7 +15,7 @@ const SummaryReservationStep = ({client, order, handleBack}) => {
         <Box my={5}>
             <Grid container>
                 <Grid item xs={12} md={6} p={2}>
-
+                    <OrderList order={order} setOrder={setOrder} />
                 </Grid>
                 <Grid item xs={12} md={6} p={2} order={{xs: 1, md: 2}}>
                     <ClientReservationPanel client={client}/>

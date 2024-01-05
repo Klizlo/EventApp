@@ -25,7 +25,7 @@ import {ExpandLess, ExpandMore} from "@mui/icons-material";
 import {useTranslation} from "react-i18next";
 import {ColorModeContext} from "../../ColorModeContext";
 
-const ProfileDrawer = ({changeLanguage, changeFontSize}) => {
+const ProfileDrawer = ({changeLanguage, changeFontSize, cart, tickets}) => {
 
     const theme = useTheme();
     const colorMode = useContext(ColorModeContext);
@@ -82,9 +82,9 @@ const ProfileDrawer = ({changeLanguage, changeFontSize}) => {
                 <Divider sx={{background: "darkgray"}}/>
 
                 {/*Shopping cart button*/}
-                <ListItemButton>
+                <ListItemButton onClick={cart}>
                     <ListItemIcon size="large">
-                        <Badge badgeContent={17} color="error">
+                        <Badge badgeContent={tickets()} color="error">
                             <ShoppingCartIcon/>
                         </Badge>
                     </ListItemIcon>

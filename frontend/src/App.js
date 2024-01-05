@@ -14,6 +14,7 @@ import {useTranslation} from "react-i18next";
 import {Box, createTheme, ThemeProvider} from "@mui/material";
 import {ColorModeContext} from "./ColorModeContext";
 import TicketPickerPage from "./webpages/Tickets/TicketPickerPage";
+import ShoppingCartPage from "./webpages/ShoppingCart/ShoppingCartPage";
 
 function App() {
 
@@ -81,6 +82,7 @@ function App() {
                                 <Route path='/events' element={<EventListPage/>}/>
                                 <Route path="/events/:id" element={<EventPage/>}/>
                                 <Route path='/events/:id/tickets' element={<TicketPickerPage />} />
+                                <Route path='/cart' element={<ShoppingCartPage />} />
                                 <Route path='/checkout' element={<CheckoutPage/>}/>
                                 <Route path='/confirmation' element={<FinalPage/>}/>
                             </Routes>

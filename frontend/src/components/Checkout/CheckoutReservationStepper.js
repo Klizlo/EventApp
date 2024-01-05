@@ -97,7 +97,10 @@ function ShoppingStepIcon(props) {
 const CheckoutReservationStepper = () => {
     const [client, setClient] = useState(null);
 
-    const order = useState(sessionStorage.getItem("order"));
+    const [order, setOrder] = useState(
+        sessionStorage.getItem('order') !== null ?
+            JSON.parse(sessionStorage.getItem('order')) :
+            null);
 
     const [activeStep, setActiveStep] = useState(0);
 
@@ -120,6 +123,7 @@ const CheckoutReservationStepper = () => {
                 return <ReservationStep client={client} setClient={setClient} handleNext={handleNext}/>
             case 2:
                 return <SummaryReservationStep order={order}
+                                               setOrder={setOrder}
                                                client={client}
                                                handleNext={handleNext}
                                                handleBack={handleBack}/>

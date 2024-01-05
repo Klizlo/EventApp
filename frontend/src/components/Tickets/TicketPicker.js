@@ -22,41 +22,44 @@ const TicketItem = ({event, tickets, setTickets, index}) => {
 
     const [ticket, setTicket] = useState(tickets.length > index ? tickets[index] : {
         id: null,
-        event_id: event.id,
+        event: event,
         price: null,
-        seat_id: null,
-        zone_id: null
+        seat: null,
+        zone: null
     });
 
+    console.log(ticket);
+
     const [row, setRow] = useState(tickets.length > index ? event.zones
-        .find(zone => zone.id === ticket.zone_id)
-        .seats.find(seat => seat.id === ticket.seat_id).row : null);
+        .find(zone => zone.id === ticket.zone.id)
+        .seats.find(seat => seat.id === ticket.seat.id).row : null);
 
     const zones = event.zones
         .filter(zone => zone.seats.some(seat => seat.status === 'Free'));
 
     const rows = useMemo(() => {
-        return ticket.zone_id !== null ? event.zones
-            .find(zone => zone.id === ticket.zone_id)
+        return ticket.zone !== null ? ticket.zone
             .seats.filter(seat => seat.status === 'Free')
             .map(seat => seat.row).filter(unique) : [];
-    }, [event.zones, ticket.zone_id]);
+    }, [ticket.zone]);
 
     const seats = useMemo(() => {
-        return ticket.zone_id !== null && row !== null ? event.zones
-            .find(zone => ticket.zone_id !== null && zone.id === ticket.zone_id)
-            .seats.filter(seat => seat.row === row && (!tickets.some(ticket => ticket.seat_id === seat.id) || ticket.seat_id === seat.id)) : [];
-    }, [event.zones, row, ticket.seat_id, ticket.zone_id, tickets]);
+        return ticket.zone !== null && row !== null ? event.zones
+            .find(zone => ticket.zone !== null && zone.id === ticket.zone.id)
+            .seats.filter(seat => seat.row === row && seat.status === "Free"
+                && (!tickets.some(ticket => ticket.seat.id === seat.id) || ticket.seat?.id === seat.id) ) : [];
+    }, [event.zones, row, ticket.seat, ticket.zone, tickets]);
 
-    if (zones.length === 1 && ticket.zone_id === null) {
-        setTicket({...ticket, zone_id: zones[0].id})
+    if (zones.length === 1 && ticket.zone === null) {
+        setTicket({...ticket, zone: zones[0]})
     }
 
     const handleChange = (e) => {
-        if (e.target.name === 'seat_id') {
-            setTicket({...ticket, [e.target.name]: e.target.value, price: event.zones.find(zone => zone.id === ticket.zone_id).price});
+        if (e.target.name === 'seat') {
+            setTicket({...ticket, [e.target.name]: ticket.zone.seats.find(seat => seat.id === e.target.value),
+                price: ticket.zone.price});
         } else {
-            setTicket({...ticket, [e.target.name]: e.target.value});
+            setTicket({...ticket, [e.target.name]: event.zones.find(zone => zone.id === e.target.value)});
         }
     };
 
@@ -94,16 +97,16 @@ const TicketItem = ({event, tickets, setTickets, index}) => {
                 <Typography mr={2} mb={2}>{t("tickets.ticket.select", { ticketNumber: index + 1 })}</Typography>
                 <FormControl disabled={zones.length === 1} required sx={{ mr: 2, my: 2, minWidth: 120 }}>
                     <InputLabel>{t("tickets.ticket.zone")}</InputLabel>
-                    <Select name='zone_id'
+                    <Select name='zone'
                             label={t("tickets.ticket.zone")}
-                            value={ticket.zone_id}
+                            value={ticket.zone?.id}
                             onChange={handleChange}>
                         {zones.map(zone => (
                             <MenuItem value={zone.id}>{zone.name} - {zone.price} zł</MenuItem>
                         ))}
                     </Select>
                 </FormControl>
-                {ticket.zone_id !== null && (
+                {ticket.zone !== null && (
                     <FormControl required sx={{ mr: 2, my: 2, minWidth: 120 }}>
                         <InputLabel>{t("tickets.ticket.row")}</InputLabel>
                         <Select name='row'
@@ -119,9 +122,9 @@ const TicketItem = ({event, tickets, setTickets, index}) => {
                 {row !== null && (
                     <FormControl required sx={{ mr: 2, my: 2, minWidth: 120 }}>
                         <InputLabel>{t("tickets.ticket.seat")}</InputLabel>
-                        <Select name='seat_id'
+                        <Select name='seat'
                                 label={t("tickets.ticket.seat")}
-                                value={ticket.seat_id}
+                                value={ticket.seat?.id}
                                 onChange={handleChange}>
                             {seats.map(seat => (
                                 <MenuItem value={seat.id}>{seat.number}</MenuItem>
@@ -129,7 +132,7 @@ const TicketItem = ({event, tickets, setTickets, index}) => {
                         </Select>
                     </FormControl>
                 )}
-                {ticket.seat_id !== null && (
+                {ticket.seat !== null && (
                     <Button
                         variant='contained'
                         endIcon={tickets.length === index ? <AddIcon /> : <EditIcon />}
@@ -193,6 +196,7 @@ const TicketPicker = ({event, tickets, setTickets}) => {
         const order = {
             time: new Date(),
             type: ticketType,
+            event: event.name,
             tickets: tickets.slice(0, numberOfTickets)
         };
 

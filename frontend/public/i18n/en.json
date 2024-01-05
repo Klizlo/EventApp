@@ -125,6 +125,19 @@
       "add": "Add"
     }
   },
+  "cart": {
+    "noTickets": "You don't have any tickets yet",
+    "checkout": "Checkout",
+    "total": "Total price: {{price}}",
+    "delete": "Remove from cart",
+    "ticket": {
+      "remaining": "Remaining time: ",
+      "zone": "Zone: {{zone}}",
+      "row": "Row: {{row}}",
+      "seat": "Seat: {{seat}}",
+      "price": "Price: {{price}}"
+    }
+  },
   "checkout": {
     "stepper": {
       "login": "Login",
@@ -174,7 +187,12 @@
         },
         "back": "Back",
         "address": "Address:",
-        "paymentMethod": "Payment method"
+        "paymentMethod": "Payment method",
+        "dialog": {
+          "title": "No tickets in cart",
+          "content": "The 15-minute reservation has expired. After clicking the button you will be redirected to the home page.",
+          "button": "Go to home page"
+        }
       },
       "redirect": {
         "redirect": "Redirect to payment page",

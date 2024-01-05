@@ -9,10 +9,10 @@ const TicketPickerPage = () => {
 
     const event = {
         id: 1,
-        name: "Dziunia nie jesteś moim szefem",
+        name: "Dziunia nie jesteś moim szefem", // nwm jak to się bedzie jeszcze nazywało
         start_date: '05-08-2023',
         end_date: '05-08-2023',
-        place: 'Dom Dziuni',
+        place: 'Dom Dziuni', //nwm jak to się będzie jeszcze nazywało
         zones: [
             {
                 id: 1,

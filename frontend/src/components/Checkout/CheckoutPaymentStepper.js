@@ -123,7 +123,10 @@ const CheckoutPaymentStepper = () => {
 
     const [client, setClient] = useState(null);
 
-    const order = useState(sessionStorage.getItem("order"));
+    const [order, setOrder] = useState(
+        sessionStorage.getItem('order') !== null ?
+            JSON.parse(sessionStorage.getItem('order')) :
+            null);
 
     const [activeStep, setActiveStep] = useState(0);
 
@@ -154,6 +157,7 @@ const CheckoutPaymentStepper = () => {
                                     setOpenSnackBar={setOpenSnackBar}/>
             case 3:
                 return <SummaryPaymentStep order={order}
+                                           setOrder={setOrder}
                                            client={client}
                                            payment={payment}
                                            handleNext={handleNext}

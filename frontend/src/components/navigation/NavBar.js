@@ -240,23 +240,25 @@ const NavBar = ({sites}) => {
         let orders = JSON.parse(sessionStorage.getItem("order"));
 
         if (orders !== null) {
+
             orders = orders
                 .filter(orderToEdit => {
 
                     const orderTime = (new Date(orderToEdit.time)).getTime();
                     const now = ((new Date()).getTime() - 15*60*1000);
-                    console.log(orderTime);
-                    console.log(now);
 
                     return orderTime >= now;
                 });
-
             sessionStorage.setItem("order", JSON.stringify(orders));
 
             return orders.flatMap(order => order.tickets).length;
         }
 
         return 0;
+    }
+
+    const cart = () => {
+        window.location.href = '/cart';
     }
 
     return (
@@ -314,6 +316,7 @@ const NavBar = ({sites}) => {
                             <IconButton
                                 size="large"
                                 color="inherit"
+                                onClick={cart}
                             >
                                 <Badge badgeContent={tickets()} color="error">
                                     <ShoppingCartIcon/>
@@ -370,7 +373,7 @@ const NavBar = ({sites}) => {
                     display: {xs: 'block'},
                     '& .MuiDrawer-paper': {boxSizing: 'border-box', width: drawerWidth, background: "black"},
                 }}>
-                <ProfileDrawer changeLanguage={changeLanguage} changeFontSize={changeFontSize}/>
+                <ProfileDrawer changeLanguage={changeLanguage} changeFontSize={changeFontSize} cart={cart} tickets={tickets}/>
             </Drawer>
             {renderProfileMenu}
             {renderVisibilityMenu}
