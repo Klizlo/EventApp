@@ -13,7 +13,7 @@ const CarouselItem = (props) => {
                   alignItems="stretch"
                   direction={{xs: 'column', md: 'row'}}
                   sx={{
-                      backgroundImage: `url(${props.item.url})`,
+                      backgroundImage: props.item.pictures,
                       backgroundSize: 'cover',
                       height: '300px'
                   }}

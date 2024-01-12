@@ -6,8 +6,11 @@ const EventShoppingPanel = ({event}) => {
 
     const {t} = useTranslation();
 
+    const availableTickets = event.zones.flatMap(zone => zone.seats).filter(seat => seat.status === 'Free');
+    const allTickets = event.zones.flatMap(zone => zone.seats);
+
     const getColor = () => {
-        const ratio = event.availableTickets / event.numberOfTickets;
+        const ratio = availableTickets.length / allTickets.length;
         if (ratio >= 0.5) {
             return 'green';
         } else if (ratio >= 0.3) {
@@ -20,7 +23,7 @@ const EventShoppingPanel = ({event}) => {
     };
 
     const getAvailability = () => {
-        const ratio = event.availableTickets / event.numberOfTickets;
+        const ratio = availableTickets.length / allTickets.length;
         if (ratio >= 0.5) {
             return t("event.page.availability.high");
         } else if (ratio >= 0.3) {

@@ -16,9 +16,9 @@ const EventDescription = ({event}) => {
                  alignContent: 'center',
                  textAlign: 'center'
              }}>
-            <Typography variant='h4' color='#FF8834'>{event.name}</Typography>
+            <Typography variant='h4' color='#FF8834'>{event.title}</Typography>
             <Typography variant='h5' color='#616062'>
-                {getFullDate(event.start_date, event.end_date, i18n.language)} / {event.place}
+                {getFullDate(event.startDate, event.endDate, i18n.language)} / {event.place}
             </Typography>
         </Box>
     );

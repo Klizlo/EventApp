@@ -1,6 +1,7 @@
 import {Box, Typography} from "@mui/material";
 import {getFullDate} from "../../helpers/EventData";
 import {useTranslation} from "react-i18next";
+import {Address} from "../../helpers/Address";
 
 const EventImage = ({event}) => {
 
@@ -8,7 +9,7 @@ const EventImage = ({event}) => {
 
     return (
         <Box sx={{
-            backgroundImage: `url(${event.image})`,
+            backgroundImage: event.pictures,
             backgroundPosition: 'center',
             backgroundSize: 'cover',
             height: '400px',
@@ -26,7 +27,7 @@ const EventImage = ({event}) => {
                 borderRadius: '0 0 25px 0'
             }}>
                 <Typography variant='h5' color='white'>
-                    {event.name}
+                    {event.title}
                 </Typography>
             </Box>
             <Box sx={{
@@ -37,10 +38,10 @@ const EventImage = ({event}) => {
                 borderRadius: '0 25px 0 0'
             }}>
                 <Typography color='white'>
-                    {t("event.date.name")}: {getFullDate(event.start_date, event.end_date)}
+                    {t("event.date.name")}: {getFullDate(event.startDate, event.endDate)}
                 </Typography>
                 <Typography color='white'>
-                    {t("event.place")}: {event.place}
+                    {t("event.place")}: {Address.displayAddress(Address.getAddress(event.address))}
                 </Typography>
             </Box>
         </Box>

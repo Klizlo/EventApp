@@ -180,7 +180,7 @@ const TicketPicker = ({event, tickets, setTickets}) => {
         let value = parseInt(e.target.value);
 
         const min = 0;
-        const max = 6;
+        const max = Math.min(event.zones.flatMap(zone => zone.seats).filter(seat => seat.status === 'Free').length, 6);
 
         if (value > max) value = max;
         if (value < min) value = min;

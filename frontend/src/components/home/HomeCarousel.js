@@ -3,18 +3,7 @@ import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import CarouselItem from "./CarouselItem";
 
-const HomeCarousel = () => {
-
-    var items = [
-        {
-            name: "Dziunia",
-            url: "/assets/dziunia.jpg"
-        },
-        {
-            name: "Sluchaj ropuch",
-            url: "/assets/sluchaj_ropuch.jpg"
-        }
-    ]
+const HomeCarousel = ({events}) => {
 
     return (
         <Carousel
@@ -26,7 +15,7 @@ const HomeCarousel = () => {
             interval={8000}
             fullHeightHover={false}
         >
-            {items.map((item, i) => <CarouselItem key={i} item={item}/>)}
+            {events.map((event, i) => <CarouselItem key={i} item={event}/>)}
         </Carousel>
     );
 }

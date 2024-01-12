@@ -6,11 +6,8 @@ import {useTranslation} from "react-i18next";
 
 export default function EventFilterDrawer({events, setPage, close}) {
 
-    const types = events.map(event => event.type).filter(unique).map(type => <FilterCheckbox name={'type'} value={type}
+    const types = events.map(event => event.eventType.name).filter(unique).map(type => <FilterCheckbox name={'type'} value={type}
                                                                                              setPage={setPage}/>);
-    const places = events.map(event => event.place).filter(unique).map(place => <FilterCheckbox name={'place'}
-                                                                                                value={place}
-                                                                                                setPage={setPage}/>);
 
     const params = new URLSearchParams(window.location.search);
 
@@ -49,18 +46,6 @@ export default function EventFilterDrawer({events, setPage, close}) {
                         }}>{t("event.type")}</FormLabel>
                         <FormGroup>
                             {types}
-                        </FormGroup>
-                    </FormControl>
-                </ListItem>
-                <ListItem>
-                    <FormControl component="fieldset" variant="standard">
-                        <FormLabel component="legend" sx={{
-                            '&.Mui-focused': {
-                                color: '#FF8834'
-                            }
-                        }}>{t("event.place")}</FormLabel>
-                        <FormGroup>
-                            {places}
                         </FormGroup>
                     </FormControl>
                 </ListItem>

@@ -15,7 +15,7 @@ const EventListItem = ({event}) => {
         }}>
             <Grid container>
                 <Grid item xs={3} sx={{
-                    backgroundImage: `url(${event.image})`,
+                    backgroundImage: event.pictures,
                     backgroundSize: 'cover'
                 }}/>
                 <Grid item xs={9} sx={{
@@ -29,9 +29,9 @@ const EventListItem = ({event}) => {
                     <Grid container>
                         <Grid item xs={12} md={8}>
                             <Box>
-                                <Typography variant='h5' color='#FF8834'>{event.name}</Typography>
+                                <Typography variant='h5' color='#FF8834'>{event.title}</Typography>
                                 <Typography>{event.type}</Typography>
-                                <Typography>{getFullDate(event.start_date, event.end_date)}</Typography>
+                                <Typography>{getFullDate(event.startDate, event.endDate)}</Typography>
                                 <Box sx={{
                                     overflow: "hidden",
                                     textOverflow: "ellipsis",
@@ -59,7 +59,7 @@ const EventListItem = ({event}) => {
                                 }}>
                                     {t("events.buy")}
                                 </Button>
-                                <Link href='#' sx={{
+                                <Link href={"/events/" + event.id} sx={{
                                     color: 'text.primary',
                                     m: 2
                                 }}>

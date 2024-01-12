@@ -10,7 +10,7 @@ const EventListBox = ({events}) => {
     const {t} = useTranslation();
 
     const [page, setPage] = useState(1);
-    const [sort, setSort] = useState('name');
+    const [sort, setSort] = useState('title');
     const [drawerOpen, setDrawerOpen] = useState(false);
 
     const handleDrawerToggle = () => {
@@ -66,9 +66,8 @@ const EventListBox = ({events}) => {
                     }}>
                         <Select value={sort}
                                 onChange={handleSortChange}>
-                            <MenuItem value='name'>{t("events.sort.name")}</MenuItem>
-                            <MenuItem value='start_date'>{t("events.sort.date")}</MenuItem>
-                            <MenuItem value='place'>{t("events.sort.place")}</MenuItem>
+                            <MenuItem value='title'>{t("events.sort.name")}</MenuItem>
+                            <MenuItem value='startDate'>{t("events.sort.date")}</MenuItem>
                         </Select>
                     </FormControl>
                 </Box>

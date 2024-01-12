@@ -21,29 +21,29 @@ const EventHomePanel = ({event}) => {
             alignItems: 'center'
         }} onClick={showEvent}>
             <Box sx={{
-                backgroundImage: `url(${event.image})`,
+                backgroundImage: event.pictures,
                 backgroundPosition: 'center',
                 backgroundSize: 'cover',
                 height: '300px',
                 width: '100%'
             }}/>
             <Typography variant="h6" textAlign='center'>
-                {event.name}
+                {event.title}
             </Typography>
             <Typography color='white' sx={{
                 backgroundColor: '#FF8834',
                 fontWeight: 'bold',
                 p: '10px',
                 borderRadius: '25px'
-            }}>{event.type}</Typography>
+            }}>{event.eventType.name}</Typography>
             <Typography variant="h5" sx={{
                 color: '#FF8834',
                 fontWeight: 'bold'
             }}>
-                {getDays(event.start_date, event.end_date, i18n.language)}
+                {getDays(event.startDate, event.endDate, i18n.language)}
             </Typography>
             <Typography>
-                {getMonthWithYear(event.start_date, event.end_date, i18n.language)}
+                {getMonthWithYear(event.startDate, event.endDate, i18n.language)}
             </Typography>
             <Typography></Typography>
         </Box>

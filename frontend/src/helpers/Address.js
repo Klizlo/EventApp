@@ -23,7 +23,12 @@ function createAddress(street, postalCode, city, country) {
     return null;
 }
 
+function displayAddress(address) {
+    return address.street + ", " + address.postalCode + " " + address.city + ", " + address.country;
+}
+
 export const Address = {
     getAddress,
-    createAddress
+    createAddress,
+    displayAddress
 }

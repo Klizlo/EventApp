@@ -25,7 +25,7 @@ const HomeSection = ({title, link, events}) => {
                 </Button>
             </Box>
             <Grid container spacing={5}>
-                {events.map((event, index) => (
+                {events.slice(0, 4).map((event, index) => (
                     <Grid item xs={6} md={4} lg={3} key={index}>
                         <EventHomePanel event={event}/>
                     </Grid>

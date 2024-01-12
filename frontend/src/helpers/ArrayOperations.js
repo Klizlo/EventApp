@@ -8,12 +8,11 @@ function dynamicSort(property) {
 
 function dynamicFilter(params, event) {
     const types = params.getAll('type');
-    const places = params.getAll('place');
     const fromDate = params.get('from') === null ? null : new Date(params.get('from'));
     const toDate = params.get('to') === null ? null : new Date(params.get('to'));
 
-    const startDate = new Date(event.start_date);
-    const endDate = new Date(event.end_date);
+    const startDate = new Date(event.startDate);
+    const endDate = new Date(event.endDate);
 
     let isBetweenDates = true;
 
@@ -24,8 +23,7 @@ function dynamicFilter(params, event) {
         isBetweenDates = (startDate.getTime() >= fromDate.getTime() || endDate.getTime() >= fromDate.getTime());
     }
 
-    return (types.length > 0 ? types.includes(event.type) : true) &&
-        (places.length > 0 ? places.includes(event.place) : true) &&
+    return (types.length > 0 ? types.includes(event.eventType.name) : true) &&
         isBetweenDates;
 }
 
