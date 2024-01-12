@@ -20,6 +20,8 @@ import SaveIcon from "@mui/icons-material/Send";
 import validator from "validator/es";
 import {useTranslation} from "react-i18next";
 import Link from "@mui/material/Link";
+import {authenticationService} from "../../services/authenticateService";
+import {useNavigate} from "react-router-dom";
 
 export default function SignupPage() {
 
@@ -27,7 +29,7 @@ export default function SignupPage() {
         name: "",
         surname: "",
         email: "",
-        phone: "",
+        tel_number: "",
         password: ""
     });
     const [checked, setChecked] = useState(false);
@@ -50,12 +52,20 @@ export default function SignupPage() {
         setChecked(e.target.checked);
     };
 
+    const navigate = useNavigate();
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
 
         if (!validateData()) {
             setLoading(false);
+        } else {
+            authenticationService.register(data)
+                .then(response => {
+                    console.log(response);
+                    navigate(-1);
+                }, (error) => console.log(error));
         }
     };
 

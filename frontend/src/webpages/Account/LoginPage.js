@@ -19,12 +19,13 @@ import ErrorIcon from '@mui/icons-material/Error';
 import {useTranslation} from "react-i18next";
 import Link from "@mui/material/Link";
 import {useNavigate} from "react-router-dom";
+import validator from "validator/es";
 import {authenticationService} from "../../services/authenticateService";
 
 export default function LoginPage() {
 
     const [data, setData] = useState({
-        username: "",
+        email: "",
         password: ""
     });
     const [error, setError] = useState("");
@@ -47,14 +48,16 @@ export default function LoginPage() {
         e.preventDefault();
         setLoading(true);
 
-        // if (!validator.isEmail(data.email)) {
-        //     setLoading(false);
-        //     setEmailError(t("form.login.errors.email"));
-        // }
-
-        authenticationService.login(data.username, data.password)
-            .then(response => navigate(-1));
-
+        if (!validator.isEmail(data.email)) {
+            setLoading(false);
+            setEmailError(t("form.login.errors.email"));
+        } else {
+            authenticationService.login(data)
+                .then(response => {
+                    console.log(response);
+                    navigate(-1);
+                }, (error) => {console.log(error)});
+        }
         setLoading(false);
     };
 

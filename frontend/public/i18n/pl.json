@@ -102,6 +102,16 @@
     },
     "edit": "Edytuj swoje dane"
   },
+  "editProfile": {
+    "delete": "usuń konto",
+    "update": "zaktualizuj",
+    "dialog": {
+      "title": "Jesteś pewny, że chcesz usunąć konto?",
+      "content": "Tej operacji nie można cofnąć",
+      "cancel": "Anuluj",
+      "delete": "Usuń"
+    }
+  },
   "tickets": {
     "numberOfTickets": "Wprowadź liczbę biletów",
     "add": "Dodaj do koszyka",

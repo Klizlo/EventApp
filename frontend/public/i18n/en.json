@@ -102,6 +102,16 @@
     },
     "edit": "Edit your details"
   },
+  "editProfile": {
+    "delete": "delete account",
+    "update": "Update",
+    "dialog": {
+      "title": "Are you sure you want to delete your account?",
+      "content": "This operation cannot be undone",
+      "cancel": "Cancel",
+      "delete": "Delete"
+    }
+  },
   "tickets": {
     "numberOfTickets": "Enter number of tickets",
     "add": "Add to cart",

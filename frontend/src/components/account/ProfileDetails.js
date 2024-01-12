@@ -2,10 +2,13 @@ import {Avatar, Box, Button, Paper, Typography} from "@mui/material";
 import {Person} from "@mui/icons-material";
 import {Link} from "react-router-dom";
 import {useTranslation} from "react-i18next";
+import {Address} from "../../helpers/Address";
 
-const ProfileDetails = () => {
+const ProfileDetails = ({user}) => {
 
     const {t} = useTranslation();
+
+    const address = Address.getAddress(user.address);
 
     return (
         <Box
@@ -25,21 +28,20 @@ const ProfileDetails = () => {
                     fontSize: 60
                 }}/>
             </Avatar>
-            <Typography variant="h5">Name Surname</Typography>
+            <Typography variant="h5">{user.name} {user.surname}</Typography>
             <Box width="100%">
                 <Typography variant="h6">{t("profile.panel.contact")}</Typography>
-                <Typography>{t("profile.panel.phone")}...</Typography>
-                <Typography>{t("profile.panel.email")}...</Typography>
-                <Typography>{t("profile.panel.street")}...</Typography>
-                <Typography>Zip and City</Typography>
-                <Typography>Country</Typography>
+                <Typography>{t("profile.panel.phone")} {user.tel_number}</Typography>
+                <Typography>{t("profile.panel.email")} {user.email}</Typography>
+                <Typography>{t("profile.panel.street")} {address?.street}</Typography>
+                <Typography>{address?.postalCode} {address?.city}</Typography>
+                <Typography>{address?.country}</Typography>
             </Box>
             <Button component={Link} to="/profile/edit"
                     sx={{
                         color: '#FF8834',
                         textDecoration: 'underline'
-                    }}
-            >{t("profile.edit")}</Button>
+                    }}>{t("profile.edit")}</Button>
         </Box>
     );
 }

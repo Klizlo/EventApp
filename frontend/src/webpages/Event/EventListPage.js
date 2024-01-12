@@ -2,6 +2,8 @@ import {Box, Button, Grid} from "@mui/material";
 import {Link} from "react-router-dom";
 import EventListBox from "../../components/event/EventListBox";
 import {useTranslation} from "react-i18next";
+import {useEffect} from "react";
+import {eventService} from "../../services/eventService";
 
 const EventListPage = () => {
 
@@ -169,6 +171,11 @@ const EventListPage = () => {
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vulputate neque lorem, non aliquet velit tincidunt vel. Aenean id nulla vel lacus vulputate tincidunt. Sed ullamcorper rhoncus massa, id aliquam ipsum posuere eget. Duis sit amet mauris lacinia, condimentum neque eget, condimentum arcu. Mauris id massa aliquet orci convallis vulputate id et elit. Sed dignissim nibh enim, at maximus purus vestibulum sed. Nulla arcu nisl, consectetur sed sapien in, suscipit ullamcorper libero. Nam tincidunt tincidunt turpis et laoreet. Suspendisse efficitur est vitae dui vehicula pellentesque.'
         }
     ];
+
+    useEffect(() => {
+        eventService.getAllEvents()
+            .then(response => console.log(response));
+    }, []);
 
     return (
         <Box sx={{padding: "2%", pt: "80px"}}>

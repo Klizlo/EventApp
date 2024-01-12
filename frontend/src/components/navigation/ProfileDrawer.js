@@ -24,6 +24,8 @@ import LightModeIcon from '@mui/icons-material/LightMode';
 import {ExpandLess, ExpandMore} from "@mui/icons-material";
 import {useTranslation} from "react-i18next";
 import {ColorModeContext} from "../../ColorModeContext";
+import {authenticationService} from "../../services/authenticateService";
+import {useNavigate} from "react-router-dom";
 
 const ProfileDrawer = ({changeLanguage, changeFontSize, cart, tickets}) => {
 
@@ -34,6 +36,8 @@ const ProfileDrawer = ({changeLanguage, changeFontSize, cart, tickets}) => {
 
     const [openProfileList, setOpenProfileList] = React.useState(false);
     const [openVisibilityList, setOpenVisibilityList] = React.useState(false);
+
+    const navigate = useNavigate();
 
     const handleProfileClick = () => {
         setOpenProfileList(!openProfileList);
@@ -70,8 +74,41 @@ const ProfileDrawer = ({changeLanguage, changeFontSize, cart, tickets}) => {
                     {openProfileList ? <ExpandLess/> : <ExpandMore/>}
                 </ListItemButton>
                 <Collapse in={openProfileList} timeout="auto" unmountOnExit>
+                    {localStorage.getItem("token") !== null ? (
+                        <>
+                            <List component="div" disablePadding>
+                                <ListItemButton sx={{pl: 4}} onClick={() => {
+                                    authenticationService.logout();
+                                    navigate("/");
+                                }}>
+                                    <ListItemText primary={t("navBar.account.profile")}/>
+                                </ListItemButton>
+                                <ListItemButton sx={{pl: 4}}>
+                                    <ListItemText primary={t("navBar.account.logout")}/>
+                                </ListItemButton>
+                            </List>
+                        </>
+                    ) : (
+                        <>
+                            <List component="div" disablePadding>
+                                <ListItemButton sx={{pl: 4}} onClick={() => {
+                                    navigate("/login");
+                                }}>
+                                    <ListItemText primary={t("navBar.account.login")}/>
+                                </ListItemButton>
+                                <ListItemButton sx={{pl: 4}} onClick={() => {
+                                    navigate("/signup");
+                                }}>
+                                    <ListItemText primary={t("navBar.account.signup")}/>
+                                </ListItemButton>
+                            </List>
+                        </>
+                    )}
                     <List component="div" disablePadding>
-                        <ListItemButton sx={{pl: 4}}>
+                        <ListItemButton sx={{pl: 4}} onClick={() => {
+                            authenticationService.logout();
+                            navigate("/");
+                        }}>
                             <ListItemText primary={t("navBar.account.profile")}/>
                         </ListItemButton>
                         <ListItemButton sx={{pl: 4}}>

@@ -5,6 +5,8 @@ import EventDetails from "../../components/event/EventDetails";
 import EventShoppingPanel from "../../components/event/EventShoppingPanel";
 import EventZoneMap from "../../components/event/EventZoneMap";
 import {useTranslation} from "react-i18next";
+import {useEffect} from "react";
+import {eventService} from "../../services/eventService";
 
 const EventPage = () => {
 
@@ -41,6 +43,11 @@ const EventPage = () => {
     ];
 
     const { id} = useParams();
+
+    useEffect(() => {
+        eventService.getEventById(id)
+            .then(response => console.log(response));
+    }, []);
 
     return (
         <Box sx={{padding: "2%", pt: "80px"}}>

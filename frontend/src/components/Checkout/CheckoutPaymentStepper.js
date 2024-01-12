@@ -141,7 +141,9 @@ const CheckoutPaymentStepper = () => {
     const {t} = useTranslation();
 
     function _renderStepContent(step) {
-
+        if (localStorage.getItem("token") !== null && activeStep === 0) {
+            setActiveStep(activeStep+1);
+        }
         switch (step) {
             case 0:
                 return <LoginStep handleNext={handleNext}/>

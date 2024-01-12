@@ -28,11 +28,12 @@ import LightModeIcon from '@mui/icons-material/LightMode';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import SitesDrawer from "./SitesDrawer";
 import ProfileDrawer from "./ProfileDrawer";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {ExpandLess, ExpandMore} from "@mui/icons-material";
 import FormatSizeIcon from "@mui/icons-material/FormatSize";
 import {useTranslation} from "react-i18next";
 import {ColorModeContext} from "../../ColorModeContext";
+import {authenticationService} from "../../services/authenticateService";
 
 const Search = styled('div')(({theme}) => ({
     position: 'relative',
@@ -91,6 +92,8 @@ const NavBar = ({sites}) => {
 
     const colorMode = useContext(ColorModeContext);
 
+    const navigate = useNavigate();
+
     const handleProfileMenuOpen = (event) => {
         setAnchorProfileEl(event.currentTarget);
     };
@@ -140,9 +143,26 @@ const NavBar = ({sites}) => {
             open={isProfileMenuOpen}
             onClose={handleProfileMenuClose}
         >
-            <MenuItem component={Link} to="/profile"
-                      onClick={handleProfileMenuClose}>{t("navBar.account.profile")}</MenuItem>
-            <MenuItem onClick={handleProfileMenuClose}>{t("navBar.account.logout")}</MenuItem>
+            {localStorage.getItem("token") !== null ? (
+                <>
+                    <MenuItem component={Link} to="/profile"
+                              onClick={handleProfileMenuClose}>{t("navBar.account.profile")}</MenuItem>
+                    <MenuItem onClick={() => {
+                        authenticationService.logout();
+                        navigate("/");
+                    }}>{t("navBar.account.logout")}</MenuItem>
+                </>
+            ) : (
+                <>
+                    <MenuItem component={Link} to="/login"
+                              onClick={() => {
+                                  navigate("/login");
+                              }}>{t("navBar.account.login")}</MenuItem>
+                    <MenuItem onClick={() => {
+                        navigate("/signup");
+                    }}>{t("navBar.account.signup")}</MenuItem>
+                </>
+            )}
         </Menu>
     );
 

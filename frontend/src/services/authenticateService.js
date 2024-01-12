@@ -2,7 +2,7 @@ import globals from "../helpers/globals";
 import {handleResponse} from "../helpers/handleResponse";
 import {BehaviorSubject} from "rxjs";
 
-const currentUserSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('currentUser')));
+const currentUserSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('token')));
 
 export const authenticationService = {
     login,
@@ -14,43 +14,44 @@ export const authenticationService = {
     }
 };
 
-function login(username, password) {
-    const requestOptions = {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'}
-    };
-
-    return fetch(`${globals.API}/login?username=${username}&password=${password}`, requestOptions)
-        .then(handleResponse)
-        .then(user => {
-            // store user details and jwt token in local storage to keep user logged in between page refreshes
-            localStorage.setItem('currentUser', JSON.stringify(user));
-            currentUserSubject.next(user);
-
-            return user;
-        });
-}
-
-function register(username, email, password) {
+function login(user) {
     const requestOptions = {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({username, email, password})
+        body: JSON.stringify(user)
     };
 
-    return fetch(`${globals.API}/auth/register`, requestOptions)
+    return fetch(`${globals.API}/auth/signin`, requestOptions)
         .then(handleResponse)
-        .then(user => {
+        .then(token => {
             // store user details and jwt token in local storage to keep user logged in between page refreshes
-            localStorage.setItem('currentUser', JSON.stringify(user));
-            currentUserSubject.next(user);
+            localStorage.setItem('token', JSON.stringify(token.token));
+            currentUserSubject.next(token.token);
 
-            return user;
+            return token;
+        });
+}
+
+function register(user) {
+    const requestOptions = {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(user)
+    };
+
+    return fetch(`${globals.API}/auth/signup`, requestOptions)
+        .then(handleResponse)
+        .then(token => {
+            // store user details and jwt token in local storage to keep user logged in between page refreshes
+            localStorage.setItem('token', token.token);
+            currentUserSubject.next(token.token);
+
+            return token;
         });
 }
 
 function logout() {
     // remove user from local storage to log user out
-    localStorage.removeItem('currentUser');
+    localStorage.removeItem('token');
     currentUserSubject.next(null);
 }

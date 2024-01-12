@@ -15,6 +15,7 @@ import {Box, createTheme, ThemeProvider} from "@mui/material";
 import {ColorModeContext} from "./ColorModeContext";
 import TicketPickerPage from "./webpages/Tickets/TicketPickerPage";
 import ShoppingCartPage from "./webpages/ShoppingCart/ShoppingCartPage";
+import EditProfilePage from "./webpages/Account/EditProfilePage";
 
 function App() {
 
@@ -60,6 +61,8 @@ function App() {
         [mode],
     );
 
+    const token = () => localStorage.getItem("token");
+
     return (
         <ColorModeContext.Provider value={colorMode}>
             <ThemeProvider theme={theme}>
@@ -78,7 +81,8 @@ function App() {
                                 <Route path="/" element={<MainPage/>}/>
                                 <Route path="/login" element={<LoginPage/>}/>
                                 <Route path="/signup" element={<SignupPage/>}/>
-                                <Route path="/profile" element={<ProfilePage/>}/>
+                                <Route path="/profile" element={token() !== null ? (<ProfilePage/>) : (<LoginPage/>)}/>
+                                <Route path="/profile/edit" element={token() !== null ? (<EditProfilePage/>) : (<LoginPage/>)}/>
                                 <Route path='/events' element={<EventListPage/>}/>
                                 <Route path="/events/:id" element={<EventPage/>}/>
                                 <Route path='/events/:id/tickets' element={<TicketPickerPage />} />
