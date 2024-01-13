@@ -13,8 +13,6 @@ const CheckoutPage = () => {
         navigate(-1);
     }
 
-    console.log(orders);
-
     return (
         <Box sx={{padding: "2%", pt: "80px"}}>
             { orders.some(order => order.type === "tickets.type.buy") ? (

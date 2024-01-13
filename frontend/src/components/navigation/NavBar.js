@@ -116,7 +116,6 @@ const NavBar = ({sites}) => {
     };
 
     const changeFontSize = (size) => {
-        console.log(size);
         document.documentElement.style.setProperty(
             "font-size", size
         )

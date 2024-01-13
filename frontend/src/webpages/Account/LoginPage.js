@@ -54,7 +54,6 @@ export default function LoginPage() {
         } else {
             authenticationService.login(data)
                 .then(response => {
-                    console.log(response);
                     navigate(-1);
                 }, (error) => {setError("errors.login")});
         }

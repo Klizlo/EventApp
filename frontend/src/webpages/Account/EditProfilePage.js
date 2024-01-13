@@ -28,7 +28,6 @@ export default function EditProfilePage() {
             .then(response => {
                 setUser(response)
                 setLoading(false);
-                console.log(user);
             });
     }, []);
 

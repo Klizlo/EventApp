@@ -12,7 +12,6 @@ const SummaryReservationStep = ({client, order, setOrder, handleBack}) => {
         const validOrder = orderService.makeOrderValid(order, client, null);
         orderService.order(validOrder)
             .then(response => {
-                console.log(response);
                 localStorage.setItem("order", null);
                 window.location.href = '/confirmation';
             });

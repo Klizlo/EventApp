@@ -17,7 +17,6 @@ const MainPage = () => {
     useEffect(() => {
         eventService.getAllEvents()
             .then(response => {
-                console.log(response);
                 setEvents(response);
             })
     }, []);
@@ -32,7 +31,7 @@ const MainPage = () => {
                             backgroundColor: 'transparent'
                         }
                     }}>{t("home.title")}</Button>
-            {events !== null ? (<HomeCarousel events={events.filter(event => event.start_date).slice(0, 2)}/>) : (<HomeCarouselSkeleton />)}
+            {events !== null ? (<HomeCarousel events={events.slice(0, 2)}/>) : (<HomeCarouselSkeleton />)}
             {events !== null ? (<HomeSection title={t("home.recommended")} events={events} link={"/events"}/>) : (<EventHomeSectionSkeleton />)}
         </Box>
     );

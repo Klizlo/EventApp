@@ -63,7 +63,6 @@ export default function SignupPage() {
         } else {
             authenticationService.register(data)
                 .then(response => {
-                    console.log(response);
                     navigate(-1);
                 }, (error) => setError("errors.register"));
         }

@@ -30,8 +30,6 @@ const TicketItem = ({event, tickets, setTickets, index}) => {
         zone: null
     });
 
-    console.log(ticket);
-
     const [row, setRow] = useState(tickets.length > index ? event.zones
         .find(zone => zone.id === ticket.zone.id)
         .seats.find(seat => seat.id === ticket.seat.id).row : null);

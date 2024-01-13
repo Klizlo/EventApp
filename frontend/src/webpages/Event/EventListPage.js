@@ -14,7 +14,6 @@ const EventListPage = () => {
     useEffect(() => {
         eventService.getAllEvents()
             .then(response => {
-                console.log(response);
                 setEvents(response);
             });
     }, []);

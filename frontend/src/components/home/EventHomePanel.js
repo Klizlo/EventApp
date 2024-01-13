@@ -21,7 +21,7 @@ const EventHomePanel = ({event}) => {
             alignItems: 'center'
         }} onClick={showEvent}>
             <Box sx={{
-                backgroundImage: event.pictures,
+                backgroundImage: `url(${event.pictures})`,
                 backgroundPosition: 'center',
                 backgroundSize: 'cover',
                 height: '300px',

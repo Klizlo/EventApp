@@ -15,7 +15,7 @@ const EventListItem = ({event}) => {
         }}>
             <Grid container>
                 <Grid item xs={3} sx={{
-                    backgroundImage: event.pictures,
+                    backgroundImage: `url(${event.pictures})`,
                     backgroundSize: 'cover'
                 }}/>
                 <Grid item xs={9} sx={{

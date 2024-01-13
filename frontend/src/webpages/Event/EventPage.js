@@ -20,7 +20,6 @@ const EventPage = () => {
     useEffect(() => {
         eventService.getEventById(id)
             .then((response) => {
-                console.log(response);
                 setEvent(response);
             }, (error) => setOpenAlert(true));
     }, []);

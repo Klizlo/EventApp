@@ -1,4 +1,4 @@
-import {Box, Typography} from "@mui/material";
+import {Alert, Box, Snackbar, Typography} from "@mui/material";
 import EventDescription from "../../components/Tickets/EventDescription";
 import TicketPicker from "../../components/Tickets/TicketPicker";
 import {useEffect, useState} from "react";
@@ -12,16 +12,17 @@ const TicketPickerPage = () => {
 
     const [event, setEvent] = useState(null);
 
+    const [openAlert, setOpenAlert] = useState(false);
+
     const {id} = useParams();
 
     const {t} = useTranslation();
 
     useEffect(() => {
         eventService.getEventById(id)
-            .then(response => {
-                console.log(response);
+            .then((response) => {
                 setEvent(response);
-            });
+            }, (error) => setOpenAlert(true));
     }, []);
 
 
@@ -46,6 +47,16 @@ const TicketPickerPage = () => {
 
                 </>
             )}
+            <Snackbar
+                anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+                open={openAlert}
+                onClose={() => setOpenAlert(false)}
+                autoHideDuration={6000}
+            >
+                <Alert severity="error" sx={{ width: '100%' }}>
+                    {t("errors.event")}
+                </Alert>
+            </Snackbar>
         </Box>
     );
 }
