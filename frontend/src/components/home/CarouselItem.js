@@ -36,6 +36,7 @@ const CarouselItem = (props) => {
                                 color: 'white',
                                 border: 'white solid'
                             }}
+                            onClick={() => window.location.href = `/events/${props.item.id}`}
                         >
                             {t("home.carousel.checkout")}
                         </Button>
