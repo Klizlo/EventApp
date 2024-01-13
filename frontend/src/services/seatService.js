@@ -16,5 +16,5 @@ function reserve(seats) {
         .then(handleResponse)
         .then((seats) => {
             return seats;
-        }, (error) => console.log(error));
+        }, (error) => Promise.reject(error));
 }

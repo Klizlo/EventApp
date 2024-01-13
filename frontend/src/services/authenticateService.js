@@ -23,13 +23,13 @@ function login(user) {
 
     return fetch(`${globals.API}/auth/signin`, requestOptions)
         .then(handleResponse)
-        .then(token => {
+        .then((token) => {
             // store user details and jwt token in local storage to keep user logged in between page refreshes
             localStorage.setItem('token', JSON.stringify(token.token));
             currentUserSubject.next(token.token);
 
             return token;
-        });
+        }, (error) => Promise.reject(error));
 }
 
 function register(user) {
@@ -41,13 +41,13 @@ function register(user) {
 
     return fetch(`${globals.API}/auth/signup`, requestOptions)
         .then(handleResponse)
-        .then(token => {
+        .then((token) => {
             // store user details and jwt token in local storage to keep user logged in between page refreshes
             localStorage.setItem('token', token.token);
             currentUserSubject.next(token.token);
 
             return token;
-        });
+        }, (error) => Promise.reject(error));
 }
 
 function logout() {

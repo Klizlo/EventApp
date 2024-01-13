@@ -29,5 +29,5 @@ function getEventById(id) {
         .then(handleResponse)
         .then((event) => {
             return event;
-        }, (error) => console.log(error));
+        }, (error) => Promise.reject(error));
 }

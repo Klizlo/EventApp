@@ -113,6 +113,7 @@
     }
   },
   "tickets": {
+    "noTickets": "Brak dostępnych biletów",
     "numberOfTickets": "Wprowadź liczbę biletów",
     "add": "Dodaj do koszyka",
     "ticket": {
@@ -256,5 +257,11 @@
         "postalCode": "Niepoprawny kod pocztowy"
       }
     }
+  },
+  "errors": {
+    "event": "Nie znaleziono wydarzenia",
+    "seat": "Jedno z miejsc zostało zajęte. Przeładuj stronę i wybierz nowe miejsca.",
+    "login": "Błedny adres email lub hasło.",
+    "register": "Użytkownik o podanym adresie email już istnieje."
   }
 }

@@ -16,7 +16,7 @@ const OrderItem = ({orderItem, order, setOrder}) => {
     }
 
     const handleComplete = () => {
-        order = order
+        const orders = order
             .filter(orderToEdit => {
 
                 const orderTime = (new Date(orderToEdit.time)).getTime();
@@ -24,9 +24,9 @@ const OrderItem = ({orderItem, order, setOrder}) => {
 
                 return orderTime >= now;
             });
-        sessionStorage.setItem("order", JSON.stringify(order));
+        sessionStorage.setItem("order", JSON.stringify(orders));
 
-        setOrder(order);
+        setOrder(orders);
     };
 
     const removeOrderItem = () => {

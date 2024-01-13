@@ -113,6 +113,7 @@
     }
   },
   "tickets": {
+    "noTickets": "No tickets are available",
     "numberOfTickets": "Enter number of tickets",
     "add": "Add to cart",
     "ticket": {
@@ -256,5 +257,11 @@
         "postalCode": "Invalid postal code"
       }
     }
+  },
+  "errors": {
+    "event": "Event not found",
+    "seat": "One of the seat was taken. Reload the page and select new seats",
+    "login": "Invalid email or password.",
+    "register": "User with given email already exists."
   }
 }

@@ -56,7 +56,7 @@ export default function LoginPage() {
                 .then(response => {
                     console.log(response);
                     navigate(-1);
-                }, (error) => {console.log(error)});
+                }, (error) => {setError("errors.login")});
         }
         setLoading(false);
     };
@@ -152,7 +152,7 @@ export default function LoginPage() {
                                 }}
                                 helperText={passwordError}
                             />
-                            {error && <Alert severity="error">{error}</Alert>}
+                            {error && <Alert severity="error">{t(error)}</Alert>}
                             <LoadingButton
                                 type="submit"
                                 fullWidth

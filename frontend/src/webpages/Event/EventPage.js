@@ -1,4 +1,4 @@
-import {Box, Button, Grid} from "@mui/material";
+import {Alert, Box, Button, Grid, Snackbar} from "@mui/material";
 import {Link, useParams} from "react-router-dom";
 import EventImage from "../../components/event/EventImage";
 import EventDetails from "../../components/event/EventDetails";
@@ -15,13 +15,14 @@ const EventPage = () => {
     const { id} = useParams();
 
     const [event, setEvent] = useState(null);
+    const [openAlert, setOpenAlert] = useState(false);
 
     useEffect(() => {
         eventService.getEventById(id)
-            .then(response => {
+            .then((response) => {
                 console.log(response);
                 setEvent(response);
-            });
+            }, (error) => setOpenAlert(true));
     }, []);
 
     return (
@@ -63,6 +64,16 @@ const EventPage = () => {
                     </Grid>
                 </>
             )}
+            <Snackbar
+                anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+                open={openAlert}
+                onClose={() => setOpenAlert(false)}
+                autoHideDuration={6000}
+            >
+                <Alert severity="error" sx={{ width: '100%' }}>
+                    {t("errors.event")}
+                </Alert>
+            </Snackbar>
         </Box>
     );
 }

@@ -65,8 +65,9 @@ export default function SignupPage() {
                 .then(response => {
                     console.log(response);
                     navigate(-1);
-                }, (error) => console.log(error));
+                }, (error) => setError("errors.register"));
         }
+        setLoading(false);
     };
 
     const validateData = () => {
@@ -224,7 +225,7 @@ export default function SignupPage() {
                                 }}
                                 helperText={passwordError !== "" ? passwordError : t("form.signup.password.placeholder")}
                             />
-                            {error && <Alert severity="error">{error}</Alert>}
+                            {error && <Alert severity="error">{t(error)}</Alert>}
                             <FormControlLabel control={
                                 <Checkbox value="remember" required sx={{
                                     color: '#FF8834',

@@ -1,10 +1,11 @@
 import {
+    Alert,
     Box, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle,
     FormControl, Grid,
     InputLabel,
     MenuItem,
     Paper,
-    Select,
+    Select, Snackbar,
     TextField,
     Typography
 } from "@mui/material";
@@ -162,6 +163,8 @@ const TicketPicker = ({event, tickets, setTickets}) => {
 
     const [open, setOpen] = useState(false);
 
+    const [openAlert, setOpenAlert] = useState(false);
+
     const handleChange = (e) => {
         setTicketType(e.target.value);
     }
@@ -216,6 +219,8 @@ const TicketPicker = ({event, tickets, setTickets}) => {
 
                 handleClose();
                 window.location.href = '/';
+            }, (error) => {
+                setOpenAlert(true);
             });
     };
 
@@ -298,6 +303,16 @@ const TicketPicker = ({event, tickets, setTickets}) => {
                     </Button>
                 </DialogActions>
             </Dialog>
+            <Snackbar
+                anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+                open={openAlert}
+                onClose={() => setOpenAlert(false)}
+                autoHideDuration={6000}
+            >
+                <Alert severity="error" sx={{ width: '100%' }}>
+                    {t("errors.seat")}
+                </Alert>
+            </Snackbar>
         </Box>
     );
 }
