@@ -15,6 +15,7 @@ import CancelIcon from '@mui/icons-material/Cancel';
 import {useMemo, useState} from "react";
 import {useTranslation} from "react-i18next";
 import {unique} from "../../helpers/ArrayOperations";
+import {seatService} from "../../services/seatService";
 
 const TicketItem = ({event, tickets, setTickets, index}) => {
 
@@ -193,21 +194,29 @@ const TicketPicker = ({event, tickets, setTickets}) => {
     };
 
     const addTicketsToCart = () => {
-        const order = {
-            time: new Date(),
-            type: ticketType,
-            event: event.name,
-            tickets: tickets.slice(0, numberOfTickets)
-        };
 
-        const orders = sessionStorage.getItem("order") === null ? [] : JSON.parse(sessionStorage.getItem("order"));
+        const seatsToReserve = tickets.map(ticket => ticket.seat)
 
-        orders.push(order);
+        seatsToReserve.forEach(seat => seat.status = (ticketType === "tickets.type.reservation" ? "Reserved" : "Taken"))
 
-        sessionStorage.setItem("order", JSON.stringify(orders));
+        seatService.reserve(seatsToReserve)
+            .then((seats) => {
+                const order = {
+                    time: new Date(),
+                    type: ticketType,
+                    event: event.title,
+                    tickets: tickets.slice(0, numberOfTickets)
+                };
 
-        handleClose();
-        window.location.href = '/';
+                const orders = sessionStorage.getItem("order") === null ? [] : JSON.parse(sessionStorage.getItem("order"));
+
+                orders.push(order);
+
+                sessionStorage.setItem("order", JSON.stringify(orders));
+
+                handleClose();
+                window.location.href = '/';
+            });
     };
 
     return (
