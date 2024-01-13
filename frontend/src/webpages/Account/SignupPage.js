@@ -85,7 +85,7 @@ export default function SignupPage() {
         }
 
         //validate phone number
-        if (!validator.isMobilePhone(data.phone, ['pl-PL'])) {
+        if (!validator.isMobilePhone(data.tel_number, ['pl-PL'])) {
             setPhoneError(t("form.signup.phone"))
             return false;
         }
@@ -186,8 +186,8 @@ export default function SignupPage() {
                                 id="phone"
                                 onChange={handleChange}
                                 label={t("form.labels.phone")}
-                                name="phone"
-                                value={data.phone}
+                                name="tel_number"
+                                value={data.tel_number}
                                 autoComplete="phone"
                                 InputProps={{
                                     startAdornment: phoneError !== "" && (

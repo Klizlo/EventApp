@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {
     Alert,
     Box,
@@ -20,6 +20,7 @@ import BillingStep from "./Billing/BillingStep";
 import SummaryPaymentStep from "./Summary/SummaryPaymentStep";
 import PaymentRedirectStep from "./PaymentRedirect/PaymentRedirectStep";
 import {useTranslation} from "react-i18next";
+import {userService} from "../../services/userService";
 
 const steps = [
     "checkout.stepper.login",
@@ -139,6 +140,12 @@ const CheckoutPaymentStepper = () => {
     };
 
     const {t} = useTranslation();
+
+    useEffect(() => {
+        if (localStorage.getItem("token")) {
+            userService.getUser().then((user => setClient(user)));
+        }
+    }, []);
 
     function _renderStepContent(step) {
         if (localStorage.getItem("token") !== null && activeStep === 0) {

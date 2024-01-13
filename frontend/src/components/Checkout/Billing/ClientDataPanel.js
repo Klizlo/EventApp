@@ -59,8 +59,8 @@ const ClientDataPanel = ({client, handleChange, emailError, phoneError}) => {
                 id="phone"
                 onChange={handleChange}
                 label={t("form.labels.phone")}
-                name="phone"
-                value={client?.phone}
+                name="tel_number"
+                value={client?.tel_number}
                 autoComplete="phone"
                 InputProps={{
                     startAdornment: phoneError !== "" && (

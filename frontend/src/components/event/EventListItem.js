@@ -50,12 +50,15 @@ const EventListItem = ({event}) => {
                                 justifyContent: 'space-between',
                                 p: 2
                             }}>
-                                <Button variant="contained" endIcon={<AddCircleIcon/>} sx={{
-                                    fontWeight: 'bold',
-                                    backgroundColor: '#FF8834',
-                                    '&:hover': {
-                                        backgroundColor: 'action.active'
-                                    }
+                                <Button variant="contained" endIcon={<AddCircleIcon/>}
+                                        disabled={!event.zones.flatMap(zone => zone.seats).some(seat => seat.status === 'Free')}
+                                        onClick={() => window.location.href = `/events/${event.id}/tickets`}
+                                        sx={{
+                                            fontWeight: 'bold',
+                                            backgroundColor: '#FF8834',
+                                            '&:hover': {
+                                                backgroundColor: 'action.active'
+                                            }
                                 }}>
                                     {t("events.buy")}
                                 </Button>

@@ -197,7 +197,12 @@
         },
         "back": "Cofnij",
         "address": "Adres:",
-        "paymentMethod": "Metoda płatności"
+        "paymentMethod": "Metoda płatności",
+        "dialog": {
+          "title": "Brak biletów w koszyku",
+          "content": "15 minutowa rezerwacja mineła. Po kliknięciu w przycisk zostaniesz przeniesiony na stronę główną.",
+          "button": "Przejdź na stronę główną"
+        }
       },
       "redirect": {
         "redirect": "Przekierowanie do strony płatności",

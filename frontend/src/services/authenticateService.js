@@ -2,7 +2,7 @@ import globals from "../helpers/globals";
 import {handleResponse} from "../helpers/handleResponse";
 import {BehaviorSubject} from "rxjs";
 
-const currentUserSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('token')));
+const currentUserSubject = new BehaviorSubject(localStorage.getItem('token'));
 
 export const authenticationService = {
     login,

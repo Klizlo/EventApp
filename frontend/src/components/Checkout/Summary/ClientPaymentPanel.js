@@ -9,7 +9,7 @@ const ClientPaymentPanel = ({client, payment}) => {
         <Box component={Paper} p={2} boxShadow={5}>
             <Typography variant="h6" textAlign='center'>{t("checkout.steps.billing.title")}</Typography>
             <Typography>{client.name + " " + client.surname}</Typography>
-            <Typography>{t("profile.panel.phone")}{client.phone}</Typography>
+            <Typography>{t("profile.panel.phone")}{client.tel_number}</Typography>
             <Typography>{t("profile.panel.email")}{client.email}</Typography>
             <Typography>{t("checkout.steps.summary.address")}</Typography>
             <Typography>{client.street}</Typography>

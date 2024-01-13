@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import LoginStep from "./Login/LoginStep";
 import {Box, Step, StepConnector, stepConnectorClasses, StepLabel, Stepper, styled} from "@mui/material";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
@@ -7,6 +7,7 @@ import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
 import ReservationStep from "./Reservation/ReservationStep";
 import SummaryReservationStep from "./Summary/SummaryReservationStep";
 import {useTranslation} from "react-i18next";
+import {userService} from "../../services/userService";
 
 const steps = [
     "checkout.stepper.login",
@@ -113,6 +114,12 @@ const CheckoutReservationStepper = () => {
     };
 
     const {t} = useTranslation();
+
+    useEffect(() => {
+        if (localStorage.getItem("token")) {
+            userService.getUser().then((user => setClient(user)));
+        }
+    }, []);
 
     function _renderStepContent(step) {
         if (localStorage.getItem("token") !== null && activeStep === 0) {

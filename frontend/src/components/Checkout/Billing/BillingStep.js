@@ -34,7 +34,7 @@ const BillingStep = ({client, setClient, handleNext}) => {
         }
 
         //validate phone number
-        if (!validator.isMobilePhone(client.phone, ['pl-PL'])) {
+        if (!validator.isMobilePhone(client.tel_number, ['pl-PL'])) {
             setPhoneError(t("form.signup.phone"))
             return false;
         }

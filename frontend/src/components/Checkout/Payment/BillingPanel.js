@@ -10,7 +10,7 @@ const BillingPanel = ({client}) => {
             <Typography variant='h6'>{t("checkout.steps.billing.title")}</Typography>
             <Box width="100%">
                 <Typography>{client.name + " " + client.surname}</Typography>
-                <Typography>{t("profile.panel.phone")}{client.phone}</Typography>
+                <Typography>{t("profile.panel.phone")}{client.tel_number}</Typography>
                 <Typography>{t("profile.panel.email")}{client.email}</Typography>
                 <Typography>{t("profile.panel.street")}{client.street}</Typography>
                 <Typography>{client.postalCode + " " + client.city}</Typography>

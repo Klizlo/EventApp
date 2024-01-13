@@ -31,7 +31,7 @@ const ReservationStep = ({client, setClient, handleNext}) => {
         }
 
         //validate phone number
-        if (!validator.isMobilePhone(client.phone, ['pl-PL'])) {
+        if (!validator.isMobilePhone(client.tel_number, ['pl-PL'])) {
             setPhoneError(t("form.signup.phone"))
             return false;
         }
@@ -108,8 +108,8 @@ const ReservationStep = ({client, setClient, handleNext}) => {
                     id="phone"
                     onChange={handleChange}
                     label={t("form.labels.phone")}
-                    name="phone"
-                    value={client?.phone}
+                    name="tel_number"
+                    value={client?.tel_number}
                     autoComplete="phone"
                     InputProps={{
                         startAdornment: phoneError !== "" && (

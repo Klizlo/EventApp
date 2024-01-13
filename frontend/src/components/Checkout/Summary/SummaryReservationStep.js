@@ -2,13 +2,20 @@ import {Box, Button, Grid} from "@mui/material";
 import ClientReservationPanel from "./ClientReservationPanel";
 import {useTranslation} from "react-i18next";
 import OrderList from "./OrderList";
+import {orderService} from "../../../services/orderService";
 
 const SummaryReservationStep = ({client, order, setOrder, handleBack}) => {
 
     const {t} = useTranslation();
 
     const handleCheckout = () => {
-        window.location.href = '/confirmation';
+        const validOrder = orderService.makeOrderValid(order, client, null);
+        orderService.order(validOrder)
+            .then(response => {
+                console.log(response);
+                localStorage.setItem("order", null);
+                window.location.href = '/confirmation';
+            });
     };
 
     return (

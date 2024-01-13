@@ -2,10 +2,21 @@ import {Box, Button, Grid} from "@mui/material";
 import ClientPaymentPanel from "./ClientPaymentPanel";
 import {useTranslation} from "react-i18next";
 import OrderList from "./OrderList";
+import {orderService} from "../../../services/orderService";
 
 const SummaryPaymentStep = ({client, payment, order, setOrder, handleBack, handleNext}) => {
 
     const {t} = useTranslation();
+
+    const buy = () => {
+        const validOrder = orderService.makeOrderValid(order, client, payment);
+        orderService.order(validOrder)
+            .then(response => {
+                console.log(response);
+                localStorage.setItem("order", null);
+                handleNext();
+            });
+    }
 
     return (
         <Box my={5}>
@@ -45,7 +56,7 @@ const SummaryPaymentStep = ({client, payment, order, setOrder, handleBack, handl
                             backgroundColor: 'action.active'
                         }
                     }}
-                    onClick={handleNext}>
+                    onClick={() => buy()}>
                     {t("checkout.steps.summary.payment.checkout")}
                 </Button>
             </Box>
