@@ -12,7 +12,7 @@ const SummaryPaymentStep = ({client, payment, order, setOrder, handleBack, handl
         const validOrder = orderService.makeOrderValid(order, client, payment);
         orderService.order(validOrder)
             .then(response => {
-                localStorage.setItem("order", null);
+                sessionStorage.removeItem("order");
                 handleNext();
             });
     }

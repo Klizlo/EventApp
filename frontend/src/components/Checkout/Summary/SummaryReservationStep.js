@@ -12,7 +12,7 @@ const SummaryReservationStep = ({client, order, setOrder, handleBack}) => {
         const validOrder = orderService.makeOrderValid(order, client, null);
         orderService.order(validOrder)
             .then(response => {
-                localStorage.setItem("order", null);
+                sessionStorage.removeItem("order");
                 window.location.href = '/confirmation';
             });
     };
